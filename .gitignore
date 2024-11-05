@@ -1,0 +1,17 @@
+# Eclipse-fichies specifiques
+.classpath
+.project
+.settings/
+
+# Repertoires de compilation
+/bin/
+target/
+
+# Fichiers temporaires
+*.log
+*.tmp
+*.temp
+
+# Fichiers specifiques au systeme
+.DS_Store
+Thumbs.db
