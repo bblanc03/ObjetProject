@@ -20,6 +20,7 @@ public class Main extends Application {
 	    primaryStage.setTitle("Project Playground");
 	    primaryStage.show();
 	    System.out.println("test");
+	    System.out.println("plz work");
 	}
 	
 	public static void main(String[] args) {
