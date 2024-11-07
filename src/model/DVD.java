@@ -2,6 +2,7 @@ package model;
 
 import java.io.Serializable;
 
+import javafx.beans.property.IntegerProperty;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
 
