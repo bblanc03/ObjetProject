@@ -14,17 +14,15 @@ public class Document {
 	private IntegerProperty nbPrets;
 	private StringProperty datePublication;
 	private StringProperty Emprunteur;
+	//maybe make a StringProperty for mots cles
 	
 	ObservableList<Document> lstObservDocument; // creer un tri comme enonce de probleme.
 	
-	public Document(String noDocument, String titre, String auteur, String datePublication, String etat, int nbPrets, String Emprunteur) {
+	public Document(String noDocument, String titre, String auteur, String datePublication) {
 		this.noDocument = new SimpleStringProperty(noDocument);
 		this.titre = new SimpleStringProperty(titre);
 		this.auteur = new SimpleStringProperty(auteur);
 		this.datePublication = new SimpleStringProperty(datePublication);
-		this.etat = new SimpleStringProperty(etat); // maybe take out of here
-		this.nbPrets = new SimpleIntegerProperty(nbPrets); // maybe take out of here
-		this.Emprunteur = new SimpleStringProperty(Emprunteur); // maybe take out of here
 	}
 	
 }
