@@ -15,6 +15,8 @@ public class DVD implements Serializable{
 	private StringProperty date;
 	private StringProperty auteur;
 	
+	//testing git push
+	
 	public DVD(String noDVD, String titre, String date, String auteur) {
 		this.noDVD = new SimpleStringProperty(noDVD);
 		this.titre = new SimpleStringProperty(titre);
