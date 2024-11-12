@@ -22,6 +22,8 @@ public class DVD implements Serializable{
 		this.titre = new SimpleStringProperty(titre);
 		this.date = new SimpleStringProperty(date);
 		this.auteur = new SimpleStringProperty(auteur);
+		//hi this is a merge test
+		// 2
 	}
 	
 	public StringProperty getNoDvdProperty() {
