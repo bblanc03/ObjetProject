@@ -16,6 +16,9 @@ public class Document {
 	private StringProperty Emprunteur;
 	//maybe make a StringProperty for mots cles
 	
+	// this is pprobably not the right way to do it. Look at Registre class that the teacher created in secound demo he showed.
+	// this class will probably just hold setters (ooriginalList.setAll(new list)) and getters (return somethingList) to observable lists from the controllers. 
+	
 	ObservableList<Document> lstObservDocument; // creer un tri comme enonce de probleme.
 	
 	public Document(String noDocument, String titre, String auteur, String datePublication) {
