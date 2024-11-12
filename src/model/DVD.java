@@ -20,23 +20,4 @@ public class DVD extends Document implements Serializable {
 	public DVD(String noDVD, String titre, String date, String auteur) {
 		super(noDVD, titre, date, auteur);
 	}
-	
-	public StringProperty getNoDvdProperty() {
-		return noDVD;
-	}
-	
-	public String getNoDVD() {
-		return noDVD.get();
-	}
-	
-	public StringProperty getTitrePropetrty() {
-		return titre;
-	}
-	public StringProperty getDateProperty() {
-		return date;
-	}
-	public StringProperty getAuteurProperty() {
-		return auteur;
-	}
-	
 }
