@@ -41,6 +41,7 @@
                   <Label layoutX="14.0" layoutY="97.0" text="Mot de passe:" />
                   <TextField fx:id="tbNoEmploye" layoutX="136.0" layoutY="36.0" />
                   <TextField fx:id="tbMotDePasse" layoutX="137.0" layoutY="93.0" />
+                  <Button fx:id="btnConnection" layoutX="123.0" layoutY="187.0" mnemonicParsing="false" onAction="#ouvrirAdmin" text="Button" />
                </children></AnchorPane>
       </content>
     </TitledPane>

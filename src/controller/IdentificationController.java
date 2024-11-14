@@ -41,16 +41,29 @@ public class IdentificationController {
 
 	@FXML
 	Button btnCatalogue;
+	
+	@FXML
+	Button btnConnection;
 
 	@FXML
 	private void initialize() {
 	}
 
 	@FXML
-	protected void ouvrirCatalogue(ActionEvent event) throws IOException {
+	protected void ouvrirCatalogue(ActionEvent event) {
 		System.out.println("button Catalogue pressed");
 
-		FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/MainView.fxml"));
+		
+	}
+
+	@FXML
+	protected void ouvrirDossier(ActionEvent event) {
+		System.out.println("button Dossier pressed");
+	}
+	
+	@FXML
+	protected void ouvrirAdmin(ActionEvent event) throws IOException {
+		FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/Admin.fxml"));
 
 		Parent root = loader.load();
 		Scene scene = new Scene(root);
@@ -58,9 +71,5 @@ public class IdentificationController {
 		stage.setTitle("Médiatèque");
 		System.out.println("page loaded");
 		stage.show();
-	}
-
-	@FXML
-	protected void ouvrirDossier(ActionEvent event) {
 	}
 }
