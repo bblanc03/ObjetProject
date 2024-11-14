@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+
+<TableView fx:id="tvDVD" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="526.0" prefWidth="1090.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1">
+   <columns>
+      <TableColumn fx:id="colNumDVD" prefWidth="180.0" text="Numéro du document" />
+      <TableColumn fx:id="colTitreDVD" prefWidth="258.0" text="Titre" />
+      <TableColumn fx:id="colAuteurDVD" prefWidth="172.5" text="Auteur/Réalisateur" />
+      <TableColumn fx:id="colDateDVD" prefWidth="126.0" text="Date de parution" />
+      <TableColumn fx:id="colEtatDVD" prefWidth="99.5" text="État" />
+      <TableColumn fx:id="colPretDVD" prefWidth="110.5" text="Nb. prêts" />
+      <TableColumn fx:id="colEmprunteurDVD" prefWidth="143.5" text="Emprunteur" />
+   </columns>
+</TableView>
