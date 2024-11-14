@@ -50,8 +50,16 @@ public class IdentificationController {
 	}
 
 	@FXML
-	protected void ouvrirCatalogue(ActionEvent event) {
+	protected void ouvrirCatalogue(ActionEvent event) throws IOException {
 		System.out.println("button Catalogue pressed");
+		FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/catalogue.fxml"));
+
+		Parent root = loader.load();
+		Scene scene = new Scene(root);
+		stage.setScene(scene);
+		stage.setTitle("Médiatèque");
+		System.out.println("page loaded");
+		stage.show();
 
 		
 	}
