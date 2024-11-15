@@ -41,7 +41,13 @@ public class GestionPreposeController {
 	
 	@FXML
 	private void initialize() {
+		vuePrepose.setItems(Personne.getObservableList());
 		
+		colNoEmploye.setCellValueFactory(cell -> cell.getValue().getNomProperty());
+		colNom.setCellValueFactory(cell -> cell.getValue().getNomProperty());
+		colPrenom.setCellValueFactory(cell -> cell.getValue().getPrenomProperty());
+		colAdresse.setCellValueFactory(cell -> cell.getValue().getAdresseProperty());
+		colTelephone.setCellValueFactory(cell -> cell.getValue().getTelephoneProperty());
 	}
 	
 	@FXML
