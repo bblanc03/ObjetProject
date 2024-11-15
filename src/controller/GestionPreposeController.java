@@ -1,9 +1,16 @@
 package controller;
 
+import java.io.IOException;
+
+import application.Main;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
+import javafx.stage.Stage;
 import model.Personne;
 
 public class GestionPreposeController {
@@ -35,6 +42,20 @@ public class GestionPreposeController {
 	@FXML
 	private void initialize() {
 		
+	}
+	
+	@FXML
+	private void ajouterPrepose() throws IOException {
+		System.out.println("btn ajouter prepose");
+		
+		FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/AjouterPrepose.fxml"));
+
+		Parent root = loader.load();
+		Scene scene = new Scene(root);
+		Stage stage = new Stage();
+		stage.setScene(scene);
+		stage.setTitle("Médiatèque");
+		stage.show();
 	}
 	
 	
