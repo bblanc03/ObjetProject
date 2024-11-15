@@ -60,16 +60,9 @@ public Personne(String nom, String prenom, String adresse,
 
 //maybe create a funtion to get an ObservableList
 
-public static void ajouterPersonne(Personne personne) { 
-	lstPersonnes.add(personne);
-}
 
-public static ArrayList<Personne> getLstPersonne() {
-	return lstPersonnes;
-}
-
-public static void setObservableList() {
-	obsListPersonne.addAll(lstPersonnes);
+public static void setObservableList(Personne personne) {
+	obsListPersonne.add(personne);
 }
 
 public static ObservableList<Personne> getObservableList(){

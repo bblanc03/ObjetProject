@@ -36,8 +36,8 @@ public class AjouterPreposeCOntroller {
 	protected void ajouterPrepose(ActionEvent event) {
 		System.out.println("button ajouter pressed");
 		Personne personne = new Personne(tbNom.getText(), tbPrenom.getText(), tbAdresse.getText(), tbTelephone.getText());
-		Personne.ajouterPersonne(personne);
-		Personne.setObservableList();
+		//Personne.ajouterPersonne();
+		Personne.setObservableList(personne);
 		System.out.println(Personne.getObservableList());
 	}
 }
