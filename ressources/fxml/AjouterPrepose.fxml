@@ -16,7 +16,7 @@
       <TextField fx:id="tbPrenom" layoutX="277.0" layoutY="66.0" prefHeight="26.0" prefWidth="310.0" />
       <TextField fx:id="tbAdresse" layoutX="277.0" layoutY="95.0" prefHeight="26.0" prefWidth="310.0" />
       <TextField fx:id="tbTelephone" layoutX="277.0" layoutY="126.0" prefHeight="26.0" prefWidth="310.0" />
-      <TextField layoutX="277.0" layoutY="155.0" prefHeight="26.0" prefWidth="310.0" />
+      <TextField fx:id="tbMotDePasse" layoutX="277.0" layoutY="155.0" prefHeight="26.0" prefWidth="310.0" />
       <Button fx:id="btnAjouter" layoutX="399.0" layoutY="240.0" mnemonicParsing="false" onAction="#ajouterPrepose" prefHeight="26.0" prefWidth="90.0" text="Confirmer" />
       <Button layoutX="496.0" layoutY="240.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="90.0" text="Annuler" />
    </children>
