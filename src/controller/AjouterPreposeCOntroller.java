@@ -8,6 +8,7 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
+import javafx.stage.Stage;
 import model.Personne;
 
 public class AjouterPreposeCOntroller {
@@ -29,6 +30,9 @@ public class AjouterPreposeCOntroller {
 
 	@FXML
 	Button btnAjouter;
+	
+	@FXML 
+	Button btnQuitter;
 
 	@FXML
 	private void initialize() {
@@ -68,6 +72,13 @@ public class AjouterPreposeCOntroller {
 			System.out.println(Personne.getObservableList());
 		}
 
+	}
+	
+	@FXML
+	protected void ajouterQuitter() {
+		System.out.println("closing");
+		Stage stage = (Stage) btnQuitter.getScene().getWindow();
+		stage.close();
 	}
 
 }
