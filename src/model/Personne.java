@@ -61,12 +61,20 @@ public Personne(String nom, String prenom, String adresse,
 //maybe create a funtion to get an ObservableList
 
 
-public static void setObservableList(Personne personne) {
+public static void setPersonne(Personne personne) {
 	obsListPersonne.add(personne);
 }
 
 public static ObservableList<Personne> getObservableList(){
 	return obsListPersonne;
+}
+
+public static void setObservableList(ObservableList<Personne> list) {
+	obsListPersonne = list;
+}
+
+public static void removePersonne(Personne remove) {
+	obsListPersonne.remove(remove);
 }
 
 

@@ -68,7 +68,7 @@ public class AjouterPreposeCOntroller {
 			Personne personne = new Personne(tbNom.getText(), tbPrenom.getText(), tbAdresse.getText(),
 					tbTelephone.getText());
 			// Personne.ajouterPersonne();
-			Personne.setObservableList(personne);
+			Personne.setPersonne(personne);
 			System.out.println(Personne.getObservableList());
 		}
 

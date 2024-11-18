@@ -3,6 +3,8 @@ package controller;
 import java.io.IOException;
 
 import application.Main;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -62,6 +64,13 @@ public class GestionPreposeController {
 		stage.setScene(scene);
 		stage.setTitle("Médiatèque");
 		stage.show();
+	}
+	
+	@FXML
+	private void supprimerPrpose() {
+		System.out.println("deleting");
+		Personne employe = vuePrepose.getSelectionModel().getSelectedItem();
+		Personne.removePersonne(employe);
 	}
 	
 	
