@@ -51,6 +51,7 @@ public class IdentificationController {
 	private void initialize() {
 	}
 
+<<<<<<< HEAD
 	@FXML
 	protected void ouvrirCatalogue(ActionEvent event) throws IOException {
 		System.out.println("button Catalogue pressed");
@@ -65,6 +66,14 @@ public class IdentificationController {
 
 		
 	}
+=======
+//	@FXML
+//	protected void ouvrirCatalogue(ActionEvent event) {
+//		System.out.println("button Catalogue pressed");
+//
+//		
+//	}
+>>>>>>> ca5bc5c5998116c542095d29970c37a83a7c5040
 
 	@FXML
 	protected void ouvrirDossier(ActionEvent event) {
@@ -90,5 +99,18 @@ public class IdentificationController {
 		 * stage.setScene(scene); stage.setTitle("Médiatèque");
 		 * System.out.println("page loaded"); stage.show();
 		 */
+	}
+	
+	@FXML
+	protected void ouvrirCatalogue(ActionEvent event) throws IOException {
+		FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/catalogue.fxml"));
+
+		Parent root = loader.load();
+		Scene scene = new Scene(root);
+		stage.setScene(scene);
+		stage.centerOnScreen();
+		stage.setTitle("Médiatèque");
+		System.out.println("page loaded");
+		stage.show();
 	}
 }
