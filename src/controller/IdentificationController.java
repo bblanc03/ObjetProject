@@ -88,14 +88,21 @@ public class IdentificationController {
 	
 	@FXML
 	protected void ouvrirCatalogue(ActionEvent event) throws IOException {
-		FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/catalogue.fxml"));
-
-		Parent root = loader.load();
-		Scene scene = new Scene(root);
-		stage.setScene(scene);
-		stage.centerOnScreen();
-		stage.setTitle("Médiatèque");
-		System.out.println("page loaded");
-		stage.show();
+		
+		gestionVue = GestionVue.getInstance();
+		System.out.println("btn ajouter prepose");
+		//Stage stage = new Stage();
+		//gestionVue.initialiseStage(stage);
+		//FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/AjouterPrepose.fxml"));
+		gestionVue.chargerVuePrincipale("hi", "/fxml/catalogue.fxml");
+		
+		/*
+		 * FXMLLoader loader = new
+		 * FXMLLoader(getClass().getResource("/fxml/catalogue.fxml"));
+		 * 
+		 * Parent root = loader.load(); Scene scene = new Scene(root);
+		 * stage.setScene(scene); stage.centerOnScreen(); stage.setTitle("Médiatèque");
+		 * System.out.println("page loaded"); stage.show();
+		 */
 	}
 }

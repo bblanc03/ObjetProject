@@ -29,6 +29,7 @@ public class GestionVue {
 		FXMLLoader loader = new FXMLLoader(getClass().getResource(fichierFXML));
 		Parent root = loader.load();
 		stage.setScene(new Scene(root));
+		stage.centerOnScreen();
 		stage.setTitle("Project Playground");
 		stage.show();
 	}
