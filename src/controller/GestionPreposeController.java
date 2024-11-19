@@ -14,8 +14,10 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.stage.Stage;
 import model.Personne;
+import utils.GestionVue;
 
 public class GestionPreposeController {
+	GestionVue gestionVue;
 
 	@FXML
 	TableView<Personne> vuePrepose;
@@ -54,16 +56,17 @@ public class GestionPreposeController {
 	
 	@FXML
 	private void ajouterPrepose() throws IOException {
-		System.out.println("btn ajouter prepose");
-		
-		FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/AjouterPrepose.fxml"));
-
-		Parent root = loader.load();
-		Scene scene = new Scene(root);
+		gestionVue = GestionVue.getInstance();
 		Stage stage = new Stage();
-		stage.setScene(scene);
-		stage.setTitle("Médiatèque");
-		stage.show();
+		gestionVue.initialiseStage(stage);
+		gestionVue.chargerVuePrincipale("hi", "/fxml/AjouterPrepose.fxml");
+
+		//Parent root = loader.load();
+		//Scene scene = new Scene(root);
+		
+		//stage.setScene(scene);
+		//stage.setTitle("Médiatèque");
+		//stage.show();
 	}
 	
 	@FXML

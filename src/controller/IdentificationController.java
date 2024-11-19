@@ -13,10 +13,12 @@ import javafx.scene.control.RadioButton;
 import javafx.scene.control.TextField;
 import javafx.scene.control.TitledPane;
 import javafx.stage.Stage;
+import utils.GestionVue;
 
 public class IdentificationController {
 	
 	private Stage stage = Main.getStage();
+	GestionVue gestionVue;
 
 	@FXML
 	TitledPane optionPane;
@@ -71,13 +73,22 @@ public class IdentificationController {
 	
 	@FXML
 	protected void ouvrirAdmin(ActionEvent event) throws IOException {
-		FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/Admin.fxml"));
+		
+		
+		
+		gestionVue = GestionVue.getInstance();
+		System.out.println("btn ajouter prepose");
+		//Stage stage = new Stage();
+		//gestionVue.initialiseStage(stage);
+		//FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/AjouterPrepose.fxml"));
+		gestionVue.chargerVuePrincipale("hi", "/fxml/Admin.fxml");
+		
+		//FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/Admin.fxml"));
 
-		Parent root = loader.load();
-		Scene scene = new Scene(root);
-		stage.setScene(scene);
-		stage.setTitle("Médiatèque");
-		System.out.println("page loaded");
-		stage.show();
+		/*
+		 * Parent root = loader.load(); Scene scene = new Scene(root);
+		 * stage.setScene(scene); stage.setTitle("Médiatèque");
+		 * System.out.println("page loaded"); stage.show();
+		 */
 	}
 }
