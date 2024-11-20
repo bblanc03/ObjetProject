@@ -40,7 +40,7 @@ public class LivreController {
 	
 	public LivreController() {
 		System.out.println("LivreController");
-		registre = registre.getInstance();
+		registre = Registre.getInstance();
 		lstLivre = GestionIOLivre.chargerFichier("Livres.txt");
 		registre.setListeLivre(lstLivre); 
 	}

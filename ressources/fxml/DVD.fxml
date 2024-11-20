@@ -3,15 +3,14 @@
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
 
-<TableView fx:id="tvDVD" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="526.0" prefWidth="1090.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1">
+<TableView fx:id="tvDVD" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="526.0" prefWidth="1090.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.DVDController">
    <columns>
-      <TableColumn fx:id="colNumDVD" prefWidth="150.0" text="Numéro du document" />
-      <TableColumn fx:id="colTitreDVD" prefWidth="195.5" text="Titre" />
-      <TableColumn fx:id="colAuteurDVD" prefWidth="142.5" text="Réalisateur" />
-      <TableColumn fx:id="colDateDVD" prefWidth="139.5" text="Date de parution" />
-      <TableColumn fx:id="colNbrDisque" prefWidth="133.5" text="Nombre de disque" />
-      <TableColumn fx:id="colEtatDVD" prefWidth="78.5" text="État" />
-      <TableColumn fx:id="colPretDVD" prefWidth="96.0" text="Nb. prêts" />
-      <TableColumn fx:id="colEmprunteurDVD" prefWidth="153.5" text="Emprunteur" />
+      <TableColumn fx:id="colNumDVD" prefWidth="180.0" text="Numéro du document" />
+      <TableColumn fx:id="colTitreDVD" prefWidth="258.0" text="Titre" />
+      <TableColumn fx:id="colAuteurDVD" prefWidth="172.5" text="Auteur/Réalisateur" />
+      <TableColumn fx:id="colDateDVD" prefWidth="126.0" text="Date de parution" />
+      <TableColumn fx:id="colEtatDVD" prefWidth="99.5" text="État" />
+      <TableColumn fx:id="colPretDVD" prefWidth="110.5" text="Nb. prêts" />
+      <TableColumn fx:id="colEmprunteurDVD" prefWidth="143.5" text="Emprunteur" />
    </columns>
 </TableView>

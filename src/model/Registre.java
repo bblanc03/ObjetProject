@@ -12,6 +12,8 @@ public final class Registre {
 		private final ObservableList<Periodique> listePeriodique = FXCollections.observableArrayList();
 		private final ObservableList<DVD> listeDVD = FXCollections.observableArrayList();
 		
+		
+		//Getters
 		public ObservableList<Document> getListeDocument() {
 			return listeDocument;
 		}
@@ -28,25 +30,25 @@ public final class Registre {
 			return listeDVD;
 		}
 		
-		public void getListeDocument(ObservableList<Document> liste) {
+		
+		
+		//Setters
+		public void setListeDocument(ObservableList<Document> liste) {
 			listeDocument.setAll(liste);
 		}
-		
-		public void getListeLivre(ObservableList<Livre> liste) {
-			listeLivre.setAll(liste);
-		}
-		
-		public void getListePeriodique(ObservableList<Periodique> liste) {
+				
+		public void setListePeriodique(ObservableList<Periodique> liste) {
 			listePeriodique.setAll(liste);
 		}
 		
-		public void getListeDVD(ObservableList<DVD> liste) {
+		public void setListeDVD(ObservableList<DVD> liste) {
 			listeDVD.setAll(liste);
 		}
 		
 		public void setListeLivre(ObservableList<Livre> liste) {
 			listeLivre.setAll(liste);
 		}
+		
 		
 		public static Registre getInstance() {
 			if(instance == null) {

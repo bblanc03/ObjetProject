@@ -15,25 +15,20 @@ public class Periodique implements Serializable {
 	private SimpleStringProperty titre;
 	private SimpleStringProperty date;
 	private SimpleIntegerProperty numVol;
-	private SimpleIntegerProperty numPer;
+	private SimpleIntegerProperty numPeriodique;
 	private SimpleStringProperty etat;
 	private SimpleIntegerProperty nbPret;
 	private SimpleStringProperty emprunteur;
 	
-	
-	
-	
 	// Constructeur
-	public Periodique(SimpleStringProperty numDoc, SimpleStringProperty titre, SimpleStringProperty date,
-			SimpleStringProperty etat, SimpleIntegerProperty nbPret) {
-		this.numDoc = numDoc;
-		this.titre = titre;
-		this.date = date;
-		this.etat = etat;
-		this.nbPret = nbPret;
+	public Periodique(String numDoc, String titre, String date,
+			int numVol, int numPeriodique) {
+		this.numDoc = new SimpleStringProperty(numDoc);
+		this.titre = new SimpleStringProperty(titre);
+		this.date = new SimpleStringProperty(date);
+		this.numVol = new SimpleIntegerProperty(numVol);
+		this.numPeriodique = new SimpleIntegerProperty(numPeriodique);
 	}
-	
-	
 	
 	// Getters et setters
 
@@ -85,16 +80,16 @@ public class Periodique implements Serializable {
 		this.numVol = numVol;
 	}
 
-	public SimpleIntegerProperty getNumPerProperty() {
-		return numPer;
+	public SimpleIntegerProperty getNumPeriodiqueProperty() {
+		return numPeriodique;
 	}
 
-	public int getNumPer() {
-		return numPer.get();
+	public int getNumPeriodique() {
+		return numPeriodique.get();
 	}
 
 	public void setNumPer(SimpleIntegerProperty numPer) {
-		this.numPer = numPer;
+		this.numPeriodique = numPer;
 	}
 
 	public SimpleStringProperty getEtatProperty() {

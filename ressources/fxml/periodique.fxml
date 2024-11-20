@@ -3,14 +3,15 @@
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
 
-<TableView fx:id="tvPer" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="526.0" prefWidth="1090.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1">
+<TableView fx:id="tvPer" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="526.0" prefWidth="1090.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.PeriodiqueController">
    <columns>
       <TableColumn fx:id="colNumPer" prefWidth="180.0" text="Numéro du document" />
-      <TableColumn fx:id="colTitrePer" prefWidth="258.0" text="Titre" />
-      <TableColumn fx:id="colAuteurPer" prefWidth="172.5" text="Auteur/Réalisateur" />
-      <TableColumn fx:id="colDatePer" prefWidth="126.0" text="Date de parution" />
-      <TableColumn fx:id="colEtatPer" prefWidth="99.5" text="État" />
-      <TableColumn fx:id="colPretPer" prefWidth="110.5" text="Nb. prêts" />
-      <TableColumn fx:id="colEmprunteurPer" prefWidth="143.5" text="Emprunteur" />
+      <TableColumn fx:id="colTitrePer" prefWidth="172.5" text="Titre" />
+      <TableColumn fx:id="colDatePer" prefWidth="168.0" text="Date de parution" />
+      <TableColumn fx:id="colNumVol" prefWidth="120.5" text="Numéro du volume" />
+      <TableColumn fx:id="colNumPeriodique" prefWidth="136.5" text="Numéro du périodique" />
+      <TableColumn fx:id="colEtatPer" prefWidth="92.5" text="État" />
+      <TableColumn fx:id="colPretPer" prefWidth="100.5" text="Nb. prêts" />
+      <TableColumn fx:id="colEmprunteurPer" prefWidth="118.5" text="Emprunteur" />
    </columns>
 </TableView>
