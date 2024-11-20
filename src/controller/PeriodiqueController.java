@@ -49,16 +49,19 @@ public class PeriodiqueController {
 	
 	public void initialiserVuePeriodique() {
 		System.out.println("initialiserVuePeriodique");
-		colNumPer.setCellValueFactory(col -> col.getValue().getNumDocProperty());
+		colNumPer.setCellValueFactory(col -> col.getValue().getNoDocumentProperty());
 		colTitrePer.setCellValueFactory(col -> col.getValue().getTitreProperty());
-		colDatePer.setCellValueFactory(col -> col.getValue().getDateProperty());
+		colDatePer.setCellValueFactory(col -> col.getValue().getDatePublicationProperty());
 		colNumVol.setCellValueFactory(col -> col.getValue().getNumVolProperty().asObject());
 		colNumPeriodique.setCellValueFactory(col -> col.getValue().getNumPeriodiqueProperty().asObject());
-		tvPer.setItems(lstPeriodique);
+		colEtatPer.setCellValueFactory(col -> col.getValue().getEtatProperty());
+		colPretPer.setCellValueFactory(col -> col.getValue().getPretProperty().asObject());
+		
 	}
 	
 	@FXML
 	private void initialize() {
 		initialiserVuePeriodique();
+		tvPer.setItems(lstPeriodique);
 	}
 }

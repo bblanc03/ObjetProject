@@ -74,4 +74,8 @@ public class CatalogueController {
 	
 	@FXML
 	Button btnQuitter;
+	
+	//Radio Group them
+	//TextField search action
+	//Effacer btn action
 }

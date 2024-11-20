@@ -14,24 +14,45 @@ public class DVD extends Document implements Serializable {
 	//private StringProperty noDVD;
 	//private StringProperty titre;
 	//private StringProperty date;
-	//private StringProperty auteur;
-	private SimpleIntegerProperty nbrDisque;
+	private StringProperty auteur;
+	private IntegerProperty nbrDisque;
+	private StringProperty etat;
+	private IntegerProperty pret;
 	//testing git push
 	
-	public DVD(String noDVD, String titre, String date, int nbrDisque,String auteur) {
-		super(noDVD, titre, date, auteur);
+	public DVD(String noDVD, String titre, String date, int nbrDisque, String auteur) {
+		super(noDVD, titre, date);
+		this.auteur = new SimpleStringProperty(auteur);
 		this.nbrDisque = new SimpleIntegerProperty(nbrDisque);
+		this.etat = new SimpleStringProperty("disponible");
+		this.pret = new SimpleIntegerProperty(0);
 	}
 
-	public SimpleIntegerProperty getNbrDisqueProperty() {
+	public IntegerProperty getNbrDisqueProperty() {
 		return nbrDisque;
 	}
 	
 	public void setNbrDisque(SimpleIntegerProperty nbrDisque) {
 		this.nbrDisque = nbrDisque;
 	}
+	
+	public StringProperty getAuteurProperty() {
+		return auteur;
+	}
+	
+	public String getAuteur() {
+		return auteur.get();
+	}
 
 	public static long getSerialversionuid() {
 		return serialVersionUID;
+	}
+	
+	public StringProperty getEtatProperty() {
+		return etat;
+	}
+	
+	public IntegerProperty getPretProperty() { 
+		return pret;
 	}
 }

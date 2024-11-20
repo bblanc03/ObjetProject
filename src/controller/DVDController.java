@@ -54,8 +54,8 @@ public class DVDController {
 		colAuteurDVD.setCellValueFactory(col -> col.getValue().getAuteurProperty());
 		colDateDVD.setCellValueFactory(col -> col.getValue().getDatePublicationProperty());
 		//colNbrDisque.setCellValueFactory(col -> col.getValue().getNbrDisqueProperty().asObject());
-		//colEtatDVD.setCellValueFactory(col -> col.getValue().getDatePublicationProperty());
-		//colPretDVD.setCellValueFactory(col -> col.getValue().getDatePublicationProperty());
+		colEtatDVD.setCellValueFactory(col -> col.getValue().getEtatProperty());
+		colPretDVD.setCellValueFactory(col -> col.getValue().getPretProperty().asObject());
 		//colEmprunteurDVD.setCellValueFactory(col -> col.getValue().getDatePublicationProperty());
 		
 		tvDVD.setItems(lstDVD);

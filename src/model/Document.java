@@ -11,14 +11,18 @@ public class Document {
 	private StringProperty titre;
 	private StringProperty auteur;
 	private StringProperty datePublication;
+	private StringProperty etat;
+	private IntegerProperty pret;
 	
 	//this is a super class for the other classes
 	
-	public Document(String noDocument, String titre, String datePublication, String auteur) {
+	public Document(String noDocument, String titre, String datePublication) {
 		this.noDocument = new SimpleStringProperty(noDocument);
 		this.titre = new SimpleStringProperty(titre);
-		this.auteur = new SimpleStringProperty(auteur);
 		this.datePublication = new SimpleStringProperty(datePublication);
+		this.etat = new SimpleStringProperty("disponible");
+		this.pret = new SimpleIntegerProperty(0);
+		//List
 	}
 	public StringProperty getNoDocumentProperty() {
 		return noDocument;
@@ -50,6 +54,14 @@ public class Document {
 	
 	public String getDatePublication() {
 		return datePublication.get();
+	}
+	
+	public StringProperty getEtatProperty() {
+		return etat;
+	}
+	
+	public IntegerProperty getPretProperty() {
+		return pret;
 	}
 	
 }

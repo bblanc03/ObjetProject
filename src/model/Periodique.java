@@ -2,71 +2,33 @@ package model;
 
 import java.io.Serializable;
 
+import javafx.beans.property.IntegerProperty;
 import javafx.beans.property.SimpleIntegerProperty;
 import javafx.beans.property.SimpleStringProperty;
+import javafx.beans.property.StringProperty;
 
-public class Periodique implements Serializable {
+public class Periodique extends Document implements Serializable {
 
 	private static final long serialVersionUID = -3862038457165840202L;
 
 	// Instances
 
-	private SimpleStringProperty numDoc;
-	private SimpleStringProperty titre;
-	private SimpleStringProperty date;
 	private SimpleIntegerProperty numVol;
 	private SimpleIntegerProperty numPeriodique;
 	private SimpleStringProperty etat;
-	private SimpleIntegerProperty nbPret;
 	private SimpleStringProperty emprunteur;
-	
+	private IntegerProperty pret;
+
 	// Constructeur
-	public Periodique(String numDoc, String titre, String date,
-			int numVol, int numPeriodique) {
-		this.numDoc = new SimpleStringProperty(numDoc);
-		this.titre = new SimpleStringProperty(titre);
-		this.date = new SimpleStringProperty(date);
+	public Periodique(String numDoc, String titre, String date, int numVol, int numPeriodique) {
+		super(numDoc, titre, date);
 		this.numVol = new SimpleIntegerProperty(numVol);
 		this.numPeriodique = new SimpleIntegerProperty(numPeriodique);
+		this.etat = new SimpleStringProperty("disponnible");
+		this.pret = new SimpleIntegerProperty(0);
 	}
-	
+
 	// Getters et setters
-
-	public SimpleStringProperty getNumDocProperty() {
-		return numDoc;
-	}
-
-	public String getNumDoc() {
-		return numDoc.get();
-	}
-
-	public void setNumDoc(SimpleStringProperty numDoc) {
-		this.numDoc = numDoc;
-	}
-
-	public SimpleStringProperty getTitreProperty() {
-		return titre;
-	}
-
-	public String getTitre() {
-		return titre.get();
-	}
-
-	public void setTitre(SimpleStringProperty titre) {
-		this.titre = titre;
-	}
-
-	public SimpleStringProperty getDateProperty() {
-		return date;
-	}
-
-	public String getDate() {
-		return date.get();
-	}
-
-	public void setDate(SimpleStringProperty date) {
-		this.date = date;
-	}
 
 	public SimpleIntegerProperty getNumVolProperty() {
 		return numVol;
@@ -92,7 +54,7 @@ public class Periodique implements Serializable {
 		this.numPeriodique = numPer;
 	}
 
-	public SimpleStringProperty getEtatProperty() {
+	public StringProperty getEtatProperty() {
 		return etat;
 	}
 
@@ -104,16 +66,16 @@ public class Periodique implements Serializable {
 		this.etat = etat;
 	}
 
-	public SimpleIntegerProperty getNbPretProperty() {
-		return nbPret;
+	public IntegerProperty getPretProperty() {
+		return pret;
 	}
 
-	public int getNbPret() {
-		return nbPret.get();
+	public int getPret() {
+		return pret.get();
 	}
 
-	public void setNbPret(SimpleIntegerProperty nbPret) {
-		this.nbPret = nbPret;
+	public void setPret(SimpleIntegerProperty pret) {
+		this.pret = pret;
 	}
 
 	public SimpleStringProperty getEmprunteurProperty() {
@@ -131,5 +93,6 @@ public class Periodique implements Serializable {
 	public static long getSerialversionuid() {
 		return serialVersionUID;
 	}
+	
 
 }

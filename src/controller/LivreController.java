@@ -52,8 +52,8 @@ public class LivreController {
 		colTitreLivre.setCellValueFactory(col -> col.getValue().getTitreProperty());
 		colAuteurLivre.setCellValueFactory(col -> col.getValue().getAuteurProperty());
 		colDateLivre.setCellValueFactory(col -> col.getValue().getDatePublicationProperty());
-		//colEtatLivre.setCellValueFactory(col -> col.getValue().getProperty());
-		//colPretLivre.setCellValueFactory(col -> col.getValue().getNoDocumentProperty());
+		colEtatLivre.setCellValueFactory(col -> col.getValue().getEtatProperty());
+		colPretLivre.setCellValueFactory(col -> col.getValue().getPretProperty().asObject());
 		//colEmprunteurLivre.setCellValueFactory(col -> col.getValue().getNoDocumentProperty());
 	}
 	
