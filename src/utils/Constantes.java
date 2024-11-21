@@ -6,4 +6,5 @@ public class Constantes {
 	}
 	
 	public static final String REPERTOIRE_FICHIERS = "donnees";
+	public static final String REPERTOIRE_DATA = "data";
 }

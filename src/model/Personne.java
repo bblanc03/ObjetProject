@@ -7,13 +7,17 @@ import javafx.beans.property.StringProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 
-public class Personne {
+public class Personne implements java.io.Serializable{
+/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 private StringProperty nom;
 private StringProperty prenom;
 private StringProperty adresse;
 private StringProperty telephone;
 
-private static ArrayList<Personne> lstPersonnes = new ArrayList<Personne>(); // may not be needed if add person function is moved to singleton class
+//private static ArrayList<Personne> lstPersonnes = new ArrayList<Personne>(); // may not be needed if add person function is moved to singleton class
 private static ObservableList<Personne> obsListPersonne = FXCollections.observableArrayList();
 
 public StringProperty getNomProperty() {
@@ -75,6 +79,9 @@ public static void setObservableList(ObservableList<Personne> list) {
 
 public static void removePersonne(Personne remove) {
 	obsListPersonne.remove(remove);
+}
+public String toString() {
+	return nom.get();
 }
 
 
