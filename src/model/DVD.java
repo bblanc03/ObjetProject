@@ -32,7 +32,7 @@ public class DVD extends Document implements Serializable {
 		return nbrDisque;
 	}
 	
-	public void setNbrDisque(SimpleIntegerProperty nbrDisque) {
+	public void setNbrDisque(IntegerProperty nbrDisque) {
 		this.nbrDisque = nbrDisque;
 	}
 	

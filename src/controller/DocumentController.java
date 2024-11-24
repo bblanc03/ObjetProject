@@ -84,7 +84,6 @@ public class DocumentController {
                     } else if (doc instanceof DVD) {
                         setText(((DVD) doc).getAuteur());
                     } else {
-
                         setText("");
                     }
                 }

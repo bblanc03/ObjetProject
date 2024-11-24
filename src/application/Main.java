@@ -1,6 +1,8 @@
 package application;
 	
 
+import controller.AccordionGestionController;
+import controller.CatalogueController;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.stage.Stage;
@@ -12,6 +14,7 @@ import javafx.scene.Scene;
 public class Main extends Application {
 	private static Stage stage;
 	GestionVue gestionVue;
+
 	@Override
 	public void start(Stage primaryStage) throws Exception {
 		gestionVue = GestionVue.getInstance();

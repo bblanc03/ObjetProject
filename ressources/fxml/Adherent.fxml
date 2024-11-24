@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+
+<TableView fx:id="tvAD" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="555.0" prefWidth="1090.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/23.0.1" fx:controller="controller.AdherentController">
+  <columns>
+    <TableColumn fx:id="colNum" prefWidth="179.0" text="Numéro d'adhérent" />
+    <TableColumn fx:id="colNom" prefWidth="183.0" text="Nom" />
+      <TableColumn fx:id="colPrenom" prefWidth="209.0" text="Prénom" />
+      <TableColumn fx:id="colAdresse" prefWidth="212.5" text="Adresse" />
+      <TableColumn fx:id="colTel" prefWidth="126.5" text="Téléphone" />
+      <TableColumn fx:id="colPret" prefWidth="97.0" text="Prêts actifs" />
+      <TableColumn fx:id="colSolde" prefWidth="82.0" text="Solde dû" />
+  </columns>
+</TableView>

@@ -39,7 +39,6 @@ public class GestionIOLivre {
 				}
 
 			} catch (IOException e) {
-
 				e.printStackTrace();
 			}
 			return listeLivres;
