@@ -70,7 +70,6 @@ public class AjouterPreposeCOntroller {
 			System.out.println("button ajouter pressed");
 			Personne personne = new Personne(tbNom.getText(), tbPrenom.getText(), tbAdresse.getText(),
 					tbTelephone.getText());
-			// Personne.ajouterPersonne();
 			Personne.setPersonne(personne);
 			GestionIOPersonne.ecrireFichierPersonne(personne);
 			System.out.println(Personne.getObservableList());

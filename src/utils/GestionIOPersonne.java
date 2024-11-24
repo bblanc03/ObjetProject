@@ -21,15 +21,25 @@ public class GestionIOPersonne {
 		
 		  FileOutputStream file = new FileOutputStream(pathFichierTexte); 
 		  ObjectOutputStream out = new ObjectOutputStream(file); 
-		  out.writeObject(personne.toString());
+		  System.out.println(personne.getNom() + " this is the name of the person");
+		  out.writeObject(personne);
 		  
 		  out.close(); 
 		  file.close();
 		 
 		System.out.println("file written to " + fichier);
-		//lireFichierPersonne();
+		lireFichierPersonne();
 		
 	}
 	
-
+	public static void lireFichierPersonne() throws ClassNotFoundException, IOException {
+		Personne test = null;
+		FileInputStream file = new FileInputStream(pathFichierTexte);
+        ObjectInputStream in = new ObjectInputStream(file);
+        
+        test = (Personne) in.readObject();
+        System.out.println("what you are looking for: " + test.getNom());
+        in.close();
+        file.close();
+	}
 }
