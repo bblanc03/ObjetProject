@@ -72,7 +72,7 @@ public class AjouterPreposeCOntroller {
 					tbTelephone.getText());
 			Personne.setPersonne(personne);
 			GestionIOPersonne.ecrireFichierPersonne(personne);
-			System.out.println(Personne.getObservableList());
+			//GestionIOPersonne.lireFichierPersonne();
 		}
 		
 	}

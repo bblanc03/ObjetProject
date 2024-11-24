@@ -63,8 +63,7 @@ public class Personne implements java.io.Serializable {
 
 	@Override
 	public String toString() {
-		return "Personne [nom=" + nom + ", prenom=" + prenom + ", adresse=" + adresse + ", telephone=" + telephone
-				+ "]";
+		return "nom=" + nom.get() + " prenom=" + prenom.get() + " adresse=" + adresse.get() + " telephone=" + telephone.get();
 	}
 
 	private void writeObject(ObjectOutputStream out) throws IOException {
@@ -90,6 +89,7 @@ public class Personne implements java.io.Serializable {
 //maybe create a funtion to get an ObservableList
 
 	public static void setPersonne(Personne personne) {
+		System.out.println("adding.....");
 		obsListPersonne.add(personne);
 	}
 
@@ -103,6 +103,10 @@ public class Personne implements java.io.Serializable {
 
 	public static void removePersonne(Personne remove) {
 		obsListPersonne.remove(remove);
+	}
+	
+	public static Personne toPersonne(Object pers) {
+		return (Personne) pers;
 	}
 
 }
