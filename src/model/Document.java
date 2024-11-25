@@ -4,6 +4,7 @@ import javafx.beans.property.IntegerProperty;
 import javafx.beans.property.SimpleIntegerProperty;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
+import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 
 public class Document {
@@ -13,6 +14,8 @@ public class Document {
 	private StringProperty datePublication;
 	private StringProperty etat;
 	private IntegerProperty pret;
+	private static ObservableList<Document> obsListDoc = FXCollections.observableArrayList();
+
 	
 	//this is a super class for the other classes
 	
@@ -62,6 +65,27 @@ public class Document {
 	
 	public IntegerProperty getPretProperty() {
 		return pret;
+	}
+	
+	
+	
+	//------------------------------------ObservableList------------------------------------------//
+	
+	
+	public static void setDoc(Document doc) {
+		obsListDoc.add(doc);
+	}
+
+	public static ObservableList<Document> getListDoc(){
+		return obsListDoc;
+	}
+
+	public static void setListDoc(ObservableList<Document> list) {
+		obsListDoc = list;
+	}
+
+	public static void removeDoc(Document remove) {
+		obsListDoc.remove(remove);
 	}
 	
 }

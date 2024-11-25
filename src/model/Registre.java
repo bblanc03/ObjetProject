@@ -32,6 +32,7 @@ public final class Registre {
 		
 		
 		
+		
 		//Setters
 		public void setListeDocument(ObservableList<Document> liste) {
 			listeDocument.setAll(liste);
@@ -57,4 +58,40 @@ public final class Registre {
 			return instance;
 		}
 
+		
+		
+		
+		
+		
+		//Ajouter
+		public void ajouterLivre(Livre livre) {
+			listeLivre.add(livre);
+			ajouterDoc(livre);
+		}
+		public void ajouterPeriodique(Periodique periodique) {
+			listePeriodique.add(periodique);
+			ajouterDoc(periodique);
+		}
+		public void ajouterDVD(DVD dvd) {
+			listeDVD.add(dvd);
+			ajouterDoc(dvd);
+		}
+		public void ajouterDoc(Document doc) {
+			listeDocument.add(doc);
+		}
+		
+		//Enlever
+		public void removeLivre(Livre livre) {
+			listeLivre.remove(livre);
+		}
+		public void removePeriodique(Periodique periodique) {
+			listePeriodique.remove(periodique);
+		}
+		public void removeDVD(DVD dvd) {
+			listeDVD.remove(dvd);
+		}
+		public void removeDoc(Document doc) {
+			listeDocument.remove(doc);
+		}
+		
 }

@@ -28,8 +28,8 @@
                   <Label layoutX="27.0" layoutY="144.0" text="Prénom:" />
                   <TextField fx:id="tbNom" layoutX="129.0" layoutY="96.0" />
                   <TextField fx:id="tbPrenom" layoutX="130.0" layoutY="141.0" />
-                  <Button fx:id="btnDossier" layoutX="81.0" layoutY="205.0" mnemonicParsing="false" onAction="#ouvrirDossier" text="Consulter mon dossier" />
-                  <Button layoutX="82.0" layoutY="256.0" mnemonicParsing="false" onAction="#ouvrirCatalogue" text="Consulter le catalogue" />
+                  <Button fx:id="btnDossier" layoutX="81.0" layoutY="205.0" mnemonicParsing="false" onAction="#ouvrirCatalogue" text="Consulter mon dossier" />
+                  <Button layoutX="82.0" layoutY="256.0" mnemonicParsing="false" text="Consulter le catalogue" />
                </children></AnchorPane>
       </content>
     </TitledPane>

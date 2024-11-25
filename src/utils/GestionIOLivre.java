@@ -7,9 +7,10 @@ import java.util.Scanner;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import model.Livre;
+import model.Registre;
 
 public class GestionIOLivre {
-
+	Registre registre;
 	// Constructeur prive qui empeche l'instanciation
 		private GestionIOLivre() {
 			throw new UnsupportedOperationException("classe utilitaire - ne peut etre instanciee");

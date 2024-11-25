@@ -15,61 +15,86 @@ import javafx.scene.control.TextField;
 import javafx.scene.control.ToggleGroup;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Region;
+import model.Registre;
 
 public class CatalogueController {
+	private Registre registre = Registre.getInstance();
+	private LivreController livreController;
+	private AccordionGestionController accordionGestionController;
 
-	@FXML 
+	@FXML
 	AnchorPane anchorPane;
-	
+
 	@FXML
 	AnchorPane ancOption;
-	
+
 	@FXML
 	AnchorPane ancRecherche;
-	
+
 	@FXML
 	AnchorPane ancDoc;
-	
-	//Radio Group Radio
-	//TextField search action
-	//Effacer btn action
-	
+
+	// Radio Group Radio
+	// TextField search action
+	// Effacer btn action
+
 	public void clearAncDoc() {
-	    if (ancDoc != null) {
-	        System.out.println("Before clearing: " + ancDoc.getChildren());
-	        ancDoc.getChildren().clear();
-	        ancDoc.layout();
-	        System.out.println("After clearing: " + ancDoc.getChildren());
-	    } else {
-	        System.out.println("ancDoc is null!");
-	    }
+		if (ancDoc != null) {
+			System.out.println("Before clearing: " + ancDoc.getChildren());
+			ancDoc.getChildren().clear();
+			ancDoc.layout();
+			System.out.println("After clearing: " + ancDoc.getChildren());
+		} else {
+			System.out.println("ancDoc is null!");
+		}
 	}
-	
+
 	public void loadCatalogueDoc() {
-	    try {
-	        FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/CatalogueDoc.fxml"));
-	        Parent docContent = loader.load();
-	        ancDoc.getChildren().setAll(docContent); // Replace all current content
-	    } catch (IOException e) {
-	        e.printStackTrace();
-	    }
+		try {
+			FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/CatalogueDoc.fxml"));
+			Parent docContent = loader.load();
+			ancDoc.getChildren().setAll(docContent); 
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
 	}
-	
+
 	public void loadCatalogueAD() {
-	    try {
-	        FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/Adherent.fxml"));
-	        Parent docContent = loader.load();
-	        ancDoc.getChildren().setAll(docContent); // Replace all current content
-	    } catch (IOException e) {
-	        e.printStackTrace();
-	    }
+		try {
+			FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/Adherent.fxml"));
+			Parent docContent = loader.load();
+			ancDoc.getChildren().setAll(docContent); 
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
 	}
 	
 	@FXML
 	private void initialize() {
 		loadCatalogueDoc();
+
+		try { 
+			
+//			// Load AccordionGestionController
+//			FXMLLoader accordionLoader = new FXMLLoader(getClass().getResource("/fxml/AccordionGestion.fxml"));
+//			Parent accordionRoot = accordionLoader.load();
+//			accordionGestionController = accordionLoader.getController();
+//			
+//			// Load LivreController
+//			FXMLLoader livreLoader = new FXMLLoader(getClass().getResource("/fxml/Livre.fxml"));
+//			Parent livreRoot = livreLoader.load();
+//			livreController = livreLoader.getController();
+//				
+//			// Set LivreController in AccordionGestionController
+//			if (accordionGestionController != null && livreController != null) {
+//				accordionGestionController.setLivreController(livreController);
+//			} 
+//			// Add components to the anchor panes if needed
+//			ancOption.getChildren().add(accordionRoot);
+//			ancDoc.getChildren().add(livreRoot);
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 	}
-
-
-	
 }

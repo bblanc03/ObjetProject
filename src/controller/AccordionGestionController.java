@@ -11,11 +11,14 @@ import javafx.scene.control.Button;
 import javafx.scene.control.TitledPane;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.VBox;
+import model.Livre;
+import model.Registre;
 import utils.GestionVue;
 
 public class AccordionGestionController {
-	private CatalogueController catalogue;
 	private GestionVue gestionVue;
+	private Registre registre;
+	private LivreController livreController;
 
 	@FXML
 	VBox root;
@@ -62,6 +65,14 @@ public class AccordionGestionController {
 	@FXML
 	Button btnSupprimerDoc;
 
+	public AccordionGestionController() {
+		registre = Registre.getInstance();
+	}
+
+	public void setLivreController(LivreController livreController) {
+		this.livreController = livreController;
+	}
+
 	@FXML
 	protected void ouvrirAjouterDoc(ActionEvent e) throws IOException {
 		gestionVue = GestionVue.getInstance();
@@ -79,27 +90,34 @@ public class AccordionGestionController {
 		gestionVue = GestionVue.getInstance();
 		gestionVue.chargerDialogue("Modifier un adhérent", "/fxml/ModifierAdherent.fxml");
 	}
-	
+
 	@FXML
 	protected void ouvrirPret(ActionEvent e) throws IOException {
 		gestionVue = GestionVue.getInstance();
 		gestionVue.chargerDialogue("Effectuer un prêt", "/fxml/Pret.fxml");
 	}
-	
-	
-	public AccordionGestionController() {
-	    this.catalogue = new CatalogueController();
+
+	@FXML
+	protected void supprimerSelectedDoc(ActionEvent event) {
+		if (livreController != null) {
+			Livre selectedLivre = livreController.getSelectedLivre();
+			if (selectedLivre != null) {
+				registre.removeLivre(selectedLivre);
+			} else {
+				System.out.println("No Livre selected.");
+			}
+		} else {
+			System.out.println("LivreController is not set.");
+		}
 	}
 
-	
 	@FXML
 	private void initialize() {
 		accGestion.expandedPaneProperty().addListener((obs, oldPane, newPane) -> {
 			if (newPane == titAdherent) {
-					//catalogue.loadCatalogueAD();
+				// catalogue.loadCatalogueAD();
 			}
 		});
 	}
-	
-	
+
 }

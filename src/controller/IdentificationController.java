@@ -67,9 +67,6 @@ public class IdentificationController {
 	
 	@FXML
 	protected void ouvrirAdmin(ActionEvent event) throws IOException {
-		
-		
-		
 		gestionVue = GestionVue.getInstance();
 		System.out.println("btn ajouter prepose");
 		//Stage stage = new Stage();
@@ -94,7 +91,7 @@ public class IdentificationController {
 		//Stage stage = new Stage();
 		//gestionVue.initialiseStage(stage);
 		//FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/AjouterPrepose.fxml"));
-		gestionVue.chargerVuePrincipale("hi", "/fxml/catalogue.fxml");
+		gestionVue.chargerVuePrincipale("Catalogue", "/fxml/catalogue.fxml");
 		
 		/*
 		 * FXMLLoader loader = new

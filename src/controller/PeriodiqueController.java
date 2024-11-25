@@ -41,10 +41,7 @@ public class PeriodiqueController {
 	TableColumn<Periodique, String> colEmprunteurPer;
 	
 	public PeriodiqueController() {
-		System.out.println("PeriodiqueController");
 		registre = Registre.getInstance();
-		lstPeriodique = GestionIOPeriodique.chargerFichier("Periodiques.txt");
-		registre.setListePeriodique(lstPeriodique);
 	}
 	
 	public void initialiserVuePeriodique() {
@@ -59,9 +56,10 @@ public class PeriodiqueController {
 		
 	}
 	
+	
 	@FXML
 	private void initialize() {
 		initialiserVuePeriodique();
-		tvPer.setItems(lstPeriodique);
+		tvPer.setItems(registre.getListePeriodique());
 	}
 }

@@ -17,7 +17,7 @@ import utils.GestionIOPeriodique;
 
 public class DocumentController {
 	ObservableList<Document> lstDoc = FXCollections.observableArrayList();
-	ObservableList<Livre> lstLivre = FXCollections.observableArrayList();
+	ObservableList<Livre> lstLivre = Livre.getListLivre();
 	ObservableList<Periodique> lstPeriodique = FXCollections.observableArrayList();
 	ObservableList<DVD> lstDVD = FXCollections.observableArrayList();
 	Registre registre;
@@ -47,9 +47,14 @@ public class DocumentController {
 	TableColumn<Document, String> colEmprunteurDoc;
 	
 	
-
+	@FXML 
+	private void initialize() {
+		initialiserVueDocuments();
+		tvDoc.setItems(registre.getListeDocument());
+	}
+	
+	
 	public DocumentController() {
-		System.out.println("LivreDocument");
 		
 		registre = Registre.getInstance();
 		lstLivre = GestionIOLivre.chargerFichier("Livres.txt");
@@ -63,9 +68,10 @@ public class DocumentController {
 		lstPeriodique = GestionIOPeriodique.chargerFichier("Periodiques.txt");
 		registre.setListePeriodique(lstPeriodique);
 		
-		lstDoc.addAll(lstLivre);
-		lstDoc.addAll(lstPeriodique);
-		lstDoc.addAll(lstDVD);
+		registre.getListeDocument().addAll(lstLivre);
+		registre.getListeDocument().addAll(lstPeriodique);
+		registre.getListeDocument().addAll(lstDVD);
+		
 	}
 	
 	private void initialiserVueDocuments() {
@@ -95,9 +101,5 @@ public class DocumentController {
         colPretDoc.setCellValueFactory(col -> col.getValue().getPretProperty().asObject());
     }
 	
-	@FXML 
-	private void initialize() {
-		initialiserVueDocuments();
-		tvDoc.setItems(lstDoc);
-	}
+	
 }

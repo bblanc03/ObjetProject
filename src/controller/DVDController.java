@@ -41,10 +41,7 @@ public class DVDController {
 	TableColumn<DVD, String> colEmprunteurDVD;
 	
 	public DVDController() {
-		System.out.println("DVDController");
 		registre = Registre.getInstance();
-		lstDVD = GestionIODVD.chargerFichier("DVD.txt");
-		registre.setListeDVD(lstDVD);
 	}
 	
 	public void initialiserVueDVD() {
@@ -58,11 +55,12 @@ public class DVDController {
 		colPretDVD.setCellValueFactory(col -> col.getValue().getPretProperty().asObject());
 		//colEmprunteurDVD.setCellValueFactory(col -> col.getValue().getDatePublicationProperty());
 		
-		tvDVD.setItems(lstDVD);
+		
 	}
 	
 	@FXML
 	private void initialize() {
 		initialiserVueDVD();
+		tvDVD.setItems(registre.getListeDVD());
 	}
 }
