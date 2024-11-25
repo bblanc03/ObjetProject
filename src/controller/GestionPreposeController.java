@@ -81,7 +81,7 @@ public class GestionPreposeController {
 	}
 
 	@FXML
-	private void supprimerPrpose() {
+	private void supprimerPrpose() throws IOException {
 		System.out.println("deleting");
 		Personne employe = vuePrepose.getSelectionModel().getSelectedItem();
 		Personne.removePersonne(employe);

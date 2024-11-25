@@ -8,6 +8,7 @@ import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import utils.GestionIOPersonne;
 
 public class Personne implements java.io.Serializable {
 	/**
@@ -101,8 +102,9 @@ public class Personne implements java.io.Serializable {
 		obsListPersonne = list;
 	}
 
-	public static void removePersonne(Personne remove) {
+	public static void removePersonne(Personne remove) throws IOException {
 		obsListPersonne.remove(remove);
+		GestionIOPersonne.supprimerPersonne(remove);
 	}
 	
 	public static Personne toPersonne(Object pers) {

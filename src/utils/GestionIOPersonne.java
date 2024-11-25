@@ -35,6 +35,26 @@ public class GestionIOPersonne {
 		file.close();
 
 	}
+	
+	public static void supprimerPersonne(Personne personne) throws IOException {
+		
+		FileOutputStream file = new FileOutputStream(pathFichierTexte);
+		ObjectOutputStream out = new ObjectOutputStream(file);
+		ArrayList<Personne> listTemporaire = new ArrayList<>();
+		toWrite = new ArrayList<>(Personne.getObservableList());
+		
+		for(Personne pers: toWrite) {
+			if(pers.equals(personne) == false) {
+				listTemporaire.add(pers);
+			}
+		}
+		
+		out.writeObject(listTemporaire);
+
+		out.close();
+		file.close();
+		
+	}
 
 	public static void lireFichierPersonne() throws ClassNotFoundException, IOException {
 		// ArrayList<Personne> test = null;
