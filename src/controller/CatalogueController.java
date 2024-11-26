@@ -69,10 +69,31 @@ public class CatalogueController {
 		}
 	}
 	
+	public void loadAccGestion() {
+		try {
+			FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/AccordionGestion.fxml"));
+			Parent docContent = loader.load();
+			ancOption.getChildren().setAll(docContent); 
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+	}
+	
+	public void loadLogin() {
+		try {
+			FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/Consultation.fxml"));
+			Parent docContent = loader.load();
+			ancOption.getChildren().setAll(docContent); 
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+	}
+	
 	@FXML
 	private void initialize() {
+		System.out.println("Initialiser CatalogueController");
 		loadCatalogueDoc();
-
+		loadAccGestion();
 		try { 
 			
 //			// Load AccordionGestionController

@@ -1,7 +1,5 @@
 package controller;
 
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.control.TableCell;
 import javafx.scene.control.TableColumn;
@@ -9,17 +7,10 @@ import javafx.scene.control.TableView;
 import model.DVD;
 import model.Document;
 import model.Livre;
-import model.Periodique;
 import model.Registre;
-import utils.GestionIODVD;
-import utils.GestionIOLivre;
-import utils.GestionIOPeriodique;
+
 
 public class DocumentController {
-	ObservableList<Document> lstDoc = FXCollections.observableArrayList();
-	ObservableList<Livre> lstLivre = Livre.getListLivre();
-	ObservableList<Periodique> lstPeriodique = FXCollections.observableArrayList();
-	ObservableList<DVD> lstDVD = FXCollections.observableArrayList();
 	Registre registre;
 	
 	@FXML
@@ -55,23 +46,7 @@ public class DocumentController {
 	
 	
 	public DocumentController() {
-		
 		registre = Registre.getInstance();
-		lstLivre = GestionIOLivre.chargerFichier("Livres.txt");
-		registre.setListeLivre(lstLivre); 
-		
-		registre = Registre.getInstance();
-		lstDVD = GestionIODVD.chargerFichier("DVD.txt");
-		registre.setListeDVD(lstDVD);
-		
-		registre = Registre.getInstance();
-		lstPeriodique = GestionIOPeriodique.chargerFichier("Periodiques.txt");
-		registre.setListePeriodique(lstPeriodique);
-		
-		registre.getListeDocument().addAll(lstLivre);
-		registre.getListeDocument().addAll(lstPeriodique);
-		registre.getListeDocument().addAll(lstDVD);
-		
 	}
 	
 	private void initialiserVueDocuments() {

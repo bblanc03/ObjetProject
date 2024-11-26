@@ -56,7 +56,6 @@ public class PeriodiqueController {
 		
 	}
 	
-	
 	@FXML
 	private void initialize() {
 		initialiserVuePeriodique();
