@@ -74,6 +74,11 @@ public class AjouterPreposeCOntroller {
 			GestionIOPersonne.ecrireFichierPersonne(personne);
 			//GestionIOPersonne.lireFichierPersonne();
 		}
+		tbNom.setText("");
+		tbPrenom.setText("");
+		tbAdresse.setText("");
+		tbTelephone.setText("");
+		tbMotDePasse.setText("");
 		
 	}
 	

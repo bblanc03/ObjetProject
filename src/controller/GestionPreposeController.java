@@ -50,6 +50,9 @@ public class GestionPreposeController {
 	Button btnSupprimmer;
 
 	@FXML
+	Button btnDeconnection;
+
+	@FXML
 	private void initialize() throws IOException, ClassNotFoundException {
 		FileInputStream file2 = null;
 		ObjectInputStream in = null;
@@ -57,11 +60,9 @@ public class GestionPreposeController {
 		File written = new File(Constantes.REPERTOIRE_DATA + "/" + fichier);
 		System.out.println("reading");
 
-		 if (written.length() > 0) {
-			 GestionIOPersonne.lireFichierPersonne();
-		 } 
-		
-		
+		if (written.length() > 0) {
+			GestionIOPersonne.lireFichierPersonne();
+		}
 
 		vuePrepose.setItems(Personne.getObservableList());
 
@@ -85,6 +86,15 @@ public class GestionPreposeController {
 		System.out.println("deleting");
 		Personne employe = vuePrepose.getSelectionModel().getSelectedItem();
 		Personne.removePersonne(employe);
+	}
+
+	@FXML
+	private void deconcection() throws IOException {
+		GestionVue gestionVue = GestionVue.getInstance();
+		System.out.println("disconnecting");
+		Stage stage = (Stage) btnDeconnection.getScene().getWindow();
+		stage.close();
+		gestionVue.chargerVuePrincipale("Médiatèque", "/fxml/MainView.fxml");
 	}
 
 }

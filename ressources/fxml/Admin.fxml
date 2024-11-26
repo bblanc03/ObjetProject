@@ -29,7 +29,7 @@
       </TableView>
       <AnchorPane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1">
          <children>
-            <Button layoutX="25.0" layoutY="200.0" mnemonicParsing="false" text="Déconnection" />
+            <Button fx:id="btnDeconnection" layoutX="25.0" layoutY="200.0" mnemonicParsing="false" onAction="#deconcection" text="Déconnection" />
             <Label layoutX="25.0" layoutY="5.0" text="Gestion préposés" AnchorPane.leftAnchor="25.0" AnchorPane.topAnchor="5.0" />
             <Button fx:id="btnSupprimmer" layoutX="3.0" layoutY="114.0" mnemonicParsing="false" onAction="#supprimerPrpose" text="Supprimer un préposé" />
             <Button fx:id="btnAjouter" layoutX="11.0" layoutY="75.0" mnemonicParsing="false" onAction="#ajouterPrepose" text="Ajouter un préposé" />
