@@ -10,28 +10,18 @@ import javafx.beans.property.StringProperty;
 public class Prepose extends Personne implements Serializable {
 	private static final long serialVersionUID = -5296672519460246263L;
 
-<<<<<<< HEAD
+
 	// Instances
 	private IntegerProperty numEmp;
-=======
-	//Instances
-	//private SimpleIntegerProperty numEmp;
->>>>>>> 32d371dab733634228e48a46dfed0eb20cc4f8ee
 	private StringProperty nom;
 	private StringProperty prenom;
 	private StringProperty adresse;
 	private StringProperty tel;
 	private StringProperty password;
-<<<<<<< HEAD
 
-	// Constucteur
-	public Prepose(String nom, String prenom, String adresse, String tel, String password) {
-		this.nom = new SimpleStringProperty(nom);
-		this.prenom = new SimpleStringProperty(prenom);
-		this.adresse = new SimpleStringProperty(adresse);
-		this.tel = new SimpleStringProperty(tel);
-		this.password = new SimpleStringProperty(password);
-	}
+public Prepose(String nom, String prenom, String adresse, String telephone) {
+	super(nom, prenom, adresse, telephone);
+}
 
 	// Getters et Setters
 	public IntegerProperty getNumEmpProperty() {
@@ -110,12 +100,9 @@ public class Prepose extends Personne implements Serializable {
 		return serialVersionUID;
 	}
 
-=======
+
 	
 	
-	public Prepose(String nom, String prenom, String adresse, String telephone) {
-		super(nom, prenom, adresse, telephone);
-	}
 	
->>>>>>> 32d371dab733634228e48a46dfed0eb20cc4f8ee
+
 }
