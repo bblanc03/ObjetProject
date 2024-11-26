@@ -1,5 +1,7 @@
 package controller;
 
+import java.io.IOException;
+
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -10,9 +12,10 @@ import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 import model.Personne;
+import utils.GestionIOPersonne;
 
 public class AjouterPreposeCOntroller {
-
+	
 	@FXML
 	TextField tbNom;
 
@@ -40,7 +43,7 @@ public class AjouterPreposeCOntroller {
 	}
 
 	@FXML
-	protected void ajouterPrepose(ActionEvent event) {
+	protected void ajouterPrepose(ActionEvent event) throws IOException, ClassNotFoundException {
 		Alert alert = new Alert(AlertType.NONE);
 
 		if (tbNom.getText().equals("")) {
@@ -67,11 +70,16 @@ public class AjouterPreposeCOntroller {
 			System.out.println("button ajouter pressed");
 			Personne personne = new Personne(tbNom.getText(), tbPrenom.getText(), tbAdresse.getText(),
 					tbTelephone.getText());
-			// Personne.ajouterPersonne();
 			Personne.setPersonne(personne);
-			System.out.println(Personne.getObservableList());
+			GestionIOPersonne.ecrireFichierPersonne(personne);
+			//GestionIOPersonne.lireFichierPersonne();
 		}
-
+		tbNom.setText("");
+		tbPrenom.setText("");
+		tbAdresse.setText("");
+		tbTelephone.setText("");
+		tbMotDePasse.setText("");
+		
 	}
 	
 	@FXML
