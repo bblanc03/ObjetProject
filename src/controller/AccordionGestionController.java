@@ -11,6 +11,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.TitledPane;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.VBox;
+import model.Document;
 import model.Livre;
 import model.Registre;
 import utils.GestionVue;
@@ -19,7 +20,8 @@ public class AccordionGestionController {
 	private GestionVue gestionVue;
 	private Registre registre;
 	private LivreController livreController;
-
+	private Document doc;
+	
 	@FXML
 	VBox root;
 
@@ -99,16 +101,7 @@ public class AccordionGestionController {
 
 	@FXML
 	protected void supprimerSelectedDoc(ActionEvent event) {
-		if (livreController != null) {
-			Livre selectedLivre = livreController.getSelectedLivre();
-			if (selectedLivre != null) {
-				registre.removeLivre(selectedLivre);
-			} else {
-				System.out.println("No Livre selected.");
-			}
-		} else {
-			System.out.println("LivreController is not set.");
-		}
+		registre.removeDoc();
 	}
 
 	@FXML
@@ -118,6 +111,19 @@ public class AccordionGestionController {
 				// catalogue.loadCatalogueAD();
 			}
 		});
+	}
+	
+//	public void setDoc(Document doc) {
+//		this.doc = doc;
+//		//System.out.println(this.doc);
+//	}
+//	
+//	public Document getDoc() {
+//		return doc;
+//	}
+	
+	public void supprimer(Document doc) {
+		
 	}
 
 }

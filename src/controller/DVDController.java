@@ -54,13 +54,14 @@ public class DVDController {
 		colEtatDVD.setCellValueFactory(col -> col.getValue().getEtatProperty());
 		colPretDVD.setCellValueFactory(col -> col.getValue().getPretProperty().asObject());
 		//colEmprunteurDVD.setCellValueFactory(col -> col.getValue().getDatePublicationProperty());
-		
-		
 	}
 	
 	@FXML
 	private void initialize() {
 		initialiserVueDVD();
 		tvDVD.setItems(registre.getListeDVD());
+		tvDVD.getSelectionModel().selectedItemProperty().addListener((bs, anc, nou) -> {
+			registre.setDocument(nou);
+		});;	
 	}
 }

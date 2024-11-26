@@ -15,7 +15,7 @@ public class Document {
 	private StringProperty etat;
 	private IntegerProperty pret;
 	private static ObservableList<Document> obsListDoc = FXCollections.observableArrayList();
-
+	private String type;
 	
 	//this is a super class for the other classes
 	
@@ -25,7 +25,6 @@ public class Document {
 		this.datePublication = new SimpleStringProperty(datePublication);
 		this.etat = new SimpleStringProperty("disponible");
 		this.pret = new SimpleIntegerProperty(0);
-		//List
 	}
 	public StringProperty getNoDocumentProperty() {
 		return noDocument;
@@ -65,6 +64,15 @@ public class Document {
 	
 	public IntegerProperty getPretProperty() {
 		return pret;
+	}
+	
+	@Override
+	public String toString() {
+		return titre.get();
+	}
+	
+	public String getType() {
+		return type;
 	}
 	
 	

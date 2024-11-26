@@ -14,6 +14,9 @@ public final class Registre {
 		private final ObservableList<Livre> listeLivre = FXCollections.observableArrayList();
 		private final ObservableList<Periodique> listePeriodique = FXCollections.observableArrayList();
 		private final ObservableList<DVD> listeDVD = FXCollections.observableArrayList();
+		private Document document;
+		
+		
 		//Document selectionné
 		
 		public Registre() {
@@ -76,10 +79,6 @@ public final class Registre {
 		}
 
 		
-		
-		
-		
-		
 		//Ajouter
 		public void ajouterLivre(Livre livre) {
 			listeLivre.add(livre);
@@ -98,17 +97,29 @@ public final class Registre {
 		}
 		
 		//Enlever
-		public void removeLivre(Livre livre) {
-			listeLivre.remove(livre);
+		public void removeDoc() {
+			listeDocument.remove(document);
+			if (listeLivre.contains(document) ) {
+				System.out.println("remove Livre");
+				listeLivre.remove(document);
+			}
+			else if (listePeriodique.contains(document) ) {
+				System.out.println("remove Periodique");
+				listePeriodique.remove(document);
+			}
+			else if (listeDVD.contains(document) ) {
+				System.out.println("remove DVD");
+				listeDVD.remove(document);
+			}
 		}
-		public void removePeriodique(Periodique periodique) {
-			listePeriodique.remove(periodique);
+		
+		
+		//Setter Docs
+		public void setDocument(Document document) {
+			this.document = document;
 		}
-		public void removeDVD(DVD dvd) {
-			listeDVD.remove(dvd);
-		}
-		public void removeDoc(Document doc) {
-			listeDocument.remove(doc);
-		}
+		
+		
+		
 		
 }

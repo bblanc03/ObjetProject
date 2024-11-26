@@ -28,6 +28,9 @@ public class LivreController {
     private void initialize() {
         initialiserVueLivre();
         tvLivre.setItems(registre.getListeLivre());
+        tvLivre.getSelectionModel().selectedItemProperty().addListener((bs, anc, nou) -> {
+			registre.setDocument(nou);
+		});;	
     }
     
     

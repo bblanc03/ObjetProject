@@ -60,5 +60,8 @@ public class PeriodiqueController {
 	private void initialize() {
 		initialiserVuePeriodique();
 		tvPer.setItems(registre.getListePeriodique());
+		tvPer.getSelectionModel().selectedItemProperty().addListener((bs, anc, nou) -> {
+			registre.setDocument(nou);
+		});;	
 	}
 }
