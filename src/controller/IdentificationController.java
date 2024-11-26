@@ -16,7 +16,7 @@ import javafx.stage.Stage;
 import utils.GestionVue;
 
 public class IdentificationController {
-	
+
 	private Stage stage = Main.getStage();
 	GestionVue gestionVue;
 
@@ -43,14 +43,13 @@ public class IdentificationController {
 
 	@FXML
 	Button btnCatalogue;
-	
+
 	@FXML
 	Button btnConnection;
 
 	@FXML
 	private void initialize() {
 	}
-
 
 //	@FXML
 //	protected void ouvrirCatalogue(ActionEvent event) {
@@ -59,25 +58,39 @@ public class IdentificationController {
 //		
 //	}
 
+//	@FXML
+//	protected void ouvrirDossier(ActionEvent event) {
+//		System.out.println("button Dossier pressed");
+//		loadFXMLToMainPane("/fxml/Consultation.fxml");
+//	}
+//
+//	@FXML
+//	protected void ouvrirCata(ActionEvent event) {
+//		System.out.println("button Catalogue pressed");
+//		loadFXMLToMainPane("/fxml/AccordionGestion.fxml");
+//	}
+//
+//	private void loadFXMLToMainPane(String fxmlPath) { 
+//		try { 
+//			FXMLLoader loader = new FXMLLoader(getClass().getResource(fxmlPath)); 
+//			Parent content = loader.load(); 
+//			optionPane.getChildren().setAll(content); 
+//		} catch (IOException e) {
+//		}
+//	}
 
 	@FXML
-	protected void ouvrirDossier(ActionEvent event) {
-		System.out.println("button Dossier pressed");
-	}
-	
-	@FXML
 	protected void ouvrirAdmin(ActionEvent event) throws IOException {
-		
-		
-		
 		gestionVue = GestionVue.getInstance();
 		System.out.println("btn ajouter prepose");
-		//Stage stage = new Stage();
-		//gestionVue.initialiseStage(stage);
-		//FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/AjouterPrepose.fxml"));
+		// Stage stage = new Stage();
+		// gestionVue.initialiseStage(stage);
+		// FXMLLoader loader = new
+		// FXMLLoader(getClass().getResource("/fxml/AjouterPrepose.fxml"));
 		gestionVue.chargerVuePrincipale("hi", "/fxml/Admin.fxml");
-		
-		//FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/Admin.fxml"));
+
+		// FXMLLoader loader = new
+		// FXMLLoader(getClass().getResource("/fxml/Admin.fxml"));
 
 		/*
 		 * Parent root = loader.load(); Scene scene = new Scene(root);
@@ -85,17 +98,18 @@ public class IdentificationController {
 		 * System.out.println("page loaded"); stage.show();
 		 */
 	}
-	
+
 	@FXML
 	protected void ouvrirCatalogue(ActionEvent event) throws IOException {
-		
+
 		gestionVue = GestionVue.getInstance();
 		System.out.println("btn ajouter prepose");
-		//Stage stage = new Stage();
-		//gestionVue.initialiseStage(stage);
-		//FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/AjouterPrepose.fxml"));
-		gestionVue.chargerVuePrincipale("hi", "/fxml/catalogue.fxml");
-		
+		// Stage stage = new Stage();
+		// gestionVue.initialiseStage(stage);
+		// FXMLLoader loader = new
+		// FXMLLoader(getClass().getResource("/fxml/AjouterPrepose.fxml"));
+		gestionVue.chargerVuePrincipale("Catalogue", "/fxml/catalogue.fxml");
+
 		/*
 		 * FXMLLoader loader = new
 		 * FXMLLoader(getClass().getResource("/fxml/catalogue.fxml"));

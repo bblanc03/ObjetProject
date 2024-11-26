@@ -2,39 +2,42 @@ package model;
 
 import java.io.Serializable;
 
+import javafx.beans.property.DoubleProperty;
+import javafx.beans.property.IntegerProperty;
 import javafx.beans.property.SimpleDoubleProperty;
 import javafx.beans.property.SimpleIntegerProperty;
 import javafx.beans.property.SimpleStringProperty;
+import javafx.beans.property.StringProperty;
 
 public class Pret implements Serializable{
 	private static final long serialVersionUID = -5296672519460246263L;
 	
 	//Instances
-	private SimpleStringProperty numAdherent;
-	private SimpleStringProperty nom;
-	private SimpleStringProperty prenom;
-	private SimpleStringProperty adresse;
-	private SimpleStringProperty tel;
-	private SimpleIntegerProperty pretsActifs;
-	private SimpleDoubleProperty soldeDu;
+	private StringProperty numAdherent;
+	private StringProperty nom;
+	private StringProperty prenom;
+	private StringProperty adresse;
+	private StringProperty tel;
+	private IntegerProperty pretsActifs;
+	private DoubleProperty soldeDu;
 	
 	//Constructor
 	public Pret(
-			SimpleStringProperty numAdherent, SimpleStringProperty nom, SimpleStringProperty prenom,
-			SimpleStringProperty adresse, SimpleStringProperty tel, SimpleIntegerProperty pretsActifs,
-			SimpleDoubleProperty soldeDu) {
-		this.numAdherent = numAdherent;
-		this.nom = nom;
-		this.prenom = prenom;
-		this.adresse = adresse;
-		this.tel = tel;
-		this.pretsActifs = pretsActifs;
-		this.soldeDu = soldeDu;
+			String numAdherent, String nom, String prenom,
+			String adresse, String tel, int pretsActifs,
+			double soldeDu) {
+		this.numAdherent = new SimpleStringProperty(numAdherent);
+		this.nom = new SimpleStringProperty(nom);
+		this.prenom = new SimpleStringProperty(prenom);;
+		this.adresse = new SimpleStringProperty(adresse);;
+		this.tel = new SimpleStringProperty(tel);;
+		this.pretsActifs = new SimpleIntegerProperty(pretsActifs);;
+		this.soldeDu = new SimpleDoubleProperty(soldeDu);;
 	}
 
 	
 	//Getters and Setters
-	public SimpleStringProperty getNumAdherentProperty() {
+	public StringProperty getNumAdherentProperty() {
 		return numAdherent;
 	}
 	
@@ -42,11 +45,11 @@ public class Pret implements Serializable{
 		return numAdherent.get();
 	}
 
-	public void setNumAdherent(SimpleStringProperty numAdherent) {
+	public void setNumAdherent(StringProperty numAdherent) {
 		this.numAdherent = numAdherent;
 	}
 
-	public SimpleStringProperty getNomProperty() {
+	public StringProperty getNomProperty() {
 		return nom;
 	}
 	
@@ -54,11 +57,11 @@ public class Pret implements Serializable{
 		return nom.get();
 	}
 
-	public void setNom(SimpleStringProperty nom) {
+	public void setNom(StringProperty nom) {
 		this.nom = nom;
 	}
 
-	public SimpleStringProperty getPrenomProperty() {
+	public StringProperty getPrenomProperty() {
 		return prenom;
 	}
 	
@@ -66,11 +69,11 @@ public class Pret implements Serializable{
 		return prenom.get();
 	}
 
-	public void setPrenom(SimpleStringProperty prenom) {
+	public void setPrenom(StringProperty prenom) {
 		this.prenom = prenom;
 	}
 
-	public SimpleStringProperty getAdresseProperty() {
+	public StringProperty getAdresseProperty() {
 		return adresse;
 	}
 	
@@ -78,11 +81,11 @@ public class Pret implements Serializable{
 		return adresse.get();
 	}
 	
-	public void setAdresse(SimpleStringProperty adresse) {
+	public void setAdresse(StringProperty adresse) {
 		this.adresse = adresse;
 	}
 
-	public SimpleStringProperty getTelProperty() {
+	public StringProperty getTelProperty() {
 		return tel;
 	}
 	
@@ -94,7 +97,7 @@ public class Pret implements Serializable{
 		this.tel = tel;
 	}
 
-	public SimpleIntegerProperty getPretsActifsProperty() {
+	public IntegerProperty getPretsActifsProperty() {
 		return pretsActifs;
 	}
 	
@@ -102,11 +105,11 @@ public class Pret implements Serializable{
 		return pretsActifs.get();
 	}
 
-	public void setPretsActifs(SimpleIntegerProperty pretsActifs) {
+	public void setPretsActifs(IntegerProperty pretsActifs) {
 		this.pretsActifs = pretsActifs;
 	}
 
-	public SimpleDoubleProperty getSoldeDuProperty() {
+	public DoubleProperty getSoldeDuProperty() {
 		return soldeDu;
 	}
 	
@@ -114,7 +117,7 @@ public class Pret implements Serializable{
 		return soldeDu.get();
 	}
 
-	public void setSoldeDu(SimpleDoubleProperty soldeDu) {
+	public void setSoldeDu(DoubleProperty soldeDu) {
 		this.soldeDu = soldeDu;
 	}
 

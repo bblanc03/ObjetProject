@@ -6,6 +6,8 @@ import javafx.beans.property.IntegerProperty;
 import javafx.beans.property.SimpleIntegerProperty;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 
 public class Periodique extends Document implements Serializable {
 
@@ -18,6 +20,7 @@ public class Periodique extends Document implements Serializable {
 	private SimpleStringProperty etat;
 	private SimpleStringProperty emprunteur;
 	private IntegerProperty pret;
+	private static ObservableList<Periodique> obsListPer = FXCollections.observableArrayList();
 
 	// Constructeur
 	public Periodique(String numDoc, String titre, String date, int numVol, int numPeriodique) {
@@ -94,5 +97,24 @@ public class Periodique extends Document implements Serializable {
 		return serialVersionUID;
 	}
 	
+	
+	//------------------------------------ObservableList------------------------------------------//
+	
+	
+			public static void setPeriodique(Periodique periodique) {
+				obsListPer.add(periodique);
+			}
+
+			public static ObservableList<Periodique> getListPeriodique(){
+				return obsListPer;
+			}
+
+			public static void setListPeriodique(ObservableList<Periodique> list) {
+				obsListPer = list;
+			}
+
+			public static void removePeriodique(Periodique remove) {
+				obsListPer.remove(remove);
+			}
 
 }

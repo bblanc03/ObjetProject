@@ -1,7 +1,5 @@
 package controller;
 
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.control.TableCell;
 import javafx.scene.control.TableColumn;
@@ -9,17 +7,10 @@ import javafx.scene.control.TableView;
 import model.DVD;
 import model.Document;
 import model.Livre;
-import model.Periodique;
 import model.Registre;
-import utils.GestionIODVD;
-import utils.GestionIOLivre;
-import utils.GestionIOPeriodique;
+
 
 public class DocumentController {
-	ObservableList<Document> lstDoc = FXCollections.observableArrayList();
-	ObservableList<Livre> lstLivre = FXCollections.observableArrayList();
-	ObservableList<Periodique> lstPeriodique = FXCollections.observableArrayList();
-	ObservableList<DVD> lstDVD = FXCollections.observableArrayList();
 	Registre registre;
 	
 	@FXML
@@ -47,25 +38,15 @@ public class DocumentController {
 	TableColumn<Document, String> colEmprunteurDoc;
 	
 	
-
+	@FXML 
+	private void initialize() {
+		initialiserVueDocuments();
+		tvDoc.setItems(registre.getListeDocument());
+	}
+	
+	
 	public DocumentController() {
-		System.out.println("LivreDocument");
-		
 		registre = Registre.getInstance();
-		lstLivre = GestionIOLivre.chargerFichier("Livres.txt");
-		registre.setListeLivre(lstLivre); 
-		
-		registre = Registre.getInstance();
-		lstDVD = GestionIODVD.chargerFichier("DVD.txt");
-		registre.setListeDVD(lstDVD);
-		
-		registre = Registre.getInstance();
-		lstPeriodique = GestionIOPeriodique.chargerFichier("Periodiques.txt");
-		registre.setListePeriodique(lstPeriodique);
-		
-		lstDoc.addAll(lstLivre);
-		lstDoc.addAll(lstPeriodique);
-		lstDoc.addAll(lstDVD);
 	}
 	
 	private void initialiserVueDocuments() {
@@ -84,7 +65,6 @@ public class DocumentController {
                     } else if (doc instanceof DVD) {
                         setText(((DVD) doc).getAuteur());
                     } else {
-
                         setText("");
                     }
                 }
@@ -96,9 +76,5 @@ public class DocumentController {
         colPretDoc.setCellValueFactory(col -> col.getValue().getPretProperty().asObject());
     }
 	
-	@FXML 
-	private void initialize() {
-		initialiserVueDocuments();
-		tvDoc.setItems(lstDoc);
-	}
+	
 }

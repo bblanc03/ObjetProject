@@ -1,40 +1,45 @@
 package application;
-	
 
+
+import controller.CatalogueController;
+import controller.LivreController;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.stage.Stage;
+import model.Registre;
 import utils.GestionVue;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 
-
 public class Main extends Application {
+	
 	private static Stage stage;
 	GestionVue gestionVue;
+	private Registre registre = Registre.getInstance();
+
 	@Override
 	public void start(Stage primaryStage) throws Exception {
 		gestionVue = GestionVue.getInstance();
-		
-	    //FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/MainView.fxml"));
-	    gestionVue.initialiseStage(primaryStage);
-	    gestionVue.chargerVuePrincipale("Sorcier", "/fxml/MainView.fxml");
-	    
-	    
-	stage = primaryStage;
-	   // Parent root = loader.load();
-	   // Scene scene = new Scene(root);
-	   // primaryStage.setScene(scene);
-	   // primaryStage.setTitle("Project Playground");
-	   // primaryStage.show();
+
+		// FXMLLoader loader = new
+		// FXMLLoader(getClass().getResource("/fxml/MainView.fxml"));
+		gestionVue.initialiseStage(primaryStage);
+		gestionVue.chargerVuePrincipale("MainView", "/fxml/MainView.fxml");
+
+		stage = primaryStage;
+		// Parent root = loader.load();
+		// Scene scene = new Scene(root);
+		// primaryStage.setScene(scene);
+		// primaryStage.setTitle("Project Playground");
+		// primaryStage.show();
 
 	}
-	
+
 	public static void main(String[] args) {
 		launch(args);
-		//System.out.println("hello");
+		// System.out.println("hello");
 	}
-	
+
 	public static Stage getStage() {
 		return stage;
 	}

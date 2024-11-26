@@ -6,6 +6,8 @@ import javafx.beans.property.IntegerProperty;
 import javafx.beans.property.SimpleIntegerProperty;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 
 public class DVD extends Document implements Serializable {
 
@@ -18,6 +20,7 @@ public class DVD extends Document implements Serializable {
 	private IntegerProperty nbrDisque;
 	private StringProperty etat;
 	private IntegerProperty pret;
+	private static ObservableList<DVD> obsListDVD = FXCollections.observableArrayList();
 	//testing git push
 	
 	public DVD(String noDVD, String titre, String date, int nbrDisque, String auteur) {
@@ -32,7 +35,7 @@ public class DVD extends Document implements Serializable {
 		return nbrDisque;
 	}
 	
-	public void setNbrDisque(SimpleIntegerProperty nbrDisque) {
+	public void setNbrDisque(IntegerProperty nbrDisque) {
 		this.nbrDisque = nbrDisque;
 	}
 	
@@ -55,4 +58,25 @@ public class DVD extends Document implements Serializable {
 	public IntegerProperty getPretProperty() { 
 		return pret;
 	}
+	
+	
+	//------------------------------------ObservableList------------------------------------------//
+	
+	
+	public static void setDVD(DVD dvd) {
+		obsListDVD.add(dvd);
+	}
+
+	public static ObservableList<DVD> getListDVD(){
+		return obsListDVD;
+	}
+
+	public static void setListDVD(ObservableList<DVD> list) {
+		obsListDVD = list;
+	}
+
+	public static void removeDVD(DVD remove) {
+		obsListDVD.remove(remove);
+	}
+
 }
