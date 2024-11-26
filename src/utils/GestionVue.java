@@ -3,8 +3,7 @@ package utils;
 import java.io.IOException;
 import java.util.HashMap;
 
-import controller.AccordionGestionController;
-import controller.CatalogueController;
+
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.stage.Modality;

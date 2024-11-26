@@ -20,7 +20,7 @@ import model.Registre;
 public class CatalogueController {
 	private Registre registre = Registre.getInstance();
 	private LivreController livreController;
-	private AccordionGestionController accordionGestionController;
+	
 
 	@FXML
 	AnchorPane anchorPane;

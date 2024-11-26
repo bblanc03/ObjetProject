@@ -1,6 +1,6 @@
 package application;
 
-import controller.AccordionGestionController;
+
 import controller.CatalogueController;
 import controller.LivreController;
 import javafx.application.Application;
