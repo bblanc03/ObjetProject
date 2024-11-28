@@ -1,6 +1,5 @@
 package utils;
 
-import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
@@ -8,13 +7,12 @@ import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.util.ArrayList;
 
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
 import model.Personne;
+import model.Prepose;
 
-public class GestionIOPersonne {
+public class GestionIOPrepose {
 	static boolean dejaOuvert = false;
-	private GestionIOPersonne() {
+	private GestionIOPrepose() {
 
 	}
 	public static void setStateOuvert(boolean state) {
@@ -23,15 +21,19 @@ public class GestionIOPersonne {
 
 	private static String fichier = "Personne.txt";
 	static String pathFichierTexte = Constantes.REPERTOIRE_DATA + "/" + fichier;
-	static ArrayList<Personne> toWrite = new ArrayList<>();
-	static ArrayList<Personne> toRead = new ArrayList<>();
+	static ArrayList<Prepose> toWrite = new ArrayList<>();
+	static ArrayList<Prepose> toRead = new ArrayList<>();
 
-	public static void ecrireFichierPersonne(Personne personne) throws IOException, ClassNotFoundException {
+	public static void ecrireFichierPrepose(Prepose Prepose) throws IOException, ClassNotFoundException {
 		 
 
 		FileOutputStream file = new FileOutputStream(pathFichierTexte);
 		ObjectOutputStream out = new ObjectOutputStream(file);
-		toWrite = new ArrayList<>(Personne.getObservableList());
+		toWrite = new ArrayList<>(Prepose.getObservableListPrepose());
+		//toWrite.add(Prepose);
+		System.out.println("");
+		System.out.println(toWrite);
+		System.out.println("");
 		out.writeObject(toWrite);
 
 		out.close();
@@ -39,15 +41,15 @@ public class GestionIOPersonne {
 
 	}
 	
-	public static void supprimerPersonne(Personne personne) throws IOException {
+	public static void supprimerPrepose(Prepose Prepose) throws IOException {
 		
 		FileOutputStream file = new FileOutputStream(pathFichierTexte);
 		ObjectOutputStream out = new ObjectOutputStream(file);
 		ArrayList<Personne> listTemporaire = new ArrayList<>();
-		toWrite = new ArrayList<>(Personne.getObservableList());
+		toWrite = new ArrayList<>(Prepose.getObservableListPrepose());
 		
-		for(Personne pers: toWrite) {
-			if(pers.equals(personne) == false) {
+		for(Prepose pers: toWrite) {
+			if(pers.equals(Prepose) == false) {
 				listTemporaire.add(pers);
 			}
 		}
@@ -59,12 +61,12 @@ public class GestionIOPersonne {
 		
 	}
 
-	public static void lireFichierPersonne() throws ClassNotFoundException, IOException {
-		// ArrayList<Personne> test = null;
+	public static void lireFichierPrepose() throws ClassNotFoundException, IOException {
+		// ArrayList<Prepose> test = null;
 		
 		FileInputStream file = new FileInputStream(pathFichierTexte);
 		ObjectInputStream in = new ObjectInputStream(file);
-		toRead = (ArrayList<Personne>) in.readObject();
+		toRead = (ArrayList<Prepose>) in.readObject();
 
 		if(dejaOuvert == false) {
 			System.out.println();
@@ -72,10 +74,10 @@ public class GestionIOPersonne {
 			System.out.println(toRead);
 			System.out.println();
 		/*	for(int i = 0; i < toRead.size()-1; i++) {
-				Personne.setPersonne(toRead.get(i));
+				Prepose.setPrepose(toRead.get(i));
 			}*/
 			
-			  for (Personne pers : toRead) { Personne.setPersonne(pers); }
+			  for (Prepose pers : toRead) { Prepose.setPerpose(pers); }
 			 
 		}
 		
@@ -83,4 +85,5 @@ public class GestionIOPersonne {
 		in.close();
 		file.close();
 	}
+
 }
