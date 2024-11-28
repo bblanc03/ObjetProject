@@ -74,7 +74,6 @@ public class AjouterPreposeCOntroller {
 					tbTelephone.getText());
 			Prepose.setPerpose(personne);
 			GestionIOPrepose.ecrireFichierPrepose(personne);
-			//GestionIOPersonne.lireFichierPersonne();
 		}
 		tbNom.setText("");
 		tbPrenom.setText("");
