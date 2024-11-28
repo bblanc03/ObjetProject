@@ -27,11 +27,6 @@ public class Main extends Application {
 		gestionVue.chargerVuePrincipale("MainView", "/fxml/MainView.fxml");
 
 		stage = primaryStage;
-		// Parent root = loader.load();
-		// Scene scene = new Scene(root);
-		// primaryStage.setScene(scene);
-		// primaryStage.setTitle("Project Playground");
-		// primaryStage.show();
 
 	}
 

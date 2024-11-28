@@ -13,8 +13,12 @@ import javafx.collections.ObservableList;
 import model.Personne;
 
 public class GestionIOPersonne {
+	static boolean dejaOuvert = false;
 	private GestionIOPersonne() {
 
+	}
+	public static void setStateOuvert(boolean state) {
+		dejaOuvert = state;
 	}
 
 	private static String fichier = "Personne.txt";
@@ -28,7 +32,7 @@ public class GestionIOPersonne {
 		FileOutputStream file = new FileOutputStream(pathFichierTexte);
 		ObjectOutputStream out = new ObjectOutputStream(file);
 		toWrite = new ArrayList<>(Personne.getObservableList());
-		toWrite.add(personne);
+		//toWrite.add(personne);
 		out.writeObject(toWrite);
 
 		out.close();
@@ -58,16 +62,24 @@ public class GestionIOPersonne {
 
 	public static void lireFichierPersonne() throws ClassNotFoundException, IOException {
 		// ArrayList<Personne> test = null;
+		
 		FileInputStream file = new FileInputStream(pathFichierTexte);
 		ObjectInputStream in = new ObjectInputStream(file);
 		toRead = (ArrayList<Personne>) in.readObject();
 
-		for (Personne pers : toRead) {
-			Personne.setPersonne(pers);
+		if(dejaOuvert == false) {
+			System.out.println();
+			System.out.println(toRead.size());
+			System.out.println(toRead);
+			System.out.println();
+		/*	for(int i = 0; i < toRead.size()-1; i++) {
+				Personne.setPersonne(toRead.get(i));
+			}*/
+			
+			  for (Personne pers : toRead) { Personne.setPersonne(pers); }
+			 
 		}
-
-		// toWrite.add(testing);
-		// System.out.println(toWrite);
+		
 
 		in.close();
 		file.close();

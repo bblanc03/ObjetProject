@@ -62,6 +62,7 @@ public class GestionPreposeController {
 
 		if (written.length() > 0) {
 			GestionIOPersonne.lireFichierPersonne();
+			GestionIOPersonne.setStateOuvert(true);
 		}
 
 		vuePrepose.setItems(Personne.getObservableList());
