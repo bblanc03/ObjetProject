@@ -17,8 +17,9 @@ public final class Registre {
 	private final ObservableList<Livre> listeLivre = FXCollections.observableArrayList();
 	private final ObservableList<Periodique> listePeriodique = FXCollections.observableArrayList();
 	private final ObservableList<DVD> listeDVD = FXCollections.observableArrayList();
+	private final ObservableList<Adherent> listeAdherent = FXCollections.observableArrayList();
 	private Document document;
-	private Accordion accordion;
+	private Adherent adherent;
 	private TitledPane titledPane;
 
 	public Registre() {
@@ -38,7 +39,6 @@ public final class Registre {
 		listeDocument.addAll(listeLivre);
 		listeDocument.addAll(listePeriodique);
 		listeDocument.addAll(listeDVD);
-		
 	}
 
 	// Getters
@@ -57,6 +57,10 @@ public final class Registre {
 	public ObservableList<DVD> getListeDVD() {
 		return listeDVD;
 	}
+	
+	public ObservableList<Adherent> getListeAdherent() {
+		return listeAdherent;
+	}
 
 	// Setters
 	public void setListeDocument(ObservableList<Document> liste) {
@@ -73,6 +77,10 @@ public final class Registre {
 
 	public void setListeLivre(ObservableList<Livre> liste) {
 		listeLivre.setAll(liste);
+	}
+	
+	public void setListeAdherent(ObservableList<Adherent> liste) {
+		listeAdherent.setAll(liste);
 	}
 
 	public static Registre getInstance() {
@@ -109,6 +117,10 @@ public final class Registre {
 	public void ajouterDoc(Document doc) {
 		listeDocument.add(doc);
 	}
+	
+	public void ajouterAD(Adherent adherent) {
+		listeAdherent.add(adherent);
+	}
 
 	// Enlever
 	public void removeDoc() {
@@ -126,19 +138,33 @@ public final class Registre {
 			}
 		}
 	}
+	
+	public void removeAD() {
+		Adherent ad = adherent;
+		listeAdherent.remove(ad);
+	}
 
 	// Setter Docs
 	public void setDocument(Document document) {
 		this.document = document;
 	}
 	
-	//Getter Setter accordion
-	public Accordion getAccordion() {
-		return accordion;
+	public Adherent getAD() {
+		System.out.println("Get AD");
+		return adherent;
 	}
 	
-	public void setAccordion(Accordion accordion) {
-		this.accordion = accordion;
+	public void setAdherent(Adherent adherent) {
+		this.adherent = adherent;
+	}
+	
+	public void modifierAdherent(String addresse, String tel) {
+		Adherent nouAD;
+		nouAD = adherent;
+		listeAdherent.remove(adherent);
+		nouAD.setAdrese(addresse);
+		nouAD.setTel(tel);
+		listeAdherent.add(nouAD);
 	}
 	
 	//Getter setter titledPane

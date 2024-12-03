@@ -75,7 +75,6 @@ public class DocumentController {
                 }
             }
         });
-        
         colDateDoc.setCellValueFactory(col -> col.getValue().getDatePublicationProperty());
         colEtatDoc.setCellValueFactory(col -> col.getValue().getEtatProperty());
         colPretDoc.setCellValueFactory(col -> col.getValue().getPretProperty().asObject());

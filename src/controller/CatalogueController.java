@@ -59,8 +59,6 @@ public class CatalogueController {
 	@FXML
 	Tab tabDVD;
 	
-	
-
 	@FXML
 	AnchorPane anchorPane;
 
@@ -190,8 +188,7 @@ public class CatalogueController {
 
 	@FXML
 	protected void ouvrirModifierAD(ActionEvent e) throws IOException {
-		gestionVue = GestionVue.getInstance();
-		gestionVue.chargerDialogue("Modifier un adhérent", "/fxml/ModifierAdherent.fxml");
+		
 	}
 
 	@FXML
@@ -205,6 +202,23 @@ public class CatalogueController {
 		registre.removeDoc();
 		System.out.println(registre.getListeDocument());
 	}
+	
+	@FXML
+	protected void supprimerSelectedAD(ActionEvent event) {
+		registre.removeAD();
+	}
+	
+	@FXML
+	protected void modifierSelectedAD(ActionEvent event) {
+		if (registre.getAD() != null) {
+			gestionVue = GestionVue.getInstance();
+			gestionVue.chargerDialogue("Modifier un adhérent", "/fxml/ModifierAdherent.fxml");
+		}
+		else {
+			//do alert warning
+		}
+		
+	}
 
 	@FXML
 	protected void deconnexion(ActionEvent event) throws IOException {
@@ -213,7 +227,7 @@ public class CatalogueController {
 		stage.close();
 		gestionVue.chargerVuePrincipale("Mediatheque", "/fxml/MainView.fxml");
 	}
-
+	
 	@FXML
 	private void initialize() {
 		System.out.println("Initialiser CatalogueController");
