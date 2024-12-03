@@ -57,7 +57,7 @@ public class GestionPreposeController {
 	private void initialize() throws IOException, ClassNotFoundException {
 		FileInputStream file2 = null;
 		ObjectInputStream in = null;
-		String fichier = "Personne.txt";
+		String fichier = "Prepose.txt";
 		File written = new File(Constantes.REPERTOIRE_DATA + "/" + fichier);
 		System.out.println("reading");
 
