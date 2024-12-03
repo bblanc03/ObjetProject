@@ -44,6 +44,6 @@
             </TitledPane>
          </panes>
       </Accordion>
-      <Button fx:id="btnDeconnexion" mnemonicParsing="false" prefWidth="155.0" text="Déconnexion" />
+      <Button fx:id="btnDeconnexion" mnemonicParsing="false" prefWidth="155.0" text="Déconnexion" onAction="#deconnexion" />
    </children>
 </VBox>

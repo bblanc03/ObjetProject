@@ -47,7 +47,10 @@ public class Document {
 	}
 	
 	public String getAuteur() {
-		return auteur.get();
+		if (auteur != null) {
+			return auteur.get();
+		}
+		return "";
 	}
 
 	public StringProperty getDatePublicationProperty() {

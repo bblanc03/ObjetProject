@@ -4,24 +4,18 @@ import java.io.IOException;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Parent;
 import javafx.scene.control.Accordion;
 import javafx.scene.control.Button;
 import javafx.scene.control.TitledPane;
-import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.VBox;
-import model.Document;
-import model.Livre;
+import javafx.stage.Stage;
 import model.Registre;
 import utils.GestionVue;
 
 public class AccordionGestionController {
 	private GestionVue gestionVue;
 	private Registre registre;
-	private LivreController livreController;
-	private Document doc;
-	
+
 	@FXML
 	VBox root;
 
@@ -71,10 +65,6 @@ public class AccordionGestionController {
 		registre = Registre.getInstance();
 	}
 
-	public void setLivreController(LivreController livreController) {
-		this.livreController = livreController;
-	}
-
 	@FXML
 	protected void ouvrirAjouterDoc(ActionEvent e) throws IOException {
 		gestionVue = GestionVue.getInstance();
@@ -102,28 +92,24 @@ public class AccordionGestionController {
 	@FXML
 	protected void supprimerSelectedDoc(ActionEvent event) {
 		registre.removeDoc();
+		System.out.println(registre.getListeDocument());
+	}
+
+	@FXML
+	protected void deconnexion(ActionEvent event) throws IOException {
+		gestionVue = GestionVue.getInstance();
+		Stage stage = (Stage) btnDeconnexion.getScene().getWindow();
+		stage.close();
+		gestionVue.chargerVuePrincipale("Mediatheque", "/fxml/MainView.fxml");
 	}
 
 	@FXML
 	private void initialize() {
+		accGestion.setExpandedPane(titCatalogue);
+		registre.setTitledPane(titCatalogue);
 		accGestion.expandedPaneProperty().addListener((obs, oldPane, newPane) -> {
-			if (newPane == titAdherent) {
-				// catalogue.loadCatalogueAD();
-			}
+			registre.setTitledPane(newPane);
 		});
-	}
-	
-//	public void setDoc(Document doc) {
-//		this.doc = doc;
-//		//System.out.println(this.doc);
-//	}
-//	
-//	public Document getDoc() {
-//		return doc;
-//	}
-	
-	public void supprimer(Document doc) {
-		
 	}
 
 }
