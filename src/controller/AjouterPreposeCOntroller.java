@@ -72,8 +72,13 @@ public class AjouterPreposeCOntroller {
 			System.out.println("button ajouter pressed");
 			Prepose personne = new Prepose(tbNom.getText(), tbPrenom.getText(), tbAdresse.getText(),
 					tbTelephone.getText());
+<<<<<<< HEAD
 			Prepose.setPerpose(personne);
 			GestionIOPrepose.ecrireFichierPrepose(personne);
+=======
+			Personne.setPersonne(personne);
+			GestionIOPersonne.ecrireFichierPersonne(personne);
+>>>>>>> 4c90cba151d06c0da297ee0d0fbe4c9575ff10ac
 		}
 		tbNom.setText("");
 		tbPrenom.setText("");
