@@ -88,6 +88,7 @@ public class AjouterPreposeCOntroller {
 		System.out.println("closing");
 		Stage stage = (Stage) btnQuitter.getScene().getWindow();
 		stage.close();
+		// merge
 	}
 
 }
