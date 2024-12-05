@@ -43,12 +43,9 @@ public class DocumentController {
 	private void initialize() {
 		initialiserVueDocuments();
 		tvDoc.setItems(registre.getListeDocument());
-<<<<<<< HEAD
-=======
 		tvDoc.getSelectionModel().selectedItemProperty().addListener((bs, anc, nou) -> {
 			registre.setDocument(nou);
 		});
->>>>>>> f13a4c11c8b5333ff5e032b692455e4dcae2d134
 		
 	}
 
