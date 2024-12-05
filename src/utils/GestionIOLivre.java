@@ -1,96 +1,104 @@
 package utils;
 
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.ObjectInputStream;
-import java.io.ObjectOutputStream;
+import java.io.*;
 import java.util.ArrayList;
 import java.util.Scanner;
-
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import model.Livre;
-import model.Registre;
 
 public class GestionIOLivre {
-	Registre registre;
-	static Boolean fileRead = false;
-	static String nomFichier = "Livres.txt";
-	static String pathFichierTexte = "/" + Constantes.REPERTOIRE_FICHIERS + "/" + nomFichier;
-	static String pathFichierWrite= "data"; 
-	static ArrayList<Livre> toWrite = new ArrayList<>();
-	static ArrayList<Livre> toRead = new ArrayList<>();
-	
-	
-	// Constructeur prive qui empeche l'instanciation
-		private GestionIOLivre() {
-			throw new UnsupportedOperationException("classe utilitaire - ne peut etre instanciee");
-		}
-		
-		public static void ecrireFichierLivre(Livre livre) throws IOException, ClassNotFoundException {
-			System.out.println("writing file");
-			FileOutputStream file = new FileOutputStream(pathFichierWrite + "/Livres.txt");
-			ObjectOutputStream out = new ObjectOutputStream(file);
-			toWrite = new ArrayList<>(Livre.getListLivre());
-			toWrite.add(livre);
-			out.writeObject(toWrite);
-			
-			out.close();
-			file.close();
-		}
-		
-		public static void lireFichierLivre() throws IOException, ClassNotFoundException {
-			File fileObject = new File(pathFichierWrite + "/Livres.txt");			
-			if (fileObject.length() > 0) {
-				
-				FileInputStream file = new FileInputStream(pathFichierWrite + "/Livres.txt");
-				ObjectInputStream in = new ObjectInputStream(file);
-				//System.out.println(in.readObject() + "Reading  object");
-				
-				in.close();
-				file.close();
-			}
-		}
+    static Boolean fileRead = false;
+    static String nomFichier = "Livres.txt";
+    static String pathFichierTexte = "/" + Constantes.REPERTOIRE_FICHIERS + "/" + nomFichier;
+    static String pathFichierWrite = "data"; 
+    static ArrayList<Livre> toWrite = new ArrayList<>();
+    static ArrayList<Livre> toRead = new ArrayList<>();
 
-		public static ObservableList<Livre> chargerFichier() {
-			
-		
-			if (!fileRead) {
-				System.out.println("file reading Livre");
-				
+    // Private constructor to prevent instantiation
+    private GestionIOLivre() {
+        throw new UnsupportedOperationException("Utility class - cannot be instantiated");
+    }
 
-				ObservableList<Livre> listeLivres = FXCollections.observableArrayList();
+    // Write a new Livre to the file
+    public static void ecrireFichierLivre(Livre livre) throws IOException, ClassNotFoundException {
+        System.out.println("Writing to file...");
 
-				try (InputStream inStream = Livre.class.getResourceAsStream(pathFichierTexte);
-						Scanner lecteur = new Scanner(inStream)) {
+        // Read the current list from the file first
+        File file = new File(pathFichierWrite + "/Livres.txt");
+        if (!file.exists()) {
+            file.createNewFile();
+        }
 
-					lecteur.useDelimiter(",|\\n");
+        // Read existing data if any
+        try (FileInputStream fileIn = new FileInputStream(file);
+             ObjectInputStream in = new ObjectInputStream(fileIn)) {
+            if (file.length() > 0) {
+                toRead = (ArrayList<Livre>) in.readObject();
+            }
+        } catch (IOException | ClassNotFoundException e) {
+            // If the file is empty or there is an issue with deserialization, start with an empty list
+            toRead = new ArrayList<>();
+        }
 
-					while (lecteur.hasNextLine()) {
-						String numDoc = lecteur.next().trim();
-						String titre = lecteur.next().trim();
-						String date = lecteur.next().trim();
-						String auteur = lecteur.next().trim();
-						
+        // Add the new Livre to the list
+        toRead.add(livre);
 
-						Livre livre = new Livre(numDoc, titre, date, auteur);
+        // Write the updated list back to the file
+        try (FileOutputStream fileOut = new FileOutputStream(file);
+             ObjectOutputStream out = new ObjectOutputStream(fileOut)) {
+            out.writeObject(toRead);
+        }
 
-						listeLivres.add(livre);
-					}
+        System.out.println("Write completed.");
+    }
 
-				} catch (IOException e) {
-					e.printStackTrace();
-				}
-				return listeLivres;
-			}
-			return null;
+    // Read the file content (Livres) into the list
+    public static void lireFichierLivre() throws IOException, ClassNotFoundException {
+        File file = new File(pathFichierWrite + "/Livres.txt");
+        if (file.exists() && file.length() > 0) {
+            try (FileInputStream fileIn = new FileInputStream(file);
+                 ObjectInputStream in = new ObjectInputStream(fileIn)) {
+                toRead = (ArrayList<Livre>) in.readObject();
+                System.out.println("Reading completed: " + toRead);
+            }
+        } else {
+            System.out.println("No data found to read.");
+        }
+    }
 
-		}
-		
-		public static void setFileRead() {
-			fileRead = true;
-		}
+    // Load the books from a text file
+    public static ObservableList<Livre> chargerFichier() {
+        ObservableList<Livre> listeLivres = FXCollections.observableArrayList();
+
+        if (!fileRead) {
+            System.out.println("Reading Livre file...");
+            try (InputStream inStream = Livre.class.getResourceAsStream(pathFichierTexte);
+                 Scanner lecteur = new Scanner(inStream)) {
+                lecteur.useDelimiter(",|\\n");
+
+                while (lecteur.hasNextLine()) {
+                    String numDoc = lecteur.next().trim();
+                    String titre = lecteur.next().trim();
+                    String date = lecteur.next().trim();
+                    String auteur = lecteur.next().trim();
+
+                    Livre livre = new Livre(numDoc, titre, date, auteur);
+                    listeLivres.add(livre);
+                }
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+
+            // Mark the file as read to avoid re-reading
+            fileRead = true;
+        }
+        
+        return listeLivres;
+    }
+
+    // Set the file as read (useful for control flags)
+    public static void setFileRead() {
+        fileRead = true;
+    }
 }

@@ -19,13 +19,21 @@ public class Livre extends Document implements Serializable{
 	 * 
 	 */
 	private static final long serialVersionUID = -4907274974623063053L;
-	private transient StringProperty auteur;
-	private transient BooleanProperty etat;
-	private transient IntegerProperty pret;
+	private  transient StringProperty auteur;
+	private  transient BooleanProperty etat;
+	private  transient IntegerProperty pret;
 
 	private static ObservableList<Livre> obsListLivre = FXCollections.observableArrayList();
 
 
+	public Livre() {
+        super("", "", "");
+        this.auteur = new SimpleStringProperty("");
+        this.etat = new SimpleBooleanProperty(true);
+        this.pret = new SimpleIntegerProperty(0);
+    }
+	
+	
 	public Livre(String noLivre, String titre, String dateParution, String auteur) {
 		super(noLivre, titre, dateParution);
 		this.auteur = new SimpleStringProperty(auteur);
@@ -41,6 +49,8 @@ public class Livre extends Document implements Serializable{
 		out.writeUTF(getTitre());
 		out.writeUTF(getDatePublication());
 		out.writeUTF(getAuteur());
+		out.writeBoolean(getEtat());
+		out.writeObject(getEmprunteur());
 //		out.writeBoolean(getEtat());
 //		out.writeObject(getEmprunteur());
 		System.out.println("writing objet");
@@ -53,8 +63,8 @@ public class Livre extends Document implements Serializable{
 		this.setTitre(in.readUTF());
 		this.setDate(in.readUTF());
 		this.setAuteur(in.readUTF());
-//		this.setEtat(in.readBoolean());
-//		this.setEmprunteur(in.readObject());
+		this.setEtat(in.readBoolean());
+		this.setEmprunteur(in.readObject());
 	}
 	
 	public StringProperty getAuteurProperty() {
