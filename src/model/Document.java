@@ -1,6 +1,7 @@
 package model;
 
 import java.io.ObjectOutput;
+import java.io.Serializable;
 
 import javafx.beans.property.BooleanProperty;
 import javafx.beans.property.IntegerProperty;
@@ -13,7 +14,11 @@ import javafx.beans.property.StringProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 
-public class Document {
+public class Document implements Serializable{
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -6866745363679938550L;
 	private transient StringProperty noDocument;
 	private transient StringProperty titre;
 	private transient StringProperty auteur;
@@ -25,6 +30,9 @@ public class Document {
 	private transient String type;
 	
 	//this is a super class for the other classes
+	public Document() {
+		
+	}
 	
 	
 	//Ajouter etat et emprunter 
@@ -33,8 +41,8 @@ public class Document {
 		this.titre = new SimpleStringProperty(titre);
 		this.datePublication = new SimpleStringProperty(datePublication);
 		this.etat = new SimpleBooleanProperty(true);
-//		this.emprunteur = new SimpleObjectProperty<Object>(null);
-//		this.pret = new SimpleIntegerProperty(0);
+		this.emprunteur = new SimpleObjectProperty<Object>(null);
+		this.pret = new SimpleIntegerProperty(0);
 	}
 	
 
@@ -90,7 +98,7 @@ public class Document {
 	}
 	
 	public void setEtat(Boolean etat) {
-		this.etat.set(etat);;
+		this.etat.set(etat);
 	}
 	
 	public void setEmprunteur(Object adherent) {

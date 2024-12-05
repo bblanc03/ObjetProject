@@ -14,7 +14,7 @@ import javafx.beans.property.StringProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 
-public class Livre extends Document implements Serializable{
+public class Livre extends Document implements java.io.Serializable{
 	/**
 	 * 
 	 */
@@ -30,7 +30,7 @@ public class Livre extends Document implements Serializable{
 		super(noLivre, titre, dateParution);
 		this.auteur = new SimpleStringProperty(auteur);
 		this.etat = new SimpleBooleanProperty(true);
-//		this.pret = new SimpleIntegerProperty(0);
+		this.pret = new SimpleIntegerProperty(0);
 	}
 
 	
@@ -52,9 +52,9 @@ public class Livre extends Document implements Serializable{
 		this.setNoDoc(in.readUTF());
 		this.setTitre(in.readUTF());
 		this.setDate(in.readUTF());
-		this.setAuteur(in.readUTF());
-//		this.setEtat(in.readBoolean());
-//		this.setEmprunteur(in.readObject());
+		this.auteur = new SimpleStringProperty(in.readUTF());
+		//this.setEtat(in.readBoolean());
+		//this.setEmprunteur(in.readObject());
 	}
 	
 	public StringProperty getAuteurProperty() {

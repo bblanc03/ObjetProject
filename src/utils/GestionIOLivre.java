@@ -13,6 +13,7 @@ import java.util.Scanner;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import model.Livre;
+import model.Prepose;
 import model.Registre;
 
 public class GestionIOLivre {
@@ -48,7 +49,8 @@ public class GestionIOLivre {
 				
 				FileInputStream file = new FileInputStream(pathFichierWrite + "/Livres.txt");
 				ObjectInputStream in = new ObjectInputStream(file);
-				//System.out.println(in.readObject() + "Reading  object");
+				System.out.println("lecture de fichier");
+				toRead = (ArrayList<Livre>)in.readObject();
 				
 				in.close();
 				file.close();
@@ -80,7 +82,7 @@ public class GestionIOLivre {
 
 						listeLivres.add(livre);
 					}
-
+					inStream.close();
 				} catch (IOException e) {
 					e.printStackTrace();
 				}
