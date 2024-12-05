@@ -62,21 +62,16 @@ public class GestionIOPrepose {
 	}
 
 	public static void lireFichierPrepose() throws ClassNotFoundException, IOException {
-		// ArrayList<Prepose> test = null;
 		
 		FileInputStream file = new FileInputStream(pathFichierTexte);
 		ObjectInputStream in = new ObjectInputStream(file);
 		System.out.println(in.readObject() + "reading something");
-		//toRead = (ArrayList<Prepose>) in.readObject();
 
 		if(dejaOuvert == false) {
 			System.out.println();
 			System.out.println(toRead.size());
 			System.out.println(toRead);
 			System.out.println();
-		/*	for(int i = 0; i < toRead.size()-1; i++) {
-				Prepose.setPrepose(toRead.get(i));
-			}*/
 			
 			  for (Prepose pers : toRead) { Prepose.setPerpose(pers); }
 			 
