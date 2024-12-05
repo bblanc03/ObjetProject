@@ -48,7 +48,7 @@ public class LivreController {
         colAuteurLivre.setCellValueFactory(col -> col.getValue().getAuteurProperty());
         colDateLivre.setCellValueFactory(col -> col.getValue().getDatePublicationProperty());
         colEtatLivre.setCellValueFactory(col -> col.getValue().getEtatProperty());
-       // colPretLivre.setCellValueFactory(col -> col.getValue().getPretProperty().asObject());
+        //colPretLivre.setCellValueFactory(col -> col.getValue().getPretProperty().asObject());
     }
 
     public Livre getSelectedLivre() {

@@ -29,7 +29,7 @@ public class Livre extends Document implements Serializable{
 	public Livre(String noLivre, String titre, String dateParution, String auteur) {
 		super(noLivre, titre, dateParution);
 		this.auteur = new SimpleStringProperty(auteur);
-//		this.etat = new SimpleBooleanProperty(true);
+		this.etat = new SimpleBooleanProperty(true);
 //		this.pret = new SimpleIntegerProperty(0);
 	}
 
