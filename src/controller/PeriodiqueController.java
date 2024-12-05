@@ -32,7 +32,7 @@ public class PeriodiqueController {
 	TableColumn<Periodique, Integer> colNumPeriodique;
 	
 	@FXML
-	TableColumn<Periodique, String> colEtatPer;
+	TableColumn<Periodique, Boolean> colEtatPer;
 	
 	@FXML
 	TableColumn<Periodique, Integer> colPretPer;
@@ -60,5 +60,8 @@ public class PeriodiqueController {
 	private void initialize() {
 		initialiserVuePeriodique();
 		tvPer.setItems(registre.getListePeriodique());
+		tvPer.getSelectionModel().selectedItemProperty().addListener((bs, anc, nou) -> {
+			registre.setDocument(nou);
+		});;	
 	}
 }

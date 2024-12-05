@@ -9,10 +9,13 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
+import model.Adherent;
+import model.Registre;
 import utils.GestionVue;
 
 public class AjouterADController {
 	GestionVue gestionVue;
+	Registre registre;
 
 	@FXML
 	AnchorPane ancAjouterAD;
@@ -46,6 +49,18 @@ public class AjouterADController {
 	
 	@FXML
 	Button btnAnnuler;
+	
+	public AjouterADController() {
+		registre = Registre.getInstance();
+	}
+	
+	@FXML
+	protected void ajouterAD(ActionEvent e) throws IOException {
+		int i = registre.getListeAdherent().size() + 1;
+		Adherent adherent = new Adherent("AD" + i, txtNom.getText(), txtPrenom.getText(), txtAdresse.getText(), txtTel.getText());
+		registre.ajouterAD(adherent);
+		btnAnnuler.getScene().getWindow().hide();
+	}
 	
 	@FXML
 	protected void fermerFenetre(ActionEvent e) throws IOException {

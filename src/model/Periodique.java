@@ -2,8 +2,12 @@ package model;
 
 import java.io.Serializable;
 
+import javafx.beans.property.BooleanProperty;
 import javafx.beans.property.IntegerProperty;
+import javafx.beans.property.ObjectProperty;
+import javafx.beans.property.SimpleBooleanProperty;
 import javafx.beans.property.SimpleIntegerProperty;
+import javafx.beans.property.SimpleObjectProperty;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
 import javafx.collections.FXCollections;
@@ -15,10 +19,10 @@ public class Periodique extends Document implements Serializable {
 
 	// Instances
 
-	private SimpleIntegerProperty numVol;
-	private SimpleIntegerProperty numPeriodique;
-	private SimpleStringProperty etat;
-	private SimpleStringProperty emprunteur;
+	private IntegerProperty numVol;
+	private IntegerProperty numPeriodique;
+	private BooleanProperty etat;
+	private ObjectProperty<Object> emprunteur;
 	private IntegerProperty pret;
 	private static ObservableList<Periodique> obsListPer = FXCollections.observableArrayList();
 
@@ -27,13 +31,13 @@ public class Periodique extends Document implements Serializable {
 		super(numDoc, titre, date);
 		this.numVol = new SimpleIntegerProperty(numVol);
 		this.numPeriodique = new SimpleIntegerProperty(numPeriodique);
-		this.etat = new SimpleStringProperty("disponnible");
+		this.etat = new SimpleBooleanProperty(true);
 		this.pret = new SimpleIntegerProperty(0);
 	}
 
 	// Getters et setters
 
-	public SimpleIntegerProperty getNumVolProperty() {
+	public IntegerProperty getNumVolProperty() {
 		return numVol;
 	}
 
@@ -45,7 +49,7 @@ public class Periodique extends Document implements Serializable {
 		this.numVol = numVol;
 	}
 
-	public SimpleIntegerProperty getNumPeriodiqueProperty() {
+	public IntegerProperty getNumPeriodiqueProperty() {
 		return numPeriodique;
 	}
 
@@ -57,15 +61,15 @@ public class Periodique extends Document implements Serializable {
 		this.numPeriodique = numPer;
 	}
 
-	public StringProperty getEtatProperty() {
+	public BooleanProperty getEtatProperty() {
 		return etat;
 	}
 
-	public String getEtat() {
+	public boolean getEtat() {
 		return etat.get();
 	}
 
-	public void setEtat(SimpleStringProperty etat) {
+	public void setEtat(SimpleBooleanProperty etat) {
 		this.etat = etat;
 	}
 
@@ -81,15 +85,15 @@ public class Periodique extends Document implements Serializable {
 		this.pret = pret;
 	}
 
-	public SimpleStringProperty getEmprunteurProperty() {
+	public ObjectProperty<Object> getEmprunteurProperty() {
 		return emprunteur;
 	}
 
-	public String getEmprunteur() {
+	public Object getEmprunteur() {
 		return emprunteur.get();
 	}
 
-	public void setEmprunteur(SimpleStringProperty emprunteur) {
+	public void setEmprunteur(SimpleObjectProperty<Object> emprunteur) {
 		this.emprunteur = emprunteur;
 	}
 

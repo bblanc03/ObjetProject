@@ -2,7 +2,9 @@ package model;
 
 import java.io.Serializable;
 
+import javafx.beans.property.BooleanProperty;
 import javafx.beans.property.IntegerProperty;
+import javafx.beans.property.SimpleBooleanProperty;
 import javafx.beans.property.SimpleIntegerProperty;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
@@ -18,7 +20,7 @@ public class DVD extends Document implements Serializable {
 	//private StringProperty date;
 	private StringProperty auteur;
 	private IntegerProperty nbrDisque;
-	private StringProperty etat;
+	private BooleanProperty etat;
 	private IntegerProperty pret;
 	private static ObservableList<DVD> obsListDVD = FXCollections.observableArrayList();
 	//testing git push
@@ -27,7 +29,7 @@ public class DVD extends Document implements Serializable {
 		super(noDVD, titre, date);
 		this.auteur = new SimpleStringProperty(auteur);
 		this.nbrDisque = new SimpleIntegerProperty(nbrDisque);
-		this.etat = new SimpleStringProperty("disponible");
+		this.etat = new SimpleBooleanProperty(true);
 		this.pret = new SimpleIntegerProperty(0);
 	}
 
@@ -51,7 +53,7 @@ public class DVD extends Document implements Serializable {
 		return serialVersionUID;
 	}
 	
-	public StringProperty getEtatProperty() {
+	public BooleanProperty getEtatProperty() {
 		return etat;
 	}
 	

@@ -18,7 +18,7 @@
       <TextField fx:id="txtDate" layoutX="276.0" layoutY="129.0" prefHeight="25.0" prefWidth="213.0" />
       <TextField fx:id="txtMot" layoutX="276.0" layoutY="165.0" prefHeight="25.0" prefWidth="213.0" />
       <ComboBox fx:id="cboxType" layoutX="276.0" layoutY="27.0" prefHeight="25.0" prefWidth="213.0" promptText="Livre" />
-      <Button fx:id="btnConfirmer" layoutX="308.0" layoutY="261.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="85.0" text="Confirmer" onAction="#ajouterDoc" />
+      <Button fx:id="btnConfirmer" layoutX="308.0" layoutY="261.0" mnemonicParsing="false" onAction="#ajouterDoc" prefHeight="25.0" prefWidth="85.0" text="Confirmer" />
       <Button fx:id="btnAnnuler" layoutX="401.0" layoutY="261.0" mnemonicParsing="false" onAction="#fermerFenetre" prefHeight="25.0" prefWidth="85.0" text="Annuler" />
    </children>
 </AnchorPane>
