@@ -6,7 +6,12 @@
 
 <AnchorPane fx:id="ancDoc" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.CatalogueDocController">
    <children>
-      <TabPane fx:id="paneElement" layoutY="5.0" prefHeight="555.0" prefWidth="1090.0" tabClosingPolicy="UNAVAILABLE">
+      <AnchorPane fx:id="ancRecherche" prefHeight="61.0" prefWidth="784.0">
+      	<children>
+        	<fx:include source="Recherche.fxml" />
+        </children>
+       </AnchorPane>
+      <TabPane fx:id="paneElement" layoutY="61.0" prefHeight="555.0" prefWidth="1090.0" tabClosingPolicy="UNAVAILABLE">
          <tabs>
             <Tab fx:id="tabTous" text="Tous les documents">
                <content>

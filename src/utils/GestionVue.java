@@ -73,6 +73,8 @@ public class GestionVue {
 			System.out.println("Fenetre ferme");
 		}
 	}
+	
+	
 
 	public <T> T chargerVueAvecController(String fichierFXML) throws IOException {
 		FXMLLoader loader = new FXMLLoader(getClass().getResource(fichierFXML)); 

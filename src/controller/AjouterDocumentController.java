@@ -12,17 +12,18 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
 import model.DVD;
+import model.Document;
 import model.Livre;
 import model.Periodique;
 import model.Registre;
+import utils.GestionIOLivre;
 import utils.GestionVue;
 
 public class AjouterDocumentController {
 	String types[] =
         { "Livre", "Périodique", "DVD" };
 	GestionVue gestionVue;
-	Registre registre;
-	
+	Registre registre;	
 	ObservableList<Livre> lstLivre = FXCollections.observableArrayList();
 	
 	@FXML
@@ -70,28 +71,32 @@ public class AjouterDocumentController {
 	
 	@FXML
 	protected void fermerFenetre(ActionEvent e) throws IOException {
-//		gestionVue = GestionVue.getInstance();
-//		gestionVue.fermerVue("AjouterDoc");
-//		System.out.println("lala");
 		btnAnnuler.getScene().getWindow().hide();
 	}
 	
 	@FXML
-	protected void ajouterDoc(ActionEvent e) throws IOException {
+	protected void ajouterDoc(ActionEvent e) throws IOException, ClassNotFoundException {
 		if (cboxType.getValue() == "Livre") {
-			Livre livre = new Livre(null, txtTitre.getText(), txtDate.getText(), txtAuteur.getText());
+			int i = registre.getListeLivre().size() + 1;
+			Livre livre = new Livre("Liv" + i, txtTitre.getText(), txtDate.getText(), txtAuteur.getText());
 			registre.ajouterLivre(livre);
+			GestionIOLivre.ecrireFichierLivre(livre);
 		}
 		else if (cboxType.getValue() == "Périodique") {
-			System.out.println("Periodique");
-			Periodique per = new Periodique(null, txtTitre.getText(), txtDate.getText(), 0, 0);
+			int i = registre.getListePeriodique().size() + 1;
+			Periodique per = new Periodique("Per" + i, txtTitre.getText(), txtDate.getText(), 0, 0);
 			registre.ajouterPeriodique(per);
 		}
 		else if (cboxType.getValue() == "DVD") {
-			DVD dvd = new DVD(null, txtTitre.getText(), txtDate.getText(), 0, txtAuteur.getText());
+			int i = registre.getListeDVD().size() + 1;
+			DVD dvd = new DVD("DVD" + i, txtTitre.getText(), txtDate.getText(), 0, txtAuteur.getText());
 			registre.ajouterDVD(dvd);
 		}
+		
 	}
+	
+
+	
 	
 	@FXML
 	private void initialize() {

@@ -6,8 +6,12 @@ import java.util.Scanner;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import model.Periodique;
+import model.Registre;
 
 public class GestionIOPeriodique {
+	Registre registre;
+	static Boolean fileRead = false;
+
 
 	// Constructeur prive qui empeche l'instanciation
 			private GestionIOPeriodique() {
@@ -15,34 +19,42 @@ public class GestionIOPeriodique {
 			}
 
 			public static ObservableList<Periodique> chargerFichier(String nomFichier) {
+				
+				if (!fileRead) {
+					String pathFichierTexte = "/" + Constantes.REPERTOIRE_FICHIERS + "/" + nomFichier;
 
-				String pathFichierTexte = "/" + Constantes.REPERTOIRE_FICHIERS + "/" + nomFichier;
+					ObservableList<Periodique> listePeriodique = FXCollections.observableArrayList();
+					System.out.println("GestionIODVD");
 
-				ObservableList<Periodique> listePeriodique = FXCollections.observableArrayList();
-				System.out.println("GestionIODVD");
+					try (InputStream inStream = Periodique.class.getResourceAsStream(pathFichierTexte);
+							Scanner lecteur = new Scanner(inStream)) {
 
-				try (InputStream inStream = Periodique.class.getResourceAsStream(pathFichierTexte);
-						Scanner lecteur = new Scanner(inStream)) {
+						lecteur.useDelimiter(",|\\n");
 
-					lecteur.useDelimiter(",|\\n");
+						while (lecteur.hasNextLine()) {
+							String noPer = lecteur.next().trim();
+							String titre = lecteur.next().trim();
+							String date = lecteur.next().trim();
+							int numVol = Integer.parseInt(lecteur.next().trim());
+							int numPeriodique = Integer.parseInt(lecteur.next().trim());
+							
+							Periodique dvd = new Periodique(noPer, titre, date, numVol, numPeriodique);
 
-					while (lecteur.hasNextLine()) {
-						String noPer = lecteur.next().trim();
-						String titre = lecteur.next().trim();
-						String date = lecteur.next().trim();
-						int numVol = Integer.parseInt(lecteur.next().trim());
-						int numPeriodique = Integer.parseInt(lecteur.next().trim());
-						
-						Periodique dvd = new Periodique(noPer, titre, date, numVol, numPeriodique);
+							listePeriodique.add(dvd);
+						}
 
-						listePeriodique.add(dvd);
+					} catch (IOException e) {
+
+						e.printStackTrace();
 					}
-
-				} catch (IOException e) {
-
-					e.printStackTrace();
+					return listePeriodique;
 				}
-				return listePeriodique;
+				return null;
+				
 
+			}
+			
+			public static void setFileRead() {
+				fileRead = true;
 			}
 }

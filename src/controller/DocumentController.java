@@ -12,6 +12,7 @@ import model.Registre;
 
 public class DocumentController {
 	Registre registre;
+	AccordionGestionController accordion = new AccordionGestionController();
 	
 	@FXML
 	TableView<Document> tvDoc;
@@ -29,7 +30,7 @@ public class DocumentController {
 	TableColumn<Document, String> colDateDoc;
 	
 	@FXML
-	TableColumn<Document, String> colEtatDoc;
+	TableColumn<Document, Boolean> colEtatDoc;
 	
 	@FXML
 	TableColumn<Document, Integer> colPretDoc;
@@ -42,8 +43,12 @@ public class DocumentController {
 	private void initialize() {
 		initialiserVueDocuments();
 		tvDoc.setItems(registre.getListeDocument());
+		tvDoc.getSelectionModel().selectedItemProperty().addListener((bs, anc, nou) -> {
+			registre.setDocument(nou);
+		});
+		
 	}
-	
+
 	
 	public DocumentController() {
 		registre = Registre.getInstance();
@@ -70,11 +75,12 @@ public class DocumentController {
                 }
             }
         });
-        
         colDateDoc.setCellValueFactory(col -> col.getValue().getDatePublicationProperty());
         colEtatDoc.setCellValueFactory(col -> col.getValue().getEtatProperty());
-        colPretDoc.setCellValueFactory(col -> col.getValue().getPretProperty().asObject());
+        //colPretDoc.setCellValueFactory(col -> col.getValue().getPretProperty().asObject());
     }
+	
+	
 	
 	
 }
