@@ -1,10 +1,13 @@
 package controller;
 
+import java.io.IOException;
+
 import javafx.fxml.FXML;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import model.Livre;
 import model.Registre;
+import utils.GestionIOLivre;
 
 public class LivreController {
     private Registre registre;
@@ -20,13 +23,14 @@ public class LivreController {
     @FXML
     private TableColumn<Livre, String> colDateLivre;
     @FXML
-    private TableColumn<Livre, String> colEtatLivre;
+    private TableColumn<Livre, Boolean> colEtatLivre;
     @FXML
     private TableColumn<Livre, Integer> colPretLivre;
 
     @FXML
-    private void initialize() {
+    private void initialize() throws ClassNotFoundException, IOException {
         initialiserVueLivre();
+        GestionIOLivre.lireFichierLivre();
         tvLivre.setItems(registre.getListeLivre());
         tvLivre.getSelectionModel().selectedItemProperty().addListener((bs, anc, nou) -> {
 			registre.setDocument(nou);

@@ -30,7 +30,7 @@ public class DocumentController {
 	TableColumn<Document, String> colDateDoc;
 	
 	@FXML
-	TableColumn<Document, String> colEtatDoc;
+	TableColumn<Document, Boolean> colEtatDoc;
 	
 	@FXML
 	TableColumn<Document, Integer> colPretDoc;

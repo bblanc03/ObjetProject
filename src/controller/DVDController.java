@@ -32,7 +32,7 @@ public class DVDController {
 	TableColumn<DVD, Integer> colNbrDisque;
 	
 	@FXML
-	TableColumn<DVD, String> colEtatDVD;
+	TableColumn<DVD, Boolean> colEtatDVD;
 	
 	@FXML
 	TableColumn<DVD, Integer> colPretDVD;

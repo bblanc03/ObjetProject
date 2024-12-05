@@ -28,7 +28,7 @@ public final class Registre {
 
 	public void chargerDonnees() {
 		System.out.println("Charger Donnees");
-		listeLivre.setAll(GestionIOLivre.chargerFichier("Livres.txt"));
+		listeLivre.setAll(GestionIOLivre.chargerFichier());
 		GestionIOLivre.setFileRead();
 		listePeriodique.setAll(GestionIOPeriodique.chargerFichier("Periodiques.txt"));
 		GestionIOPeriodique.setFileRead();

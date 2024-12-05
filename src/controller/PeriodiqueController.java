@@ -32,7 +32,7 @@ public class PeriodiqueController {
 	TableColumn<Periodique, Integer> colNumPeriodique;
 	
 	@FXML
-	TableColumn<Periodique, String> colEtatPer;
+	TableColumn<Periodique, Boolean> colEtatPer;
 	
 	@FXML
 	TableColumn<Periodique, Integer> colPretPer;

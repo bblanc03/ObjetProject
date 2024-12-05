@@ -1,31 +1,43 @@
 package model;
 
+import java.io.ObjectOutput;
+
+import javafx.beans.property.BooleanProperty;
 import javafx.beans.property.IntegerProperty;
+import javafx.beans.property.ObjectProperty;
+import javafx.beans.property.SimpleBooleanProperty;
 import javafx.beans.property.SimpleIntegerProperty;
+import javafx.beans.property.SimpleObjectProperty;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 
 public class Document {
-	private StringProperty noDocument;
-	private StringProperty titre;
-	private StringProperty auteur;
-	private StringProperty datePublication;
-	private StringProperty etat;
-	private IntegerProperty pret;
+	private transient StringProperty noDocument;
+	private transient StringProperty titre;
+	private transient StringProperty auteur;
+	private transient StringProperty datePublication;
+	private transient BooleanProperty etat;
+	private transient IntegerProperty pret;
+	private transient ObjectProperty<Object> emprunteur;
 	private static ObservableList<Document> obsListDoc = FXCollections.observableArrayList();
-	private String type;
+	private transient String type;
 	
 	//this is a super class for the other classes
 	
+	
+	//Ajouter etat et emprunter 
 	public Document(String noDocument, String titre, String datePublication) {
 		this.noDocument = new SimpleStringProperty(noDocument);
 		this.titre = new SimpleStringProperty(titre);
 		this.datePublication = new SimpleStringProperty(datePublication);
-		this.etat = new SimpleStringProperty("disponible");
-		this.pret = new SimpleIntegerProperty(0);
+		this.etat = new SimpleBooleanProperty(true);
+//		this.emprunteur = new SimpleObjectProperty<Object>(null);
+//		this.pret = new SimpleIntegerProperty(0);
 	}
+	
+
 	public StringProperty getNoDocumentProperty() {
 		return noDocument;
 	}
@@ -61,12 +73,45 @@ public class Document {
 		return datePublication.get();
 	}
 	
-	public StringProperty getEtatProperty() {
+	public BooleanProperty getEtatProperty() {
 		return etat;
 	}
 	
+	public ObjectProperty<Object> getEmprunteurProperty() {
+		return emprunteur;
+	}
+	
+	public boolean getEtat() {
+		return etat.get();
+	}
+	
+	public Object getEmprunteur() {
+		return emprunteur.get();
+	}
+	
+	public void setEtat(Boolean etat) {
+		this.etat.set(etat);;
+	}
+	
+	public void setEmprunteur(Object adherent) {
+		this.emprunteur.set(adherent);
+	}
+	
+	
 	public IntegerProperty getPretProperty() {
 		return pret;
+	}
+	
+	public void setNoDoc(String noDoc) {
+		this.noDocument = new SimpleStringProperty(noDoc);
+	}
+	
+	public void setTitre(String titre) {
+		this.titre = new SimpleStringProperty(titre);
+	}
+	
+	public void setDate(String date) {
+		this.datePublication = new SimpleStringProperty(date);
 	}
 	
 	@Override

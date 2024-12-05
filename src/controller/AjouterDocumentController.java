@@ -16,6 +16,7 @@ import model.Document;
 import model.Livre;
 import model.Periodique;
 import model.Registre;
+import utils.GestionIOLivre;
 import utils.GestionVue;
 
 public class AjouterDocumentController {
@@ -74,11 +75,12 @@ public class AjouterDocumentController {
 	}
 	
 	@FXML
-	protected void ajouterDoc(ActionEvent e) throws IOException {
+	protected void ajouterDoc(ActionEvent e) throws IOException, ClassNotFoundException {
 		if (cboxType.getValue() == "Livre") {
 			int i = registre.getListeLivre().size() + 1;
 			Livre livre = new Livre("Liv" + i, txtTitre.getText(), txtDate.getText(), txtAuteur.getText());
 			registre.ajouterLivre(livre);
+			GestionIOLivre.ecrireFichierLivre(livre);
 		}
 		else if (cboxType.getValue() == "Périodique") {
 			int i = registre.getListePeriodique().size() + 1;
