@@ -48,7 +48,7 @@ public class GestionIOLivre {
 				
 				FileInputStream file = new FileInputStream(pathFichierWrite + "/Livres.txt");
 				ObjectInputStream in = new ObjectInputStream(file);
-				System.out.println(in.readObject() + "Reading  object");
+				//System.out.println(in.readObject() + "Reading  object");
 				
 				in.close();
 				file.close();
