@@ -65,7 +65,9 @@ public class GestionIOPrepose {
 		
 		FileInputStream file = new FileInputStream(pathFichierTexte);
 		ObjectInputStream in = new ObjectInputStream(file);
-		System.out.println(in.readObject() + "reading something");
+
+		//System.out.println(in.readObject() + "reading something");
+		toRead = (ArrayList<Prepose>) in.readObject();
 
 		if(dejaOuvert == false) {
 			System.out.println();
