@@ -85,9 +85,6 @@ public class Personne implements java.io.Serializable {
 		telephone = new SimpleStringProperty(in.readUTF());
 	}
 
-//---------------------- maybe move to singleton class --------------------------------
-
-//maybe create a funtion to get an ObservableList
 
 	public static void setPersonne(Personne personne) {
 		System.out.println("adding.....");

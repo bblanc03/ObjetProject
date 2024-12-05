@@ -80,7 +80,7 @@ public class GestionPreposeController {
 		gestionVue = GestionVue.getInstance();
 		Stage stage = new Stage();
 		gestionVue.initialiseStage(stage);
-		gestionVue.chargerVuePrincipale("hi", "/fxml/AjouterPrepose.fxml");
+		gestionVue.chargerVuePrincipale("Médiatèque", "/fxml/AjouterPrepose.fxml");
 	}
 
 	@FXML
