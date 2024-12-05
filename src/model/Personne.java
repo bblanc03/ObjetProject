@@ -62,7 +62,7 @@ public class Personne implements java.io.Serializable {
 		this.telephone = new SimpleStringProperty(telephone);
 	}
 
-	@Override
+
 	public String toString() {
 		return "nom=" + nom.get() + " prenom=" + prenom.get() + " adresse=" + adresse.get() + " telephone=" + telephone.get();
 	}
