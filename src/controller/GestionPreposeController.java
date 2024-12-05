@@ -57,7 +57,7 @@ public class GestionPreposeController {
 	private void initialize() throws IOException, ClassNotFoundException {
 		FileInputStream file2 = null;
 		ObjectInputStream in = null;
-		String fichier = "Prepose.txt";
+		String fichier = "Personne.txt";
 		File written = new File(Constantes.REPERTOIRE_DATA + "/" + fichier);
 		System.out.println("reading");
 
@@ -80,7 +80,7 @@ public class GestionPreposeController {
 		gestionVue = GestionVue.getInstance();
 		Stage stage = new Stage();
 		gestionVue.initialiseStage(stage);
-		gestionVue.chargerVuePrincipale("Médiatèque", "/fxml/AjouterPrepose.fxml");
+		gestionVue.chargerVuePrincipale("hi", "/fxml/AjouterPrepose.fxml");
 	}
 
 	@FXML
