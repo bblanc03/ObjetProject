@@ -18,30 +18,31 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.stage.Stage;
 import model.Personne;
+import model.Prepose;
 import utils.Constantes;
-import utils.GestionIOPersonne;
+import utils.GestionIOPrepose;
 import utils.GestionVue;
 
 public class GestionPreposeController {
 	GestionVue gestionVue;
 
 	@FXML
-	TableView<Personne> vuePrepose;
+	TableView<Prepose> vuePrepose;
 
 	@FXML
-	TableColumn<Personne, String> colNoEmploye;
+	TableColumn<Prepose, String> colNoEmploye;
 
 	@FXML
-	TableColumn<Personne, String> colNom;
+	TableColumn<Prepose, String> colNom;
 
 	@FXML
-	TableColumn<Personne, String> colPrenom;
+	TableColumn<Prepose, String> colPrenom;
 
 	@FXML
-	TableColumn<Personne, String> colAdresse;
+	TableColumn<Prepose, String> colAdresse;
 
 	@FXML
-	TableColumn<Personne, String> colTelephone;
+	TableColumn<Prepose, String> colTelephone;
 
 	@FXML
 	Button btnAjouter;
@@ -56,15 +57,16 @@ public class GestionPreposeController {
 	private void initialize() throws IOException, ClassNotFoundException {
 		FileInputStream file2 = null;
 		ObjectInputStream in = null;
-		String fichier = "Personne.txt";
+		String fichier = "Prepose.txt";
 		File written = new File(Constantes.REPERTOIRE_DATA + "/" + fichier);
 		System.out.println("reading");
 
 		if (written.length() > 0) {
-			GestionIOPersonne.lireFichierPersonne();
+			GestionIOPrepose.lireFichierPrepose();
+			GestionIOPrepose.setStateOuvert(true);
 		}
 
-		vuePrepose.setItems(Personne.getObservableList());
+		vuePrepose.setItems(Prepose.getObservableListPrepose());
 
 		colNoEmploye.setCellValueFactory(cell -> cell.getValue().getNomProperty());
 		colNom.setCellValueFactory(cell -> cell.getValue().getNomProperty());
@@ -78,14 +80,14 @@ public class GestionPreposeController {
 		gestionVue = GestionVue.getInstance();
 		Stage stage = new Stage();
 		gestionVue.initialiseStage(stage);
-		gestionVue.chargerVuePrincipale("hi", "/fxml/AjouterPrepose.fxml");
+		gestionVue.chargerVuePrincipale("Médiatèque", "/fxml/AjouterPrepose.fxml");
 	}
 
 	@FXML
 	private void supprimerPrpose() throws IOException {
 		System.out.println("deleting");
-		Personne employe = vuePrepose.getSelectionModel().getSelectedItem();
-		Personne.removePersonne(employe);
+		Prepose employe = vuePrepose.getSelectionModel().getSelectedItem();
+		Prepose.removePrepose(employe);
 	}
 
 	@FXML

@@ -12,7 +12,9 @@ import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 import model.Personne;
+import model.Prepose;
 import utils.GestionIOPersonne;
+import utils.GestionIOPrepose;
 
 public class AjouterPreposeCOntroller {
 	
@@ -68,11 +70,10 @@ public class AjouterPreposeCOntroller {
 			alert.show();
 		} else {
 			System.out.println("button ajouter pressed");
-			Personne personne = new Personne(tbNom.getText(), tbPrenom.getText(), tbAdresse.getText(),
+			Prepose personne = new Prepose(tbNom.getText(), tbPrenom.getText(), tbAdresse.getText(),
 					tbTelephone.getText());
-			Personne.setPersonne(personne);
-			GestionIOPersonne.ecrireFichierPersonne(personne);
-			//GestionIOPersonne.lireFichierPersonne();
+			Prepose.setPerpose(personne);
+			GestionIOPrepose.ecrireFichierPrepose(personne);
 		}
 		tbNom.setText("");
 		tbPrenom.setText("");
@@ -87,6 +88,7 @@ public class AjouterPreposeCOntroller {
 		System.out.println("closing");
 		Stage stage = (Stage) btnQuitter.getScene().getWindow();
 		stage.close();
+		// merge
 	}
 
 }

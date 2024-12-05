@@ -42,6 +42,7 @@ public class DocumentController {
 	private void initialize() {
 		initialiserVueDocuments();
 		tvDoc.setItems(registre.getListeDocument());
+		
 	}
 	
 	
