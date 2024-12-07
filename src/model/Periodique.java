@@ -1,5 +1,8 @@
 package model;
 
+import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
 import java.io.Serializable;
 
 import javafx.beans.property.BooleanProperty;
@@ -19,11 +22,11 @@ public class Periodique extends Document implements Serializable {
 
 	// Instances
 
-	private IntegerProperty numVol;
-	private IntegerProperty numPeriodique;
-	private BooleanProperty etat;
-	private ObjectProperty<Object> emprunteur;
-	private IntegerProperty pret;
+	private transient IntegerProperty numVol;
+	private transient IntegerProperty numPeriodique;
+	private transient BooleanProperty etat;
+	private transient ObjectProperty<Object> emprunteur;
+	private transient IntegerProperty pret;
 	private static ObservableList<Periodique> obsListPer = FXCollections.observableArrayList();
 
 	// Constructeur
@@ -33,6 +36,30 @@ public class Periodique extends Document implements Serializable {
 		this.numPeriodique = new SimpleIntegerProperty(numPeriodique);
 		this.etat = new SimpleBooleanProperty(true);
 		this.pret = new SimpleIntegerProperty(0);
+	}
+	
+	
+	private void writeObject(ObjectOutputStream out) throws IOException{
+		out.defaultWriteObject();
+		System.out.println("Serialiser livre: " + getTitre());
+		out.writeUTF(getNoDocument());
+		out.writeUTF(getTitre());
+		out.writeUTF(getDatePublication());
+		out.writeUTF(Integer.toString(getNumVol()));
+//		out.writeBoolean(getEtat());
+//		out.writeObject(getEmprunteur());
+		System.out.println("writing objet");
+	}
+	
+	private void readObject(ObjectInputStream in) throws ClassNotFoundException, IOException {
+		System.out.println("Lecture de objet");
+		in.defaultReadObject();
+		this.setNoDoc(in.readUTF());
+		this.setTitre(in.readUTF());
+		this.setDate(in.readUTF());
+		this.numVol = new SimpleIntegerProperty(Integer.parseInt(in.readUTF()));
+		//this.setEtat(in.readBoolean());
+		//this.setEmprunteur(in.readObject());
 	}
 
 	// Getters et setters

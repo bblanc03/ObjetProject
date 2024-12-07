@@ -50,9 +50,9 @@ public class PeriodiqueController {
 		colTitrePer.setCellValueFactory(col -> col.getValue().getTitreProperty());
 		colDatePer.setCellValueFactory(col -> col.getValue().getDatePublicationProperty());
 		colNumVol.setCellValueFactory(col -> col.getValue().getNumVolProperty().asObject());
-		colNumPeriodique.setCellValueFactory(col -> col.getValue().getNumPeriodiqueProperty().asObject());
+		//colNumPeriodique.setCellValueFactory(col -> col.getValue().getNumPeriodiqueProperty().asObject());
 		colEtatPer.setCellValueFactory(col -> col.getValue().getEtatProperty());
-		colPretPer.setCellValueFactory(col -> col.getValue().getPretProperty().asObject());
+		//colPretPer.setCellValueFactory(col -> col.getValue().getPretProperty().asObject());
 		
 	}
 	

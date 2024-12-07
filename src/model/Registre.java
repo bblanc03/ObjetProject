@@ -47,6 +47,7 @@ public final class Registre {
 		try {
 			GestionIOLivre.serealise(listeLivre);
 			GestionIODVD.serealise(listeDVD);
+			GestionIOPeriodique.serealise(listePeriodique);
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
