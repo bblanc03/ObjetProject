@@ -1,5 +1,7 @@
 package model;
 
+import java.io.IOException;
+
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.scene.control.Accordion;
@@ -22,11 +24,11 @@ public final class Registre {
 	private Adherent adherent;
 	private TitledPane titledPane;
 
-	public Registre() {
+	public Registre() throws ClassNotFoundException, IOException {
 		chargerDonnees();
 	}
 
-	public void chargerDonnees() {
+	public void chargerDonnees() throws ClassNotFoundException, IOException {
 		System.out.println("Charger Donnees");
 		listeLivre.setAll(GestionIOLivre.chargerFichier());
 		GestionIOLivre.setFileRead();
@@ -39,6 +41,15 @@ public final class Registre {
 		listeDocument.addAll(listeLivre);
 		listeDocument.addAll(listePeriodique);
 		listeDocument.addAll(listeDVD);
+	}
+	
+	public void serealiserDonnees() {
+		try {
+			GestionIOLivre.serealise(listeLivre);
+			GestionIODVD.serealise(listeDVD);
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
 	}
 
 	// Getters
@@ -83,9 +94,17 @@ public final class Registre {
 		listeAdherent.setAll(liste);
 	}
 
-	public static Registre getInstance() {
+	public static Registre getInstance(){
 		if (instance == null) {
-			instance = new Registre();
+			try {
+				instance = new Registre();
+			} catch (ClassNotFoundException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 		}
 		return instance;
 	}

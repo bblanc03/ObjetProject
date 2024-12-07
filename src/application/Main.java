@@ -29,6 +29,10 @@ public class Main extends Application {
 		stage = primaryStage;
 
 	}
+	
+	public void stop() {
+		registre.serealiserDonnees();
+	}
 
 	public static void main(String[] args) {
 		launch(args);

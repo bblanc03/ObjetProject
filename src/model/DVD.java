@@ -1,5 +1,8 @@
 package model;
 
+import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
 import java.io.Serializable;
 
 import javafx.beans.property.BooleanProperty;
@@ -18,10 +21,10 @@ public class DVD extends Document implements Serializable {
 	//private StringProperty noDVD;
 	//private StringProperty titre;
 	//private StringProperty date;
-	private StringProperty auteur;
-	private IntegerProperty nbrDisque;
-	private BooleanProperty etat;
-	private IntegerProperty pret;
+	private transient StringProperty auteur;
+	private transient IntegerProperty nbrDisque;
+	private transient BooleanProperty etat;
+	private transient IntegerProperty pret;
 	private static ObservableList<DVD> obsListDVD = FXCollections.observableArrayList();
 	//testing git push
 	
@@ -31,6 +34,29 @@ public class DVD extends Document implements Serializable {
 		this.nbrDisque = new SimpleIntegerProperty(nbrDisque);
 		this.etat = new SimpleBooleanProperty(true);
 		this.pret = new SimpleIntegerProperty(0);
+	}
+	
+	private void writeObject(ObjectOutputStream out) throws IOException{
+		out.defaultWriteObject();
+		System.out.println("Serialiser livre: " + getTitre());
+		out.writeUTF(getNoDocument());
+		out.writeUTF(getTitre());
+		out.writeUTF(getDatePublication());
+		out.writeUTF(getAuteur());
+//		out.writeBoolean(getEtat());
+//		out.writeObject(getEmprunteur());
+		System.out.println("writing objet");
+	}
+	
+	private void readObject(ObjectInputStream in) throws ClassNotFoundException, IOException {
+		System.out.println("Lecture de objet");
+		in.defaultReadObject();
+		this.setNoDoc(in.readUTF());
+		this.setTitre(in.readUTF());
+		this.setDate(in.readUTF());
+		this.auteur = new SimpleStringProperty(in.readUTF());
+		//this.setEtat(in.readBoolean());
+		//this.setEmprunteur(in.readObject());
 	}
 
 	public IntegerProperty getNbrDisqueProperty() {

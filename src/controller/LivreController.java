@@ -30,7 +30,7 @@ public class LivreController {
     @FXML
     private void initialize() throws ClassNotFoundException, IOException {
         initialiserVueLivre();
-        GestionIOLivre.lireFichierLivre();
+        //GestionIOLivre.lireFichierLivre();
         tvLivre.setItems(registre.getListeLivre());
         tvLivre.getSelectionModel().selectedItemProperty().addListener((bs, anc, nou) -> {
 			registre.setDocument(nou);
@@ -38,7 +38,7 @@ public class LivreController {
     }
     
     
-    public LivreController() {
+    public LivreController() throws ClassNotFoundException, IOException {
         registre = Registre.getInstance();
     }
 

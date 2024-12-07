@@ -1,7 +1,13 @@
 package utils;
 
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
+import java.util.ArrayList;
 import java.util.Scanner;
 
 import javafx.collections.FXCollections;
@@ -12,6 +18,8 @@ import model.Registre;
 public class GestionIODVD {
 	Registre registre;
 	static Boolean fileRead = false;
+	private static ArrayList<DVD> toRead = new ArrayList<>();
+	private static String pathFichierWrite = "data/DVD.ser";
 
 
 	// Constructeur prive qui empeche l'instanciation
@@ -20,39 +28,78 @@ public class GestionIODVD {
 		}
 
 		public static ObservableList<DVD> chargerFichier(String nomFichier) {
-
 			
-			if (!fileRead) {
-				String pathFichierTexte = "/" + Constantes.REPERTOIRE_FICHIERS + "/" + nomFichier;
+			File written = new File(pathFichierWrite);
+			if(written.length() == 0) {
+				System.out.println("not good");
+				if (!fileRead) {
+					String pathFichierTexte = "/" + Constantes.REPERTOIRE_FICHIERS + "/" + nomFichier;
 
-				ObservableList<DVD> listeDVD = FXCollections.observableArrayList();
-				System.out.println("GestionIODVD");
+					ObservableList<DVD> listeDVD = FXCollections.observableArrayList();
+					System.out.println("GestionIODVD");
 
-				try (InputStream inStream = DVD.class.getResourceAsStream(pathFichierTexte);
-						Scanner lecteur = new Scanner(inStream)) {
+					try (InputStream inStream = DVD.class.getResourceAsStream(pathFichierTexte);
+							Scanner lecteur = new Scanner(inStream)) {
 
-					lecteur.useDelimiter(",|\\n");
+						lecteur.useDelimiter(",|\\n");
 
-					while (lecteur.hasNextLine()) {
-						String noDVD = lecteur.next().trim();
-						String titre = lecteur.next().trim();
-						String date = lecteur.next().trim();
-						int nbrDisque = Integer.parseInt(lecteur.next().trim());
-						String auteur = lecteur.next().trim();
-						
-						DVD dvd = new DVD(noDVD, titre, date, nbrDisque, auteur);
+						while (lecteur.hasNextLine()) {
+							String noDVD = lecteur.next().trim();
+							String titre = lecteur.next().trim();
+							String date = lecteur.next().trim();
+							int nbrDisque = Integer.parseInt(lecteur.next().trim());
+							String auteur = lecteur.next().trim();
+							
+							DVD dvd = new DVD(noDVD, titre, date, nbrDisque, auteur);
 
-						listeDVD.add(dvd);
+							listeDVD.add(dvd);
+						}
+
+					} catch (IOException e) {
+
+						e.printStackTrace();
 					}
-
-				} catch (IOException e) {
-
+					return listeDVD;
+				}
+			} else {
+				try {
+					System.out.println("other file DVD");
+					FileInputStream file = new FileInputStream(pathFichierWrite);
+					ObjectInputStream in = new ObjectInputStream(file);
+					System.out.println("lecture de fichier");
+					toRead = (ArrayList<DVD>)in.readObject();
+					ObservableList<DVD> listesDVD = FXCollections.observableArrayList();
+					
+					for(DVD dvd : toRead) {
+					//	System.out.println(livre + " from other file");
+						listesDVD.add(dvd);
+					}
+					
+					in.close();
+					file.close();
+					
+					return listesDVD;
+				} catch (Exception e) {
 					e.printStackTrace();
 				}
-				return listeDVD;
 			}
+
+			
+			
 			return null;
 
+		}
+		
+		public static void serealise(ObservableList<DVD> lstDVD) throws IOException {
+			FileOutputStream file = new FileOutputStream(pathFichierWrite);
+			ObjectOutputStream out = new ObjectOutputStream(file);
+			toRead = new ArrayList<DVD>();
+			for(DVD dvd: lstDVD) {
+				toRead.add(dvd);
+			}
+			out.writeObject(toRead);
+			out.close();
+			file.close();
 		}
 		
 		public static void setFileRead() {
