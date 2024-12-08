@@ -48,7 +48,6 @@ public class GestionIOPeriodique {
 				String pathFichierTexte = "/" + Constantes.REPERTOIRE_FICHIERS + "/" + nomFichier;
 
 				ObservableList<Periodique> listePeriodique = FXCollections.observableArrayList();
-				System.out.println("GestionIODVD");
 
 				try (InputStream inStream = Periodique.class.getResourceAsStream(pathFichierTexte);
 						Scanner lecteur = new Scanner(inStream)) {
@@ -75,10 +74,10 @@ public class GestionIOPeriodique {
 			}
 		} else {
 			try {
-				System.out.println("other file Periodiques");
+				//System.out.println("other file Periodiques");
 				FileInputStream file = new FileInputStream(pathFichierWrite);
 				ObjectInputStream in = new ObjectInputStream(file);
-				System.out.println("lecture de fichier");
+				//System.out.println("lecture de fichier");
 				toRead = (ArrayList<Periodique>)in.readObject();
 				ObservableList<Periodique> listesPeriodiques = FXCollections.observableArrayList();
 				

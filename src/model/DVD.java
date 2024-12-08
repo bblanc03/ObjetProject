@@ -38,18 +38,18 @@ public class DVD extends Document implements Serializable {
 	
 	private void writeObject(ObjectOutputStream out) throws IOException{
 		out.defaultWriteObject();
-		System.out.println("Serialiser livre: " + getTitre());
+		//System.out.println("Serialiser livre: " + getTitre());
 		out.writeUTF(getNoDocument());
 		out.writeUTF(getTitre());
 		out.writeUTF(getDatePublication());
 		out.writeUTF(getAuteur());
 //		out.writeBoolean(getEtat());
 //		out.writeObject(getEmprunteur());
-		System.out.println("writing objet");
+		//System.out.println("writing objet");
 	}
 	
 	private void readObject(ObjectInputStream in) throws ClassNotFoundException, IOException {
-		System.out.println("Lecture de objet");
+		//System.out.println("Lecture de objet");
 		in.defaultReadObject();
 		this.setNoDoc(in.readUTF());
 		this.setTitre(in.readUTF());

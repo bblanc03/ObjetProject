@@ -58,6 +58,7 @@ public class AjouterADController {
 	protected void ajouterAD(ActionEvent e) throws IOException {
 		int i = registre.getListeAdherent().size() + 1;
 		Adherent adherent = new Adherent("AD" + i, txtNom.getText(), txtPrenom.getText(), txtAdresse.getText(), txtTel.getText());
+		//System.out.println(adherent + " this is from ajouter");
 		registre.ajouterAD(adherent);
 		btnAnnuler.getScene().getWindow().hide();
 	}

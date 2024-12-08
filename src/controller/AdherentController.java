@@ -38,12 +38,13 @@ public class AdherentController {
 	}
 	
 	private void initialiserVueAdherent() {
+		tvAD.setItems(registre.getListeAdherent());
 		colNum.setCellValueFactory(col -> col.getValue().getNumProperty());
 		colNom.setCellValueFactory(col -> col.getValue().getNomProperty());
 		colPrenom.setCellValueFactory(col -> col.getValue().getPrenomProperty());
 		colAdresse.setCellValueFactory(col -> col.getValue().getAdresseProperty());
 		colTel.setCellValueFactory(col -> col.getValue().getTelephoneProperty());
-		tvAD.setItems(registre.getListeAdherent());
+		
 	}
 	
 	@FXML

@@ -31,12 +31,12 @@ public class GestionIODVD {
 			
 			File written = new File(pathFichierWrite);
 			if(written.length() == 0) {
-				System.out.println("not good");
+				//System.out.println("not good");
 				if (!fileRead) {
 					String pathFichierTexte = "/" + Constantes.REPERTOIRE_FICHIERS + "/" + nomFichier;
 
 					ObservableList<DVD> listeDVD = FXCollections.observableArrayList();
-					System.out.println("GestionIODVD");
+					//System.out.println("GestionIODVD");
 
 					try (InputStream inStream = DVD.class.getResourceAsStream(pathFichierTexte);
 							Scanner lecteur = new Scanner(inStream)) {
@@ -63,10 +63,10 @@ public class GestionIODVD {
 				}
 			} else {
 				try {
-					System.out.println("other file DVD");
+					//System.out.println("other file DVD");
 					FileInputStream file = new FileInputStream(pathFichierWrite);
 					ObjectInputStream in = new ObjectInputStream(file);
-					System.out.println("lecture de fichier");
+					//System.out.println("lecture de fichier");
 					toRead = (ArrayList<DVD>)in.readObject();
 					ObservableList<DVD> listesDVD = FXCollections.observableArrayList();
 					

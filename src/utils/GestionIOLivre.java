@@ -69,7 +69,7 @@ public class GestionIOLivre {
 			File written = new File(Constantes.REPERTOIRE_DATA + "/" + nomFichier);
 			if(written.length() == 0) {
 				if (!fileRead) {
-					System.out.println("file reading Livre");
+					//System.out.println("file reading Livre");
 					
 
 					ObservableList<Livre> listeLivres = FXCollections.observableArrayList();

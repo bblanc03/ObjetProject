@@ -7,6 +7,7 @@ import javafx.collections.ObservableList;
 import javafx.scene.control.Accordion;
 import javafx.scene.control.TitledPane;
 import javafx.scene.layout.TilePane;
+import utils.GestionIOAdherent;
 import utils.GestionIODVD;
 import utils.GestionIOLivre;
 import utils.GestionIOPeriodique;
@@ -36,6 +37,7 @@ public final class Registre {
 		GestionIOPeriodique.setFileRead();
 		listeDVD.setAll(GestionIODVD.chargerFichier("DVD.txt"));
 		GestionIODVD.setFileRead();
+		listeAdherent.setAll(GestionIOAdherent.chargerFichier("Adherents.ser"));
 		
 		
 		listeDocument.addAll(listeLivre);
@@ -48,6 +50,8 @@ public final class Registre {
 			GestionIOLivre.serealise(listeLivre);
 			GestionIODVD.serealise(listeDVD);
 			GestionIOPeriodique.serealise(listePeriodique);
+			System.out.println(listeAdherent + " this is in Registre to test ho the ser");
+			GestionIOAdherent.serealise(listeAdherent);
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
@@ -91,9 +95,7 @@ public final class Registre {
 		listeLivre.setAll(liste);
 	}
 	
-	public void setListeAdherent(ObservableList<Adherent> liste) {
-		listeAdherent.setAll(liste);
-	}
+
 
 	public static Registre getInstance(){
 		if (instance == null) {
