@@ -19,6 +19,7 @@ public class Personne implements java.io.Serializable {
 	private transient StringProperty prenom;
 	private transient StringProperty adresse;
 	private transient StringProperty telephone;
+	private transient StringProperty motDePasse;
 
 //private static ArrayList<Personne> lstPersonnes = new ArrayList<Personne>(); // may not be needed if add person function is moved to singleton class
 	private static ObservableList<Personne> obsListPersonne = FXCollections.observableArrayList();
@@ -55,11 +56,12 @@ public class Personne implements java.io.Serializable {
 		return telephone.get();
 	}
 
-	public Personne(String nom, String prenom, String adresse, String telephone) {
+	public Personne(String nom, String prenom, String adresse, String telephone, String motDePasse) {
 		this.nom = new SimpleStringProperty(nom);
 		this.prenom = new SimpleStringProperty(prenom);
 		this.adresse = new SimpleStringProperty(adresse);
 		this.telephone = new SimpleStringProperty(telephone);
+		this.motDePasse = new SimpleStringProperty(motDePasse);
 	}
 
 
@@ -99,13 +101,5 @@ public class Personne implements java.io.Serializable {
 		obsListPersonne = list;
 	}
 
-	public static void removePersonne(Personne remove) throws IOException {
-		obsListPersonne.remove(remove);
-		GestionIOPersonne.supprimerPersonne(remove);
-	}
-	
-	public static Personne toPersonne(Object pers) {
-		return (Personne) pers;
-	}
 
 }

@@ -24,8 +24,8 @@ public class Prepose extends Personne implements Serializable {
 	private StringProperty password;
 	private static ObservableList<Prepose> obsListPrepose = FXCollections.observableArrayList();
 
-public Prepose(String nom, String prenom, String adresse, String telephone) {
-	super(nom, prenom, adresse, telephone);
+public Prepose(String nom, String prenom, String adresse, String telephone, String password) {
+	super(nom, prenom, adresse, telephone, password);
 }
 
 
