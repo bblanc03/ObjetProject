@@ -14,9 +14,11 @@ import model.Personne;
 
 public class GestionIOPersonne {
 	static boolean dejaOuvert = false;
+
 	private GestionIOPersonne() {
 
 	}
+
 	public static void setStateOuvert(boolean state) {
 		dejaOuvert = state;
 	}
@@ -27,7 +29,6 @@ public class GestionIOPersonne {
 	static ArrayList<Personne> toRead = new ArrayList<>();
 
 	public static void ecrireFichierPersonne(Personne personne) throws IOException, ClassNotFoundException {
-		 
 
 		FileOutputStream file = new FileOutputStream(pathFichierTexte);
 		ObjectOutputStream out = new ObjectOutputStream(file);
@@ -38,47 +39,40 @@ public class GestionIOPersonne {
 		file.close();
 
 	}
-	
+
 	public static void supprimerPersonne(Personne personne) throws IOException {
-		
+
 		FileOutputStream file = new FileOutputStream(pathFichierTexte);
 		ObjectOutputStream out = new ObjectOutputStream(file);
 		ArrayList<Personne> listTemporaire = new ArrayList<>();
 		toWrite = new ArrayList<>(Personne.getObservableList());
-		
-		for(Personne pers: toWrite) {
-			if(pers.equals(personne) == false) {
+
+		for (Personne pers : toWrite) {
+			if (pers.equals(personne) == false) {
 				listTemporaire.add(pers);
 			}
 		}
-		
+
 		out.writeObject(listTemporaire);
 
 		out.close();
 		file.close();
-		
+
 	}
 
 	public static void lireFichierPersonne() throws ClassNotFoundException, IOException {
 		// ArrayList<Personne> test = null;
-		
+
 		FileInputStream file = new FileInputStream(pathFichierTexte);
 		ObjectInputStream in = new ObjectInputStream(file);
 		toRead = (ArrayList<Personne>) in.readObject();
 
-		if(dejaOuvert == false) {
-			System.out.println();
-			System.out.println(toRead.size());
-			System.out.println(toRead);
-			System.out.println();
-		/*	for(int i = 0; i < toRead.size()-1; i++) {
-				Personne.setPersonne(toRead.get(i));
-			}*/
-			
-			  for (Personne pers : toRead) { Personne.setPersonne(pers); }
-			 
+		if (dejaOuvert == false) {
+			for (Personne pers : toRead) {
+				Personne.setPersonne(pers);
+			}
+
 		}
-		
 
 		in.close();
 		file.close();

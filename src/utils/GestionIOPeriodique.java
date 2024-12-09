@@ -74,20 +74,18 @@ public class GestionIOPeriodique {
 			}
 		} else {
 			try {
-				//System.out.println("other file Periodiques");
 				FileInputStream file = new FileInputStream(pathFichierWrite);
 				ObjectInputStream in = new ObjectInputStream(file);
-				//System.out.println("lecture de fichier");
-				toRead = (ArrayList<Periodique>)in.readObject();
+				toRead = (ArrayList<Periodique>) in.readObject();
 				ObservableList<Periodique> listesPeriodiques = FXCollections.observableArrayList();
-				
-				for(Periodique periodique : toRead) {
+
+				for (Periodique periodique : toRead) {
 					listesPeriodiques.add(periodique);
 				}
-				
+
 				in.close();
 				file.close();
-				
+
 				return listesPeriodiques;
 			} catch (Exception e) {
 				e.printStackTrace();

@@ -92,7 +92,6 @@ public class AccordionGestionController {
 	@FXML
 	protected void supprimerSelectedDoc(ActionEvent event) {
 		registre.removeDoc();
-		System.out.println(registre.getListeDocument());
 	}
 
 	@FXML

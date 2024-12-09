@@ -9,10 +9,10 @@ import javafx.beans.property.SimpleIntegerProperty;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
 
-public class Pret implements Serializable{
+public class Pret implements Serializable {
 	private static final long serialVersionUID = -5296672519460246263L;
-	
-	//Instances
+
+	// Instances
 	private StringProperty numAdherent;
 	private StringProperty nom;
 	private StringProperty prenom;
@@ -20,27 +20,29 @@ public class Pret implements Serializable{
 	private StringProperty tel;
 	private IntegerProperty pretsActifs;
 	private DoubleProperty soldeDu;
-	
-	//Constructor
-	public Pret(
-			String numAdherent, String nom, String prenom,
-			String adresse, String tel, int pretsActifs,
+
+	// Constructor
+	public Pret(String numAdherent, String nom, String prenom, String adresse, String tel, int pretsActifs,
 			double soldeDu) {
 		this.numAdherent = new SimpleStringProperty(numAdherent);
 		this.nom = new SimpleStringProperty(nom);
-		this.prenom = new SimpleStringProperty(prenom);;
-		this.adresse = new SimpleStringProperty(adresse);;
-		this.tel = new SimpleStringProperty(tel);;
-		this.pretsActifs = new SimpleIntegerProperty(pretsActifs);;
-		this.soldeDu = new SimpleDoubleProperty(soldeDu);;
+		this.prenom = new SimpleStringProperty(prenom);
+		;
+		this.adresse = new SimpleStringProperty(adresse);
+		;
+		this.tel = new SimpleStringProperty(tel);
+		;
+		this.pretsActifs = new SimpleIntegerProperty(pretsActifs);
+		;
+		this.soldeDu = new SimpleDoubleProperty(soldeDu);
+		;
 	}
 
-	
-	//Getters and Setters
+	// Getters and Setters
 	public StringProperty getNumAdherentProperty() {
 		return numAdherent;
 	}
-	
+
 	public String getNumAdherent() {
 		return numAdherent.get();
 	}
@@ -52,7 +54,7 @@ public class Pret implements Serializable{
 	public StringProperty getNomProperty() {
 		return nom;
 	}
-	
+
 	public String getNom() {
 		return nom.get();
 	}
@@ -64,7 +66,7 @@ public class Pret implements Serializable{
 	public StringProperty getPrenomProperty() {
 		return prenom;
 	}
-	
+
 	public String getPrenom() {
 		return prenom.get();
 	}
@@ -76,11 +78,11 @@ public class Pret implements Serializable{
 	public StringProperty getAdresseProperty() {
 		return adresse;
 	}
-	
+
 	public String getAdresse() {
 		return adresse.get();
 	}
-	
+
 	public void setAdresse(StringProperty adresse) {
 		this.adresse = adresse;
 	}
@@ -88,7 +90,7 @@ public class Pret implements Serializable{
 	public StringProperty getTelProperty() {
 		return tel;
 	}
-	
+
 	public String getTel() {
 		return tel.get();
 	}
@@ -100,7 +102,7 @@ public class Pret implements Serializable{
 	public IntegerProperty getPretsActifsProperty() {
 		return pretsActifs;
 	}
-	
+
 	public int getPretsActifs() {
 		return pretsActifs.get();
 	}
@@ -112,7 +114,7 @@ public class Pret implements Serializable{
 	public DoubleProperty getSoldeDuProperty() {
 		return soldeDu;
 	}
-	
+
 	public double getSoldeDu() {
 		return soldeDu.get();
 	}
@@ -125,5 +127,4 @@ public class Pret implements Serializable{
 		return serialVersionUID;
 	}
 
-	
 }

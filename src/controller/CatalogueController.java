@@ -29,15 +29,13 @@ import utils.GestionVue;
 public class CatalogueController {
 	private Registre registre;
 	private GestionVue gestionVue;
-	
-	
 
 	@FXML
 	TableView<Adherent> tvAD;
-	
+
 	@FXML
 	AnchorPane ancDoc;
-	
+
 	@FXML
 	AnchorPane ancRecherche;
 
@@ -58,7 +56,7 @@ public class CatalogueController {
 
 	@FXML
 	Tab tabDVD;
-	
+
 	@FXML
 	AnchorPane anchorPane;
 
@@ -112,7 +110,7 @@ public class CatalogueController {
 
 	@FXML
 	Button btnSupprimerDoc;
-	
+
 	public CatalogueController() {
 		registre = Registre.getInstance();
 	}
@@ -123,12 +121,9 @@ public class CatalogueController {
 
 	public void clearAncDoc() {
 		if (ancDoc != null) {
-			System.out.println("Before clearing: " + ancDoc.getChildren());
 			ancDoc.getChildren().clear();
 			ancDoc.layout();
-			System.out.println("After clearing: " + ancDoc.getChildren());
 		} else {
-			System.out.println("ancDoc is null!");
 		}
 	}
 
@@ -172,8 +167,6 @@ public class CatalogueController {
 		}
 	}
 
-	
-
 	@FXML
 	protected void ouvrirAjouterDoc(ActionEvent e) throws IOException {
 		gestionVue = GestionVue.getInstance();
@@ -188,7 +181,7 @@ public class CatalogueController {
 
 	@FXML
 	protected void ouvrirModifierAD(ActionEvent e) throws IOException {
-		
+
 	}
 
 	@FXML
@@ -200,24 +193,22 @@ public class CatalogueController {
 	@FXML
 	protected void supprimerSelectedDoc(ActionEvent event) {
 		registre.removeDoc();
-		System.out.println(registre.getListeDocument());
 	}
-	
+
 	@FXML
 	protected void supprimerSelectedAD(ActionEvent event) {
 		registre.removeAD();
 	}
-	
+
 	@FXML
 	protected void modifierSelectedAD(ActionEvent event) {
 		if (registre.getAD() != null) {
 			gestionVue = GestionVue.getInstance();
 			gestionVue.chargerDialogue("Modifier un adhérent", "/fxml/ModifierAdherent.fxml");
+		} else {
+			// do alert warning
 		}
-		else {
-			//do alert warning
-		}
-		
+
 	}
 
 	@FXML
@@ -227,10 +218,9 @@ public class CatalogueController {
 		stage.close();
 		gestionVue.chargerVuePrincipale("Mediatheque", "/fxml/MainView.fxml");
 	}
-	
+
 	@FXML
 	private void initialize() {
-		System.out.println("Initialiser CatalogueController");
 		accGestion.setExpandedPane(titCatalogue);
 		registre.setTitledPane(titCatalogue);
 		accGestion.expandedPaneProperty().addListener((obs, oldPane, newPane) -> {

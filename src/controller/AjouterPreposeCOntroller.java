@@ -17,7 +17,7 @@ import utils.GestionIOPersonne;
 import utils.GestionIOPrepose;
 
 public class AjouterPreposeCOntroller {
-	
+
 	@FXML
 	TextField tbNom;
 
@@ -29,14 +29,14 @@ public class AjouterPreposeCOntroller {
 
 	@FXML
 	TextField tbTelephone;
-	
+
 	@FXML
 	TextField tbMotDePasse;
 
 	@FXML
 	Button btnAjouter;
-	
-	@FXML 
+
+	@FXML
 	Button btnQuitter;
 
 	@FXML
@@ -69,12 +69,11 @@ public class AjouterPreposeCOntroller {
 			alert.setContentText("Vous n'avez pas tapé votre mot de passe");
 			alert.show();
 		} else {
-			System.out.println("button ajouter pressed");
 			Prepose personne = new Prepose(tbNom.getText(), tbPrenom.getText(), tbAdresse.getText(),
 					tbTelephone.getText(), tbMotDePasse.getText());
 
 			Prepose.setPerpose(personne);
-			//GestionIOPrepose.ecrireFichierPrepose(personne);
+			// GestionIOPrepose.ecrireFichierPrepose(personne);
 
 		}
 		tbNom.setText("");
@@ -82,12 +81,11 @@ public class AjouterPreposeCOntroller {
 		tbAdresse.setText("");
 		tbTelephone.setText("");
 		tbMotDePasse.setText("");
-		
+
 	}
-	
+
 	@FXML
 	protected void ajouterQuitter() {
-		System.out.println("closing");
 		Stage stage = (Stage) btnQuitter.getScene().getWindow();
 		stage.close();
 		// merge

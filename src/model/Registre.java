@@ -33,7 +33,6 @@ public final class Registre {
 	}
 
 	public void chargerDonnees() throws ClassNotFoundException, IOException {
-		System.out.println("Charger Donnees");
 		listeLivre.setAll(GestionIOLivre.chargerFichier());
 		GestionIOLivre.setFileRead();
 		listePeriodique.setAll(GestionIOPeriodique.chargerFichier("Periodiques.txt"));
@@ -41,26 +40,24 @@ public final class Registre {
 		listeDVD.setAll(GestionIODVD.chargerFichier("DVD.txt"));
 		GestionIODVD.setFileRead();
 		listeAdherent.setAll(GestionIOAdherent.chargerFichier("Adherents.ser"));
-		
+
 		String fichier = "Personne.txt";
 		File written = new File(Constantes.REPERTOIRE_DATA + "/" + fichier);
 		if (written.length() > 0) {
 			GestionIOPrepose.lireFichierPrepose();
 			GestionIOPrepose.setStateOuvert(true);
 		}
-		
-		
+
 		listeDocument.addAll(listeLivre);
 		listeDocument.addAll(listePeriodique);
 		listeDocument.addAll(listeDVD);
 	}
-	
+
 	public void serealiserDonnees() {
 		try {
 			GestionIOLivre.serealise(listeLivre);
 			GestionIODVD.serealise(listeDVD);
 			GestionIOPeriodique.serealise(listePeriodique);
-			System.out.println(listeAdherent + " this is in Registre to test ho the ser");
 			GestionIOAdherent.serealise(listeAdherent);
 			GestionIOPrepose.serealise(Prepose.getObservableListPrepose());
 		} catch (IOException e) {
@@ -84,7 +81,7 @@ public final class Registre {
 	public ObservableList<DVD> getListeDVD() {
 		return listeDVD;
 	}
-	
+
 	public ObservableList<Adherent> getListeAdherent() {
 		return listeAdherent;
 	}
@@ -105,10 +102,8 @@ public final class Registre {
 	public void setListeLivre(ObservableList<Livre> liste) {
 		listeLivre.setAll(liste);
 	}
-	
 
-
-	public static Registre getInstance(){
+	public static Registre getInstance() {
 		if (instance == null) {
 			try {
 				instance = new Registre();
@@ -129,7 +124,7 @@ public final class Registre {
 		if (!listeDocument.contains(livre)) {
 			ajouterDoc(livre);
 		}
-		
+
 	}
 
 	public void ajouterPeriodique(Periodique periodique) {
@@ -150,7 +145,7 @@ public final class Registre {
 	public void ajouterDoc(Document doc) {
 		listeDocument.add(doc);
 	}
-	
+
 	public void ajouterAD(Adherent adherent) {
 		listeAdherent.add(adherent);
 	}
@@ -171,7 +166,7 @@ public final class Registre {
 			}
 		}
 	}
-	
+
 	public void removeAD() {
 		Adherent ad = adherent;
 		listeAdherent.remove(ad);
@@ -181,16 +176,15 @@ public final class Registre {
 	public void setDocument(Document document) {
 		this.document = document;
 	}
-	
+
 	public Adherent getAD() {
-		System.out.println("Get AD");
 		return adherent;
 	}
-	
+
 	public void setAdherent(Adherent adherent) {
 		this.adherent = adherent;
 	}
-	
+
 	public void modifierAdherent(String addresse, String tel) {
 		Adherent nouAD;
 		nouAD = adherent;
@@ -199,15 +193,14 @@ public final class Registre {
 		nouAD.setTel(tel);
 		listeAdherent.add(nouAD);
 	}
-	
-	//Getter setter titledPane
+
+	// Getter setter titledPane
 	public TitledPane getTitledPane() {
 		return titledPane;
 	}
-	
+
 	public void setTitledPane(TitledPane titledPane) {
-			this.titledPane = titledPane;	
+		this.titledPane = titledPane;
 	}
-	
 
 }

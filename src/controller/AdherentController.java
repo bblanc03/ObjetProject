@@ -11,32 +11,32 @@ public class AdherentController {
 
 	@FXML
 	TableView<Adherent> tvAD;
-	
+
 	@FXML
 	TableColumn<Adherent, String> colNum;
-	
+
 	@FXML
 	TableColumn<Adherent, String> colNom;
-	
+
 	@FXML
 	TableColumn<Adherent, String> colPrenom;
-	
+
 	@FXML
 	TableColumn<Adherent, String> colAdresse;
-	
+
 	@FXML
 	TableColumn<Adherent, String> colTel;
-	
+
 	@FXML
 	TableColumn<Adherent, Integer> colPret;
-	
+
 	@FXML
 	TableColumn<Adherent, Double> colSolde;
-	
+
 	public AdherentController() {
 		registre = Registre.getInstance();
 	}
-	
+
 	private void initialiserVueAdherent() {
 		tvAD.setItems(registre.getListeAdherent());
 		colNum.setCellValueFactory(col -> col.getValue().getNumProperty());
@@ -44,16 +44,16 @@ public class AdherentController {
 		colPrenom.setCellValueFactory(col -> col.getValue().getPrenomProperty());
 		colAdresse.setCellValueFactory(col -> col.getValue().getAdresseProperty());
 		colTel.setCellValueFactory(col -> col.getValue().getTelephoneProperty());
-		
+
 	}
-	
+
 	@FXML
 	private void initialize() {
 		initialiserVueAdherent();
 		tvAD.getSelectionModel().selectedItemProperty().addListener((bs, anc, nou) -> {
 			registre.setAdherent(nou);
-		});;
+		});
+		;
 	}
-	
-	
+
 }

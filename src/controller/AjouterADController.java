@@ -1,6 +1,5 @@
 package controller;
 
-
 import java.io.IOException;
 
 import javafx.event.ActionEvent;
@@ -19,55 +18,53 @@ public class AjouterADController {
 
 	@FXML
 	AnchorPane ancAjouterAD;
-	
+
 	@FXML
 	Label lblNom;
-	
+
 	@FXML
 	Label lblPrenom;
-	
+
 	@FXML
 	Label lblAdresse;
-	
+
 	@FXML
 	Label lblTel;
-	
+
 	@FXML
 	TextField txtAdresse;
-	
+
 	@FXML
 	TextField txtTel;
-	
+
 	@FXML
 	TextField txtPrenom;
-	
+
 	@FXML
 	TextField txtNom;
-	
+
 	@FXML
 	Button btnConfirmer;
-	
+
 	@FXML
 	Button btnAnnuler;
-	
+
 	public AjouterADController() {
 		registre = Registre.getInstance();
 	}
-	
+
 	@FXML
 	protected void ajouterAD(ActionEvent e) throws IOException {
 		int i = registre.getListeAdherent().size() + 1;
-		Adherent adherent = new Adherent("AD" + i, txtNom.getText(), txtPrenom.getText(), txtAdresse.getText(), txtTel.getText());
-		//System.out.println(adherent + " this is from ajouter");
+		Adherent adherent = new Adherent("AD" + i, txtNom.getText(), txtPrenom.getText(), txtAdresse.getText(),
+				txtTel.getText());
 		registre.ajouterAD(adherent);
 		btnAnnuler.getScene().getWindow().hide();
 	}
-	
+
 	@FXML
 	protected void fermerFenetre(ActionEvent e) throws IOException {
 		btnAnnuler.getScene().getWindow().hide();
 	}
-	
-	
 
 }

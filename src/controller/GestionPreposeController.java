@@ -59,7 +59,6 @@ public class GestionPreposeController {
 		ObjectInputStream in = null;
 		String fichier = "Personne.txt";
 		File written = new File(Constantes.REPERTOIRE_DATA + "/" + fichier);
-		System.out.println("reading");
 
 		/*
 		 * if (written.length() > 0) { GestionIOPrepose.lireFichierPrepose();
@@ -85,7 +84,6 @@ public class GestionPreposeController {
 
 	@FXML
 	private void supprimerPrpose() throws IOException {
-		System.out.println("deleting");
 		Prepose employe = vuePrepose.getSelectionModel().getSelectedItem();
 		Prepose.removePrepose(employe);
 	}
@@ -93,7 +91,6 @@ public class GestionPreposeController {
 	@FXML
 	private void deconcection() throws IOException {
 		GestionVue gestionVue = GestionVue.getInstance();
-		System.out.println("disconnecting");
 		Stage stage = (Stage) btnDeconnection.getScene().getWindow();
 		stage.close();
 		gestionVue.chargerVuePrincipale("Médiatèque", "/fxml/MainView.fxml");

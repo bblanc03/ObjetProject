@@ -36,7 +36,7 @@ public class IdentificationController {
 
 	@FXML
 	RadioButton radTelephone;
-	
+
 	@FXML
 	ToggleGroup Identification;
 
@@ -45,10 +45,10 @@ public class IdentificationController {
 
 	@FXML
 	TextField tbPrenom;
-	
+
 	@FXML
 	TextField tbNoEmploye;
-	
+
 	@FXML
 	TextField tbMotDePasse;
 
@@ -67,15 +67,13 @@ public class IdentificationController {
 
 	@FXML
 	protected void ouvrirAdmin(ActionEvent event) throws IOException {
-		
-		if(tbNoEmploye.getText().equals("Admin")  && tbMotDePasse.getText().equals("234567")) {
+
+		if (tbNoEmploye.getText().equals("Admin") && tbMotDePasse.getText().equals("234567")) {
 			gestionVue = GestionVue.getInstance();
-			System.out.println("btn ajouter prepose");
 			gestionVue.chargerVuePrincipale("Médiatèque", "/fxml/Admin.fxml");
-			//verificationPrepose();
-		} else if(verificationPrepose("Brandon", "test")) {
+			// verificationPrepose();
+		} else if (verificationPrepose(tbNoEmploye.getText(), tbMotDePasse.getText())) {
 			gestionVue = GestionVue.getInstance();
-			System.out.println("btn ajouter prepose");
 			gestionVue.chargerVuePrincipale("Catalogue", "/fxml/catalogue.fxml");
 		} else {
 			Alert alert = new Alert(AlertType.NONE);
@@ -83,33 +81,30 @@ public class IdentificationController {
 			alert.setContentText("Votre numero ou mot de passe n'est pas valide");
 			alert.show();
 		}
-		
+
 	}
 
 	@FXML
 	protected void ouvrirCatalogue(ActionEvent event) throws IOException {
 
 		gestionVue = GestionVue.getInstance();
-		System.out.println("btn ajouter prepose");
 		gestionVue.chargerVuePrincipale("Catalogue", "/fxml/catalogue.fxml");
 	}
-	
+
 	@FXML
 	protected void ouvrirCatalogueDoc(ActionEvent event) throws IOException {
 		gestionVue = GestionVue.getInstance();
-		System.out.println("btn ajouter prepose");
 		gestionVue.chargerVuePrincipale("Catalogue", "/fxml/CatalogueDoc.fxml");
 	}
-	
+
 	protected boolean verificationPrepose(String noEmp, String password) {
 		ObservableList<Prepose> listPrepose = Prepose.getObservableListPrepose();
-		for(Prepose prepose : listPrepose) {
-			if(password.equals(prepose.getPassword()) && noEmp.equals(prepose.getNom())) {
-				//System.out.println("Password: " + prepose.getPassword());
+		for (Prepose prepose : listPrepose) {
+			if (password.equals(prepose.getPassword()) && noEmp.equals(prepose.getNom())) {
 				return true;
 			}
-			
+
 		}
 		return false;
-	} 
+	}
 }

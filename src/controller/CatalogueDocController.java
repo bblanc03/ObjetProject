@@ -13,7 +13,7 @@ public class CatalogueDocController {
 
 	@FXML
 	AnchorPane ancDoc;
-	
+
 	@FXML
 	AnchorPane ancRecherche;
 

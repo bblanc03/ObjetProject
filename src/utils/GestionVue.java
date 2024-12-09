@@ -3,7 +3,6 @@ package utils;
 import java.io.IOException;
 import java.util.HashMap;
 
-
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.stage.Modality;
@@ -65,22 +64,20 @@ public class GestionVue {
 	// Fermer Vue
 	public void fermerVue(String titreVue) {
 		Stage stage = mapStages.get(titreVue);
-		System.out.println("out");
 		if (stage != null) {
 			stage.close();
 			mapStages.remove(titreVue);
 			mapLoaders.remove(titreVue);
-			System.out.println("Fenetre ferme");
 		}
 	}
-	
-	
 
 	public <T> T chargerVueAvecController(String fichierFXML) throws IOException {
-		FXMLLoader loader = new FXMLLoader(getClass().getResource(fichierFXML)); 
-		Parent root = loader.load(); Scene scene = new Scene(root); 
-		stage.setScene(scene); stage.show(); 
-		return loader.getController();  
+		FXMLLoader loader = new FXMLLoader(getClass().getResource(fichierFXML));
+		Parent root = loader.load();
+		Scene scene = new Scene(root);
+		stage.setScene(scene);
+		stage.show();
+		return loader.getController();
 	}
 
 }

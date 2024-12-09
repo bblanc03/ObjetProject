@@ -12,38 +12,38 @@ import model.Registre;
 
 public class ModifierADController {
 	Registre registre;
-	
+
 	@FXML
 	AnchorPane ancModifier;
-	
+
 	@FXML
 	Label lblAdresse;
-	
+
 	@FXML
 	Label lblTel;
-	
+
 	@FXML
 	TextField txtAdresse;
-	
+
 	@FXML
 	TextField txtTel;
 
 	@FXML
 	Button btnConfirmer;
-	
+
 	@FXML
 	Button btnAnnuler;
-	
+
 	public ModifierADController() {
 		registre = Registre.getInstance();
 	}
-	
+
 	@FXML
 	protected void modifierAD(ActionEvent e) throws IOException {
 		registre.modifierAdherent(txtAdresse.getText(), txtTel.getText());
 		btnAnnuler.getScene().getWindow().hide();
 	}
-	
+
 	@FXML
 	protected void fermerFenetre(ActionEvent e) throws IOException {
 		btnAnnuler.getScene().getWindow().hide();

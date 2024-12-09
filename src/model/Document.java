@@ -14,7 +14,7 @@ import javafx.beans.property.StringProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 
-public class Document implements Serializable{
+public class Document implements Serializable {
 	/**
 	 * 
 	 */
@@ -28,14 +28,13 @@ public class Document implements Serializable{
 	private transient ObjectProperty<Object> emprunteur;
 	private static ObservableList<Document> obsListDoc = FXCollections.observableArrayList();
 	private transient String type;
-	
-	//this is a super class for the other classes
+
+	// this is a super class for the other classes
 	public Document() {
-		
+
 	}
-	
-	
-	//Ajouter etat et emprunter 
+
+	// Ajouter etat et emprunter
 	public Document(String noDocument, String titre, String datePublication) {
 		this.noDocument = new SimpleStringProperty(noDocument);
 		this.titre = new SimpleStringProperty(titre);
@@ -44,12 +43,11 @@ public class Document implements Serializable{
 		this.emprunteur = new SimpleObjectProperty<Object>(null);
 		this.pret = new SimpleIntegerProperty(0);
 	}
-	
 
 	public StringProperty getNoDocumentProperty() {
 		return noDocument;
 	}
-	
+
 	public String getNoDocument() {
 		return noDocument.get();
 	}
@@ -57,7 +55,7 @@ public class Document implements Serializable{
 	public StringProperty getTitreProperty() {
 		return titre;
 	}
-	
+
 	public String getTitre() {
 		return titre.get();
 	}
@@ -65,7 +63,7 @@ public class Document implements Serializable{
 	public StringProperty getAuteurProperty() {
 		return auteur;
 	}
-	
+
 	public String getAuteur() {
 		if (auteur != null) {
 			return auteur.get();
@@ -76,71 +74,67 @@ public class Document implements Serializable{
 	public StringProperty getDatePublicationProperty() {
 		return datePublication;
 	}
-	
+
 	public String getDatePublication() {
 		return datePublication.get();
 	}
-	
+
 	public BooleanProperty getEtatProperty() {
 		return etat;
 	}
-	
+
 	public ObjectProperty<Object> getEmprunteurProperty() {
 		return emprunteur;
 	}
-	
+
 	public boolean getEtat() {
 		return etat.get();
 	}
-	
+
 	public Object getEmprunteur() {
 		return emprunteur.get();
 	}
-	
+
 	public void setEtat(Boolean etat) {
 		this.etat.set(etat);
 	}
-	
+
 	public void setEmprunteur(Object adherent) {
 		this.emprunteur.set(adherent);
 	}
-	
-	
+
 	public IntegerProperty getPretProperty() {
 		return pret;
 	}
-	
+
 	public void setNoDoc(String noDoc) {
 		this.noDocument = new SimpleStringProperty(noDoc);
 	}
-	
+
 	public void setTitre(String titre) {
 		this.titre = new SimpleStringProperty(titre);
 	}
-	
+
 	public void setDate(String date) {
 		this.datePublication = new SimpleStringProperty(date);
 	}
-	
+
 	@Override
 	public String toString() {
 		return titre.get();
 	}
-	
+
 	public String getType() {
 		return type;
 	}
-	
-	
-	
-	//------------------------------------ObservableList------------------------------------------//
-	
-	
+
+	// ------------------------------------ObservableList------------------------------------------//
+
 	public static void setDoc(Document doc) {
 		obsListDoc.add(doc);
 	}
 
-	public static ObservableList<Document> getListDoc(){
+	public static ObservableList<Document> getListDoc() {
 		return obsListDoc;
 	}
 
@@ -151,5 +145,5 @@ public class Document implements Serializable{
 	public static void removeDoc(Document remove) {
 		obsListDoc.remove(remove);
 	}
-	
+
 }

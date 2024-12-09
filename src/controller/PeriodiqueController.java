@@ -15,53 +15,55 @@ public class PeriodiqueController {
 
 	@FXML
 	TableView<Periodique> tvPer;
-	
+
 	@FXML
 	TableColumn<Periodique, String> colNumPer;
-	
+
 	@FXML
 	TableColumn<Periodique, String> colTitrePer;
-	
+
 	@FXML
 	TableColumn<Periodique, String> colDatePer;
-	
+
 	@FXML
 	TableColumn<Periodique, Integer> colNumVol;
-	
+
 	@FXML
 	TableColumn<Periodique, Integer> colNumPeriodique;
-	
+
 	@FXML
 	TableColumn<Periodique, Boolean> colEtatPer;
-	
+
 	@FXML
 	TableColumn<Periodique, Integer> colPretPer;
-	
+
 	@FXML
 	TableColumn<Periodique, String> colEmprunteurPer;
-	
+
 	public PeriodiqueController() {
 		registre = Registre.getInstance();
 	}
-	
+
 	public void initialiserVuePeriodique() {
-		System.out.println("initialiserVuePeriodique");
 		colNumPer.setCellValueFactory(col -> col.getValue().getNoDocumentProperty());
 		colTitrePer.setCellValueFactory(col -> col.getValue().getTitreProperty());
 		colDatePer.setCellValueFactory(col -> col.getValue().getDatePublicationProperty());
 		colNumVol.setCellValueFactory(col -> col.getValue().getNumVolProperty().asObject());
-		//colNumPeriodique.setCellValueFactory(col -> col.getValue().getNumPeriodiqueProperty().asObject());
+		// colNumPeriodique.setCellValueFactory(col ->
+		// col.getValue().getNumPeriodiqueProperty().asObject());
 		colEtatPer.setCellValueFactory(col -> col.getValue().getEtatProperty());
-		//colPretPer.setCellValueFactory(col -> col.getValue().getPretProperty().asObject());
-		
+		// colPretPer.setCellValueFactory(col ->
+		// col.getValue().getPretProperty().asObject());
+
 	}
-	
+
 	@FXML
 	private void initialize() {
 		initialiserVuePeriodique();
 		tvPer.setItems(registre.getListePeriodique());
 		tvPer.getSelectionModel().selectedItemProperty().addListener((bs, anc, nou) -> {
 			registre.setDocument(nou);
-		});;	
+		});
+		;
 	}
 }
