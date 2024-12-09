@@ -29,11 +29,27 @@ public class GestionIOAdherent {
 		ObjectOutputStream out = new ObjectOutputStream(file);
 		toRead = new ArrayList<Adherent>();
 		for (Adherent adherent : lstAdherent) {
+			System.out.println("hello");
 			toRead.add(adherent);
+			System.out.println(adherent);
 		}
 		out.writeObject(toRead);
 
 		out.close();
+		file.close();
+	}
+
+	public static void lireFichierPrepose() throws ClassNotFoundException, IOException {
+		// ArrayList<Prepose> test = null;
+		
+		FileInputStream file = new FileInputStream(pathFichierWrite);
+		ObjectInputStream in = new ObjectInputStream(file);
+		toRead = (ArrayList<Adherent>) in.readObject();
+		for(Adherent adherent : toRead) {
+			registre.ajouterAD(adherent);
+		}
+		
+		in.close();
 		file.close();
 	}
 	
@@ -44,12 +60,14 @@ public class GestionIOAdherent {
 				FileInputStream file = new FileInputStream(pathFichierWrite);
 				ObjectInputStream in = new ObjectInputStream(file);
 				toRead = (ArrayList<Adherent>)in.readObject();
-				
+				System.out.println(listesAdherents + " test");
+
 				//for(Adherent adherent : toRead) {
-					
+
 					listesAdherents.addAll(toRead);
+					System.out.println(listesAdherents + " test2");
 				//}
-				
+
 				in.close();
 				file.close();
 				
