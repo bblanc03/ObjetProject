@@ -29,17 +29,13 @@ public Prepose(String nom, String prenom, String adresse, String telephone, Stri
 }
 
 
-	public StringProperty getPasswordProperty() {
-		return password;
-	}
+	
 
-	public String getPassword() {
-		return password.get();
-	}
 
-	public void setPassword(SimpleStringProperty password) {
-		this.password = password;
-	}
+	/*
+	 * public void setPassword(SimpleStringProperty password) { this.password =
+	 * password; }
+	 */
 
 	public static long getSerialversionuid() {
 		return serialVersionUID;

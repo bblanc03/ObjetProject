@@ -7,6 +7,8 @@ import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.util.ArrayList;
 
+import javafx.collections.ObservableList;
+import model.Livre;
 import model.Personne;
 import model.Prepose;
 
@@ -24,42 +26,51 @@ public class GestionIOPrepose {
 	static ArrayList<Prepose> toWrite = new ArrayList<>();
 	static ArrayList<Prepose> toRead = new ArrayList<>();
 
-	public static void ecrireFichierPrepose(Prepose Prepose) throws IOException, ClassNotFoundException {
-		 
-
+	/*
+	 * public static void ecrireFichierPrepose(Prepose Prepose) throws IOException,
+	 * ClassNotFoundException {
+	 * 
+	 * 
+	 * FileOutputStream file = new FileOutputStream(pathFichierTexte);
+	 * ObjectOutputStream out = new ObjectOutputStream(file); toWrite = new
+	 * ArrayList<>(Prepose.getObservableListPrepose()); toWrite.add(Prepose);
+	 * out.writeObject(toWrite);
+	 * 
+	 * out.close(); file.close();
+	 * 
+	 * }
+	 */
+	
+	public static void serealise(ObservableList<Prepose> lstPreposes) throws IOException {
 		FileOutputStream file = new FileOutputStream(pathFichierTexte);
 		ObjectOutputStream out = new ObjectOutputStream(file);
-		toWrite = new ArrayList<>(Prepose.getObservableListPrepose());
-		toWrite.add(Prepose);
-		//System.out.println("");
-		//System.out.println(toWrite);
-		//System.out.println("");
-		out.writeObject(toWrite);
-
+		toRead = new ArrayList<Prepose>();
+		for(Prepose prepose: lstPreposes) {
+			toRead.add(prepose);
+		}
+		out.writeObject(toRead);
+		
 		out.close();
 		file.close();
-
 	}
 	
-	public static void supprimerPrepose(Prepose Prepose) throws IOException {
-		
-		FileOutputStream file = new FileOutputStream(pathFichierTexte);
-		ObjectOutputStream out = new ObjectOutputStream(file);
-		ArrayList<Personne> listTemporaire = new ArrayList<>();
-		toWrite = new ArrayList<>(Prepose.getObservableListPrepose());
-		
-		for(Prepose pers: toWrite) {
-			if(pers.equals(Prepose) == false) {
-				listTemporaire.add(pers);
-			}
-		}
-		
-		out.writeObject(listTemporaire);
-
-		out.close();
-		file.close();
-		
-	}
+	/*
+	 * public static void supprimerPrepose(Prepose Prepose) throws IOException {
+	 * 
+	 * FileOutputStream file = new FileOutputStream(pathFichierTexte);
+	 * ObjectOutputStream out = new ObjectOutputStream(file); ArrayList<Personne>
+	 * listTemporaire = new ArrayList<>(); toWrite = new
+	 * ArrayList<>(Prepose.getObservableListPrepose());
+	 * 
+	 * for(Prepose pers: toWrite) { if(pers.equals(Prepose) == false) {
+	 * listTemporaire.add(pers); } }
+	 * 
+	 * out.writeObject(listTemporaire);
+	 * 
+	 * out.close(); file.close();
+	 * 
+	 * }
+	 */
 
 	public static void lireFichierPrepose() throws ClassNotFoundException, IOException {
 		// ArrayList<Prepose> test = null;

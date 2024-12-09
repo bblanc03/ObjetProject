@@ -55,6 +55,14 @@ public class Personne implements java.io.Serializable {
 	public String getTelephone() {
 		return telephone.get();
 	}
+	
+	public String getPassword() {
+		return motDePasse.get();
+	}
+	
+	public StringProperty getPasswordProperty() {
+		return motDePasse;
+	}
 
 	public Personne(String nom, String prenom, String adresse, String telephone, String motDePasse) {
 		this.nom = new SimpleStringProperty(nom);
@@ -76,6 +84,7 @@ public class Personne implements java.io.Serializable {
 		out.writeUTF(prenom.get());
 		out.writeUTF(adresse.get());
 		out.writeUTF(telephone.get());
+		out.writeUTF(motDePasse.get());
 	}
 
 	private void readObject(ObjectInputStream in) throws ClassNotFoundException, IOException {
@@ -85,6 +94,7 @@ public class Personne implements java.io.Serializable {
 		prenom = new SimpleStringProperty(in.readUTF());
 		adresse = new SimpleStringProperty(in.readUTF());
 		telephone = new SimpleStringProperty(in.readUTF());
+		motDePasse = new SimpleStringProperty(in.readUTF());
 	}
 
 

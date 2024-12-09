@@ -1,5 +1,6 @@
 package model;
 
+import java.io.File;
 import java.io.IOException;
 
 import javafx.collections.FXCollections;
@@ -7,10 +8,12 @@ import javafx.collections.ObservableList;
 import javafx.scene.control.Accordion;
 import javafx.scene.control.TitledPane;
 import javafx.scene.layout.TilePane;
+import utils.Constantes;
 import utils.GestionIOAdherent;
 import utils.GestionIODVD;
 import utils.GestionIOLivre;
 import utils.GestionIOPeriodique;
+import utils.GestionIOPrepose;
 
 public final class Registre {
 
@@ -39,6 +42,13 @@ public final class Registre {
 		GestionIODVD.setFileRead();
 		listeAdherent.setAll(GestionIOAdherent.chargerFichier("Adherents.ser"));
 		
+		String fichier = "Personne.txt";
+		File written = new File(Constantes.REPERTOIRE_DATA + "/" + fichier);
+		if (written.length() > 0) {
+			GestionIOPrepose.lireFichierPrepose();
+			GestionIOPrepose.setStateOuvert(true);
+		}
+		
 		
 		listeDocument.addAll(listeLivre);
 		listeDocument.addAll(listePeriodique);
@@ -52,6 +62,7 @@ public final class Registre {
 			GestionIOPeriodique.serealise(listePeriodique);
 			System.out.println(listeAdherent + " this is in Registre to test ho the ser");
 			GestionIOAdherent.serealise(listeAdherent);
+			GestionIOPrepose.serealise(Prepose.getObservableListPrepose());
 		} catch (IOException e) {
 			e.printStackTrace();
 		}

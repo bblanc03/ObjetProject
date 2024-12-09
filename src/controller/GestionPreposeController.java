@@ -61,10 +61,10 @@ public class GestionPreposeController {
 		File written = new File(Constantes.REPERTOIRE_DATA + "/" + fichier);
 		System.out.println("reading");
 
-		if (written.length() > 0) {
-			GestionIOPrepose.lireFichierPrepose();
-			GestionIOPrepose.setStateOuvert(true);
-		}
+		/*
+		 * if (written.length() > 0) { GestionIOPrepose.lireFichierPrepose();
+		 * GestionIOPrepose.setStateOuvert(true); }
+		 */
 
 		vuePrepose.setItems(Prepose.getObservableListPrepose());
 

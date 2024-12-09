@@ -6,6 +6,10 @@
 
 <AnchorPane fx:id="ancDoc" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.CatalogueDocController">
    <children>
+   
+      <AnchorPane fx:id="AnchLogin" layoutX="1105.0" layoutY="14.0" prefHeight="200.0" prefWidth="193.0">
+      <fx:include source="Consultation.fxml" />
+      </AnchorPane>
       <AnchorPane fx:id="ancRecherche" prefHeight="61.0" prefWidth="784.0">
       	<children>
         	<fx:include source="Recherche.fxml" />
