@@ -39,7 +39,11 @@ public final class Registre {
 		GestionIOPeriodique.setFileRead();
 		listeDVD.setAll(GestionIODVD.chargerFichier("DVD.txt"));
 		GestionIODVD.setFileRead();
-		listeAdherent.setAll(GestionIOAdherent.chargerFichier("Adherents.ser"));
+		File fichierAdherents = new File("data/Adherents.ser");
+		if(fichierAdherents.length() > 0) {
+			listeAdherent.setAll(GestionIOAdherent.chargerFichier("Adherents.ser"));
+		}
+		
 
 		String fichier = "Personne.txt";
 		File written = new File(Constantes.REPERTOIRE_DATA + "/" + fichier);
@@ -58,7 +62,9 @@ public final class Registre {
 			GestionIOLivre.serealise(listeLivre);
 			GestionIODVD.serealise(listeDVD);
 			GestionIOPeriodique.serealise(listePeriodique);
-			GestionIOAdherent.serealise(listeAdherent);
+			if(listeAdherent.size() > 0) {
+				GestionIOAdherent.serealise(listeAdherent);
+			}
 			GestionIOPrepose.serealise(Prepose.getObservableListPrepose());
 		} catch (IOException e) {
 			e.printStackTrace();
